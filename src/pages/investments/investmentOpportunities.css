@@ -46,6 +46,9 @@
 .ahm-card{
     margin: 10px 0;
     height: 470px;
+    width: 32%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
 }
 .ahm-imageCard{
     height:50%;
@@ -57,17 +60,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color:rgb(134, 133, 133)
+}
+.ahm-infoCard h3{
+    color:black;
+    font-size: 22px;
+    
 }
 .ahm-investLocation {
     padding: 5px 20px 10px;
     display: flex;
     align-items: center;
     font-size: 13px;
+    color: #888888;
 }
 .ahm-progress{
     padding: 5px 20px;
     display: flex;
     justify-content: space-between;
+    color: #888888;
 }
 .ahm-progressPercent{
     border-radius: 10px;
@@ -97,6 +108,10 @@
 
 .ahm-detailsBtn{
     padding:5px 10px;
+    display: flex;
+    gap:5px;
+    align-items: center;
+    color: #888888;
 }
 .ahm-detailsBtn:hover{
     color:black;
@@ -105,6 +120,12 @@
     
     background-color: rgba(128, 128, 128, 0.24);
 }
+
+.ahm-investmentCost{
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .ahm-investCardForMobile{
     display: none;
     width: 80%;

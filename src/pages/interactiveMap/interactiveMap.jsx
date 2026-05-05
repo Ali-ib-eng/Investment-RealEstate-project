@@ -11,29 +11,29 @@ export default function InteractiveMap(){
 
 
                 <div className='ahm-field'>
-                    <div className='flex items-center gap-2'> 
-                        <FaCircle className='text-[10px] text-red-300'/>
+                    <div className='ahm-locationContainer '> 
+                        <FaCircle className='ahm-locationPoint '/>
                         <p className=''>Aleppo</p>
                     </div>
-                    <p className='text-[11px] text-gray-500'>0 Project</p>
+                    <p className='ahm-projectsNumberContainer'>0 Project</p>
                 </div>
 
 
                 <div className='ahm-field'>
-                    <div className='flex items-center gap-2'> 
-                        <FaCircle className='text-[10px] text-blue-300'/>
+                    <div className='ahm-locationContainer'> 
+                        <FaCircle className='ahm-locationPoint'/>
                         <p className=''>Lattakia</p>
                     </div>
-                    <p className='text-[11px] text-gray-500'>0 Project</p>
+                    <p className='ahm-projectsNumberContainer'>0 Project</p>
                 </div>
 
 
                 <div className='ahm-field'>
-                    <div className='flex items-center gap-2'> 
-                        <FaCircle className='text-[10px] text-yellow-300'/>
+                    <div className='ahm-locationContainer'> 
+                        <FaCircle className='ahm-locationPoint'/>
                         <p className=''>Damascuse</p>
                     </div>
-                    <p className='text-[11px] text-gray-500'>0 Project</p>
+                    <p className='ahm-projectsNumberContainer'>0 Project</p>
                 </div>
 
 

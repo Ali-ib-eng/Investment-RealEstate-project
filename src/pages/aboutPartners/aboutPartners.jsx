@@ -1,4 +1,5 @@
-import partnerImage from '../../../public/IMG-homePage/Eng1.png'
+import partnerImage from '/IMG-homePage/Eng1.png'
+// import partnerImage from '../../../public/IMG-homePage/Eng1.png'
 
 
 import './aboutPartners.css'
@@ -10,36 +11,39 @@ export default function AboutPartners (){
             <div className='ahm-partners'>
                 <h1 className='ahm-h1'>Trust Our Partners</h1>
                 <div className="ahm-partnerCardContainer">
+
                     <div className="ahm-partnerCard">
                         <div className="ahm-aboutPartner " > <p className="ahm-notation">,,</p > Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti ipsam alias tenetur suscipit </div>
-                        <div className='flex gap-3 items-center'>
+                        <div className='ahm-imageAndDetailsContainer '>
                             <img className='ahm-partnerImage' src={partnerImage} alt="img" />
                             <div className='ahm-partnerDetails'>
-                                <p className='text-sm'>Name</p>
-                                <p className='text-gray-500 text-[13px]'>title</p>
+                                <p className='ahm-partnerName'>Name</p>
+                                <p className=' ahm-partnerInvestDetail '>title</p>
                             </div>
                         </div>
                     </div>
                     <div className="ahm-partnerCard">
-                        <div className="ahm-aboutPartner"> <p className="ahm-notation">,,</p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti ipsam alias tenetur suscipit </div>
-                        <div className='flex gap-3 items-center'>
+                        <div className="ahm-aboutPartner " > <p className="ahm-notation">,,</p > Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti ipsam alias tenetur suscipit </div>
+                        <div className='ahm-imageAndDetailsContainer '>
                             <img className='ahm-partnerImage' src={partnerImage} alt="img" />
                             <div className='ahm-partnerDetails'>
-                                <p className='text-sm'>Name</p>
-                                <p className='text-gray-500 text-[13px]'>title</p>
+                                <p className='ahm-partnerName'>Name</p>
+                                <p className=' ahm-partnerInvestDetail '>title</p>
                             </div>
                         </div>
                     </div>
                     <div className="ahm-partnerCard">
-                        <div className="ahm-aboutPartner"> <p className="ahm-notation">,,</p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti ipsam alias tenetur suscipit </div>
-                        <div className='flex gap-3 items-center'>
+                        <div className="ahm-aboutPartner " > <p className="ahm-notation">,,</p > Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit deleniti ipsam alias tenetur suscipit </div>
+                        <div className='ahm-imageAndDetailsContainer '>
                             <img className='ahm-partnerImage' src={partnerImage} alt="img" />
                             <div className='ahm-partnerDetails'>
-                                <p className='text-sm'>Name</p>
-                                <p className='text-gray-500 text-[13px]'>title</p>
+                                <p className='ahm-partnerName'>Name</p>
+                                <p className=' ahm-partnerInvestDetail '>title</p>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         );

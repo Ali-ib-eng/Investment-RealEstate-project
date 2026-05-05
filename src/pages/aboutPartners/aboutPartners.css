@@ -1,4 +1,6 @@
-
+.ahm-partners {
+    margin: 20px 0;
+}
 .ahm-partners .ahm-h1{
     font-size: 32px;
     line-height: 1.3;
@@ -36,6 +38,12 @@
     color: green;
     opacity: .2;
 }
+.ahm-imageAndDetailsContainer{
+    display: flex;
+    align-items: center;
+    gap:10px
+}
+
 .ahm-partnerImage{
     display: inline-block;
     width:50px;
@@ -43,10 +51,18 @@
     border-radius: 50%;
     margin-top: 14px;
 }
+
 .ahm-partnerDetails{
     margin-top: 14px;
 }
 
+.ahm-partnerName{
+    /* font-size: 14px; */
+}
+.ahm-partnerInvestDetail{
+    font-size: 13px;
+    color:#888888
+}
 @media (max-width:1112px){
     .ahm-partnerCardContainer{
         display: block;
@@ -74,6 +90,7 @@
     color:white;
     text-align: center;
     padding: 40px 0;
+    margin: 20px 0;
 }
 .ahm-joinPartContainer .ahm-h1{
     font-size: 32px;

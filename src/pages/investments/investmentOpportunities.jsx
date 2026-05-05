@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import {FaArrowRight, FaMapMarkerAlt, FaChevronRight, FaArrowCircleLeft, FaArrowCircleRight  } from 'react-icons/fa'
-import GoldenBeachImage from '../../../public/IMG-homePage/Golden Beach Resort.png'
-import CentralBusinessTower from '../../../public/IMG-homePage/CentralBusinessTower.png'
-import JasmineResidentialComplex from '../../../public/IMG-homePage/JasmineResidentialComplex.png'
+import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
+import CentralBusinessTower from '/IMG-homePage/CentralBusinessTower.png'
+import JasmineResidentialComplex from '/IMG-homePage/JasmineResidentialComplex.png'
 import {useNavigate} from 'react-router-dom'
 import './investmentOpportunities.css'
 import GetStartGuide from '../getStartGuide/getStartGuide'
@@ -46,24 +46,24 @@ export default function InvestmentOpportunites (){
                 {
                     investmentsData.length>0 && 
                     investmentsData.map((investment,index)=>(
-                        <div key={index} className='ahm-card w-[32%] h-full rounded-xl shadow-xl '> 
+                        <div key={index} className='ahm-card  '> 
                             <img src={investment.image} alt='invest img' className='ahm-imageCard  '/> 
                             <div className=' ahm-infoCard '>
-                                <h3 className='text-xl '>{investment.title}</h3>
-                                <p className='text-gray-500'>{investment.parcent}</p>
+                                <h3 className=' '>{investment.title}</h3>
+                                <p className=''>{investment.parcent}</p>
                             </div>
-                            <p className='ahm-investLocation text-gray-500'> <FaMapMarkerAlt /> {investment.location}</p>
-                            <div className='ahm-progress text-gray-700'>
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            <div className='ahm-progress '>
                                 <p>Progress</p>
                                 <p>{investment.progress}</p>
                             </div>
                             <div className='ahm-progressPercent'>
-                                <p  className={`ahm-progressPercent2 `}></p>
+                                <p  className='ahm-progressPercent2' ></p>
                             </div>
-                            <hr className='ahm-line text-gray-500 '/>
+                            <hr className='ahm-line '/>
                             <div className='ahm-costContainer'>
-                                <p className=' text-2xl font-bold'>{investment.cost}$</p>
-                                <p className='ahm-detailsBtn text-gray-500 flex items-center gap-3 '>Details <FaChevronRight /> </p>
+                                <p className='ahm-investmentCost '>{investment.cost}$</p>
+                                <p className='ahm-detailsBtn '>Details <FaChevronRight /> </p>
                             </div>
                         </div>
                     ))
@@ -77,24 +77,24 @@ export default function InvestmentOpportunites (){
         return(
             <div className='ahm-investCardForMobile'>
 
-                <div className='ahm-card w-[32%] h-full rounded-xl shadow-xl '> 
+                <div className='ahm-card  '> 
                     <img src={investmentsData[counterForIvestCard].image} alt='invest img' className='ahm-imageCard  '/> 
                     <div className=' ahm-infoCard '>
-                        <h3 className='text-xl '>{investmentsData[counterForIvestCard].title}</h3>
-                        <p className='text-gray-500'>{investmentsData[counterForIvestCard].parcent}</p>
+                        <h3 className=' '>{investmentsData[counterForIvestCard].title}</h3>
+                        <p className=''>{investmentsData[counterForIvestCard].parcent}</p>
                     </div>
-                    <p className='ahm-investLocation text-gray-500'> <FaMapMarkerAlt /> {investmentsData[counterForIvestCard].location}</p>
-                    <div className='ahm-progress text-gray-700'>
+                    <p className='ahm-investLocation'> <FaMapMarkerAlt /> {investmentsData[counterForIvestCard].location}</p>
+                    <div className='ahm-progress'>
                         <p>Progress</p>
                         <p>{investmentsData[counterForIvestCard].progress}</p>
                     </div>
                     <div className='ahm-progressPercent'>
-                        <p  className={`ahm-progressPercent2 `}></p>
+                        <p  className= 'ahm-progressPercent2' ></p>
                     </div>
-                    <hr className='ahm-line text-gray-500 '/>
+                    <hr className='ahm-line '/>
                     <div className='ahm-costContainer'>
-                        <p className=' text-2xl font-bold'>{investmentsData[counterForIvestCard].cost}$</p>
-                        <p className='ahm-detailsBtn text-gray-500 flex items-center gap-3 '>Details <FaChevronRight /> </p>
+                        <p className='ahm-investmentCost  '>{investmentsData[counterForIvestCard].cost}$</p>
+                        <p className='ahm-detailsBtn '>Details <FaChevronRight /> </p>
                     </div>
                 </div>
 

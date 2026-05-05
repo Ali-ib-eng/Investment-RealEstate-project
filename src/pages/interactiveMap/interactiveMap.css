@@ -39,6 +39,20 @@
     border-radius: 10px;
     /* shadow:inset 10px gray; */
 }
+.ahm-field  .ahm-locationContainer{
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+.ahm-locationContainer  .ahm-locationPoint{
+    font-size: 10px;
+    color:rgb(252, 99, 193)
+}
+
+.ahm-field  .ahm-projectsNumberContainer{
+    font-size: 11px;
+    color: #888888;
+}
 .ahm-mapContainer{
     background-color: white;
     height: 400px;

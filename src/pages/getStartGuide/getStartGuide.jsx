@@ -12,30 +12,30 @@ export default function GetStartGuide(){
             <div className='ahm-guideList '>
 
                 
-                <div className='ahm-containerStep rounded-xl shadow-sm'>
+                <div className='ahm-containerStep  '>
                     <div className='ahm-guideIconContiner'>
                         <FaUserCheck className='ahm-guideIcon' />
                     </div>
                     <p className='ahm-stepTitle'>1.Create Account</p>
-                    <p className='text-gray-500 text-sm'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
+                    <p className='ahm-stepExplain '>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
                 </div>
 
 
-                <div className='ahm-containerStep rounded-xl shadow-sm'>
+                <div className='ahm-containerStep '>
                     <div className='ahm-guideIconContiner'>
                         <FaSearchLocation className='ahm-guideIcon' />
                     </div>
                     <p className='ahm-stepTitle'>2.Choose opportunity</p>
-                    <p className='text-gray-500 text-sm'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
+                    <p className='ahm-stepExplain'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
                 </div>
 
 
-                <div className='ahm-containerStep rounded-xl shadow-sm'>
+                <div className='ahm-containerStep '>
                     <div className='ahm-guideIconContiner'>
                         <MdAccountBalance className='ahm-guideIcon' />
                     </div>
                     <p className='ahm-stepTitle'>3.Fund Investment</p>
-                    <p className='text-gray-500 text-sm'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
+                    <p className='ahm-stepExplain'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
                 </div>
 
 
@@ -44,7 +44,7 @@ export default function GetStartGuide(){
                         <FaChartLine  className='ahm-guideIcon' />
                     </div>
                     <p className='ahm-stepTitle'>4.Track Growth</p>
-                    <p className='text-gray-500 text-sm'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
+                    <p className='ahm-stepExplain'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus nesciunt mollitia rem</p>
                 </div>
             </div>
         </div>

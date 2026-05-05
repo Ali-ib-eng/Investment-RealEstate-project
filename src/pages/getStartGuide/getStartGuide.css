@@ -1,6 +1,7 @@
 .ahm-getStartGuide{
     background-color: white;
-    
+    padding: 20px 0;
+    margin: 20px 0;
 }
 .ahm-getStartGuide .ahm-h1{
     /* font-size: 26px; */
@@ -10,10 +11,11 @@
     font-weight: 700;
 }
 .ahm-containerStep{
-    width: 200px;
+    width: 240px;
     padding: 20px;
     text-align: center;
-    
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px #888888;
 }
 .ahm-guideList{
     padding: 20px 0;
@@ -22,8 +24,16 @@
     gap:10px
 }
 .ahm-stepTitle{
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
     padding: 6px 0 10px;
+    /* font-size: 32px; */
+    line-height: 2;
+    font-weight: 700;
+}
+.ahm-stepExplain{
+    color:#888888;
+    font-size: 15px;
 }
 .ahm-guideIcon{
     color: var( --outline);
