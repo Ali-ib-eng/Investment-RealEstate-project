@@ -5,7 +5,6 @@ import Properties from './pages/Properties'
 import About from './pages/About'
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
-import InvestmentOpportunites from './pages/investments/investmentOpportunities';
 import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 
 function App() {
@@ -14,10 +13,9 @@ function App() {
     <h1>hello from app</h1>
     <NavBar/>
     <Routes>
-      {/* <Route path='/' element={<Invest/>}/> */}
+      <Route path='/' element={<Invest/>}/>
       <Route path='/properties' element={<Properties/>} />
       <Route path='/about' element={<About/>} />
-      <Route path='/' element={<InvestmentOpportunites/>} />
       <Route path='/viewAllInvestments' element={<ViewAllInvestments/>} />
       <Route />
     </Routes>
