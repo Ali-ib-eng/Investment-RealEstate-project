@@ -31,6 +31,7 @@
     cursor: pointer;
     border-radius: 10px;
     color: #888888;
+    border: none;
 }
 .ahm-input{
     background-color: rgba(226, 223, 223, 0.411);
@@ -40,6 +41,7 @@
     border-radius: 10px;
     width: 30%;
     color: #858484;
+    border: none;
 }
 .ahm-formContainerVeiwAll{
     display: flex;
