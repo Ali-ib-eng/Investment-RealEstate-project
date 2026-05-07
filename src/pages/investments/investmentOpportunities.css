@@ -2,7 +2,7 @@
 .ahm-investmentsopportunties {
     width:full;
     background-color: var(--surface-bright);
-    height: 100vh;
+    /*height: 100vh;*/
 }
 .ahm-investmentsopportunties .ahm-h2 {
     padding: 10px 0 5px 20px;
