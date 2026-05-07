@@ -73,7 +73,7 @@ useEffect(()=>{
                         <input className="Ali-inputPrice" type="number" name="budget" id="budget"
                         value={form.budget}
                         onChange={handleChange}
-                         placeholder="$10,000 - $50,000" />
+                        placeholder="$10,000 - $50,000" />
                         </div>
                     </div>
                     <button onClick={handleSearch} className="Ali-search-btn">
