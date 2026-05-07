@@ -1,0 +1,157 @@
+.ahm-partners {
+    margin: 20px 0;
+}
+.ahm-partners .ahm-h1{
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+.ahm-partnerCardContainer{
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: center;
+    padding: 20px;
+}
+.ahm-partnerCard{
+    /* background-color: blue;/ */
+    width: 340px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.20);
+}
+.ahm-aboutPartner{
+    position: relative;
+    font-size: 17px;
+    color: rgb(156, 154, 154);
+}
+
+.ahm-notation{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    top: -40px;
+    right: 10px;
+    color: green;
+    opacity: .2;
+}
+.ahm-imageAndDetailsContainer{
+    display: flex;
+    align-items: center;
+    gap:10px
+}
+
+.ahm-partnerImage{
+    display: inline-block;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 14px;
+}
+
+.ahm-partnerDetails{
+    margin-top: 14px;
+}
+
+.ahm-partnerName{
+    /* font-size: 14px; */
+}
+.ahm-partnerInvestDetail{
+    font-size: 13px;
+    color:#888888
+}
+@media (max-width:1112px){
+    .ahm-partnerCardContainer{
+        display: block;
+    }
+    .ahm-partnerCard{
+        margin:20px auto;
+        width: 800px;
+    }
+}
+
+@media (max-width:992px){
+    .ahm-partnerCardContainer{
+        display: block;
+    }
+    .ahm-partnerCard{
+        margin:20px auto;
+        width: 90%;
+    }
+}
+
+
+.ahm-joinPartContainer {
+    /* background-color: blue; */
+    background-image: linear-gradient(to right,rgb(2, 2, 69), rgb(2, 2, 109),rgb(2, 2, 179));
+    color:white;
+    text-align: center;
+    padding: 40px 0;
+    margin: 20px 0;
+}
+.ahm-joinPartContainer .ahm-h1{
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+    padding: 40px 0 10px 0;
+
+}
+.ahm-joinPartContainer p{
+    width:400px;
+    /* background-color: red; */
+    margin: auto;
+    padding: 10px 0 20px 0;
+
+}
+
+.ahm-joinPartContainer .ahm-buttonContainer{
+    /* background-color: red; */
+}
+.ahm-joinPartContainer button{
+    width: 230px;
+    /* background-color: green; */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+.ahm-joinPartContainer .ahm-registerBtn{
+    background-color: rgb(8, 122, 8);
+    color:white;
+}
+.ahm-joinPartContainer .ahm-registerBtn:hover{
+    background-color: rgb(9, 190, 9);
+}
+.ahm-joinPartContainer .ahm-contactAdvisorBtn{
+    border:2px solid gray;
+    background-color: transparent;
+    color:white
+}
+.ahm-joinPartContainer .ahm-contactAdvisorBtn:hover{
+    background-color:gray ;
+}
+
+
+@media (max-width:576px){
+    .ahm-joinPartContainer .ahm-h1{
+        width:90%;
+        font-size: 27px;
+        margin: auto;
+    }
+    .ahm-joinPartContainer p{
+        width:90%;
+    }
+    .ahm-partnerCardContainer{
+        display: block;
+    }
+    .ahm-partnerCard{
+        margin:20px auto;
+        width: 90%;
+    }
+
+}

@@ -5,6 +5,7 @@ import Properties from './pages/Properties'
 import About from './pages/About'
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
+import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 import logoImg from '/IMG-homePage/pro-logo.png'
 function App() {
   const navLinks=[
@@ -35,6 +36,7 @@ const sections=[
       <Route path='/' element={<Invest/>}/>
       <Route path='/properties' element={<Properties/>} />
       <Route path='/about' element={<About/>} />
+      <Route path='/viewAllInvestments' element={<ViewAllInvestments/>} />
       <Route />
     </Routes>
     <Footer title="Syria Rebuild"

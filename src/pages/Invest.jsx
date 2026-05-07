@@ -1,3 +1,4 @@
+import InvestmentOpportunites from "./investments/investmentOpportunities"
 import Hero from "../components/HeroSection/Hero";
 import InvestmentImpactState from "../components/InvestmentImpactState/InvestmentImpactState";
 import '../index.css';
@@ -15,6 +16,7 @@ const Invest = () => {
         fourthValue="$50M" textfourthValue="Total Investments"
 
         />
+    <InvestmentOpportunites />
         </>
   )
 }
