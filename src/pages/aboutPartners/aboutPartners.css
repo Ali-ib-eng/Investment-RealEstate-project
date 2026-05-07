@@ -55,10 +55,6 @@
 .ahm-partnerDetails{
     margin-top: 14px;
 }
-
-.ahm-partnerName{
-    /* font-size: 14px; */
-}
 .ahm-partnerInvestDetail{
     font-size: 13px;
     color:#888888
@@ -90,7 +86,7 @@
     color:white;
     text-align: center;
     padding: 40px 0;
-    margin: 20px 0;
+    margin: 0px 0;
 }
 .ahm-joinPartContainer .ahm-h1{
     font-size: 32px;
@@ -100,16 +96,13 @@
 
 }
 .ahm-joinPartContainer p{
-    width:400px;
+    /*width:400px;*/
     /* background-color: red; */
-    margin: auto;
+    margin: 0;
     padding: 10px 0 20px 0;
 
 }
 
-.ahm-joinPartContainer .ahm-buttonContainer{
-    /* background-color: red; */
-}
 .ahm-joinPartContainer button{
     width: 230px;
     /* background-color: green; */
