@@ -1,5 +1,5 @@
 .ahm-getStartGuide{
-    background-color: white;
+    /*background-color:var(--on-background);*/
     padding: 20px 0;
     margin: 20px 0;
 }

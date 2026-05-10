@@ -37,7 +37,7 @@ export default function viewAllInvestments(){
                 <div className='ahm-card '> 
                     <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
                     <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
+                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
                         <p className=''>18%</p>
                     </div>
                     <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>

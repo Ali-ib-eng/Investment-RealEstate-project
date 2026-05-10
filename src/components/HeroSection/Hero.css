@@ -5,7 +5,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: rgb(128, 0, 0);
-  color: white;
+        color:var(--on-secondary);
   text-align: center;
   padding: 10px 20px;
   border-radius: 8px;
@@ -30,8 +30,8 @@
   top: 40%;
   left: 0;
   transform: translate(4%, -30%);
-  color: white;
-  background-color: rgba(0, 32, 69, 0.104);
+  color:var(--on-secondary);
+  background-color: var(--herocontent);
   z-index: 11;
 }
 .Ali-h1-hero {
@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.75rem;
-  background-color: rgba(245, 245, 220, 0.701);
+  background-color:var(--inputbg);
   border-radius: 8px;
 }
 .Ali-location,
@@ -70,14 +70,14 @@
   padding: 10px;
   border-radius: 8px;
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.759);
+  /*color:var(--on-background);*/
   font-family: Noto Sans Arabic, manrope;
 }
 .Ali-label {
   position: static;
   margin-bottom:5px;
   font-size: 16px;
-  color:rgba(0,0,0,0.759);
+  color:var(--on-background);
   font-family:Noto Sans Arabic,manrope;
 }
 .Ali-inputPrice {
@@ -89,8 +89,8 @@
 .Ali-search-btn {
   padding: 16px;
   margin-top: 16px;
-  background-color: #006c4a;
-  color: white;
+  background-color: var(--secondary);
+  color:var(--on-secondary);
   font-size: 18px;
   width: 100%;
   border-radius: 10px;
@@ -100,7 +100,16 @@
   transition: 0.3s;
 }
 .Ali-search-btn:hover {
-  background-color: black;
+  /*background-color: black;*/
+  background-color: var(--on-tertiary-fixed);
+}
+.Ali-searchbtnreactIcon{
+  display: inline;
+  padding-left: 8px;
+  position: relative;
+  left:0;
+  right: 0;
+  top:2px;
 }
 @media screen and (max-width: 768px) {
   .Ali-hero-content {

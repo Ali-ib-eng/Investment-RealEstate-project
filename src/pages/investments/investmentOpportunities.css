@@ -1,7 +1,7 @@
 
 .ahm-investmentsopportunties {
     width:full;
-    background-color: var(--surface-bright);
+    /*background-color: var(--surface-bright);*/
     /*height: 100vh;*/
 }
 .ahm-investmentsopportunties .ahm-h2 {
@@ -26,7 +26,8 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    color: rgba(0, 0, 0, 0.685);
+    /*color: rgba(0, 0, 0, 0.685);*/
+    color:var(--viewall);
 }
 .ahm-description .ahm-veiwAll:hover{
     color: black; 
@@ -60,10 +61,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color:rgb(134, 133, 133)
+    /*color:rgb(134, 133, 133);*/
 }
-.ahm-infoCard h3{
-    color:black;
+.ahm-infoCard .ah-h3-card{
+    color:var(--on-tertiary-fixed);
     font-size: 22px;
     
 }

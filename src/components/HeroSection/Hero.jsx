@@ -1,5 +1,6 @@
 import {useEffect, useState } from "react"
 import "./Hero.css"
+import { FaSearch} from "react-icons/fa";
 const Hero = ({title,paragraph,searchBtn}) => {
     const [form,setForm]=useState({
         location:"",
@@ -77,7 +78,9 @@ useEffect(()=>{
                         </div>
                     </div>
                     <button onClick={handleSearch} className="Ali-search-btn">
-                        {searchBtn}</button>
+                        {searchBtn}
+                        <div className="Ali-searchbtnreactIcon"><FaSearch /></div>
+                        </button>
                 </div>
             </div>
             

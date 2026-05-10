@@ -1,8 +1,9 @@
-
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
-const NavBar = ({ navLinks,logo,btnTitle}) => {
+import { FaRegSun } from "react-icons/fa";
+import { BsCloudMoonFill } from "react-icons/bs";
+const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
   const [show,setShow]=useState(false);
   return (
     <>
@@ -11,7 +12,7 @@ const NavBar = ({ navLinks,logo,btnTitle}) => {
           <img src={logo} alt="Logo" className="Ali-logo" />
           <button
             className="show-btn"
-            onClick={() => setShow(!show)}
+            onClick={()=>setShow(!show)}
           >
               &#9776;
           </button>
@@ -27,6 +28,7 @@ const NavBar = ({ navLinks,logo,btnTitle}) => {
             <button className="start-btn-desktop">
               <Link className="Ali-white-link-desktop" to="/get-started">{btnTitle}</Link>
               </button>
+              <button className="dark-light-Mode-DesktopBtn" onClick={changeTheme}>{theme==="light"?<><BsCloudMoonFill/> Dark</> : <><FaRegSun/> Light</> }</button>
           </div>
           
         </div>
@@ -42,6 +44,8 @@ const NavBar = ({ navLinks,logo,btnTitle}) => {
         <button className="start-btn-mobile">
           <Link className="Alilink-mobile" to="/get-started">{btnTitle}</Link>
           </button>
+          <button className="dark-light-Mode-MobileBtn" onClick={changeTheme}>{theme==="light"?<> <BsCloudMoonFill/> Dark</> : <><FaRegSun /> Light</> }</button>
+          
       </div>
     </>
   );
