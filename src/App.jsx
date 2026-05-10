@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
 import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 import logoImg from '/IMG-homePage/pro-logo.png'
+import { useState } from 'react'
 function App() {
   const navLinks=[
     { name: 'Invest', path: '/' },
@@ -27,10 +28,19 @@ const sections=[
       items: ["Regional Compliance", "Terms of Use"]
     }
 ];
+const [theme,setTheme]=useState("light");
+const changeTheme=()=>{
+  console.log("hello i am",theme)
+  setTheme((prevTheme)=>{
+    return prevTheme==="light"? "dark" :"light";
+  })
+}
   return (
-    <>
+    <div className={` app ${theme}`}>
     <NavBar navLinks={navLinks} logo={logoImg}
     btnTitle="Get Started"
+    theme={theme}
+    changeTheme={changeTheme}
      />
     <Routes>
       <Route path='/' element={<Invest/>}/>
@@ -43,7 +53,7 @@ const sections=[
     paragaraph="A leading platform for real estate investment management in Syria, licensed and operating according to international governance and transparency standards."
     sections={sections}
     />
-    </>
+    </div>
   )
 }
 export default App
