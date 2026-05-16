@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
 import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 import logoImg from '/IMG-homePage/pro-logo.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 function App() {
   const navLinks=[
     { name: 'Invest', path: '/' },
@@ -28,13 +28,14 @@ const sections=[
       items: ["Regional Compliance", "Terms of Use"]
     }
 ];
-const [theme,setTheme]=useState("light");
+const [theme,setTheme]=useState(localStorage.getItem("theme") ||"light");
+useEffect(()=>{localStorage.setItem("theme",theme)},[theme])
 const changeTheme=()=>{
-  console.log("hello i am",theme)
+  //console.log("hello i am",theme)
   setTheme((prevTheme)=>{
     return prevTheme==="light"? "dark" :"light";
   })
-}
+  }
   return (
     <div className={` app ${theme}`}>
     <NavBar navLinks={navLinks} logo={logoImg}
