@@ -30,7 +30,8 @@
   top: 40%;
   left: 0;
   transform: translate(4%, -30%);
-  color:var(--on-secondary);
+  /*color:var(--on-secondary);*/
+  color:white;
   background-color: var(--herocontent);
   z-index: 11;
 }
@@ -48,6 +49,7 @@
   font-weight: 400;
   padding-top: 10px;
   padding-left: 20px;
+
 }
 .Ali-inputFileds {
   min-height: 15vh;

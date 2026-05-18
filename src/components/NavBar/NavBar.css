@@ -43,6 +43,7 @@
   display: none;
   padding: 6px;
   border-radius: 6px;
+  padding-top:10px;
   background-color:var(--primary-container);
   font-size: 20px;
   border: none;
