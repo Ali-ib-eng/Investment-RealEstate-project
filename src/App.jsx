@@ -42,7 +42,7 @@ const changeTheme=()=>{
     btnTitle="Get Started"
     theme={theme}
     changeTheme={changeTheme}
-     />
+     />     
     <Routes>
       <Route path='/' element={<Invest/>}/>
       <Route path='/properties' element={<Properties/>} />

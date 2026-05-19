@@ -17,7 +17,7 @@
   --surface-tint: #455f88;
   --primary: #002045;
   --on-primary: #ffffff;
-  --primary-container: #1a365d;
+  --primary-container:#4073d0;
   --on-primary-container:#86a0cd;
   --inverse-primary: #adc7f7;
   --secondary: #006c4a;
@@ -74,7 +74,7 @@
   --on-background: rgba(255,255,255,0.9);
 
   --primary: #86a0cd;
-  --primary-container: #adc7f7;
+  /*--primary-container: #adc7f7;*/
   --on-primary-container: #001b3c;
 
   --tertiary-container:#2d2d2d;
