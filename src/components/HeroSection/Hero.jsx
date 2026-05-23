@@ -39,7 +39,7 @@ useEffect(()=>{
     <>
     {error&&<p className="errorMessage">{error}</p>}
         <div className="Ali-hero-container">
-            <div className="Ali-bg-groundImg" >
+            <div className="Ali-bg-groundImg">
                 <div className="Ali-hero-content">
                     <h1 className="Ali-h1-hero">{title}</h1>
                     <p className="Ali-p-hero">{paragraph}</p>
