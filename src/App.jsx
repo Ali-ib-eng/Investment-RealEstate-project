@@ -16,16 +16,16 @@ function App() {
   ]
 const sections=[
     {
-      title: "Links",
-      items: ["Investment Terms", "Privacy Policy"]
+      title:"Links",
+      items:["Investment Terms", "Privacy Policy"]
     },
     {
-      title: "Support",
-      items: ["Contact Us","Help Center"]
+      title:"Support",
+      items:["Contact Us","Help Center"]
     },
     {
-      title: "Legal",
-      items: ["Regional Compliance", "Terms of Use"]
+      title:"Legal",
+      items:["Regional Compliance", "Terms of Use"]
     }
 ];
 const [theme,setTheme]=useState(localStorage.getItem("theme") ||"light");

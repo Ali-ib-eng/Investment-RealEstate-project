@@ -1,0 +1,178 @@
+/*.Ali-OurMessionAndOurVisionSection{
+    padding: 0% 24px;
+}
+.OurMessionAndOurVision{
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+.OurMessionAndOurVision-item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Ali-aboutItems{
+    display: flex;
+    align-items: center;
+    gap:4px;
+}
+.OurMessionAndOurVision-title{
+    display: block;
+    line-height: 1.625;
+    font-family: manorape, sans-serif;
+    margin-bottom: 12px;
+}
+
+
+.OurMessionAndOurVision-icon{
+    font-size: 30px;
+}
+.OurMessionAndOurVision-heading{
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+    font-family: manorape, sans-serif;
+}
+.Ali-villaImageBox{
+    width: 800px;
+    height: 400px;
+    
+    
+}
+.Ali-villaImage {
+        padding: 30px 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+    }
+
+@media screen and (max-width: 992px) {
+    .OurMessionAndOurVision{
+        flex-direction: column;
+    }
+    
+}*/
+.Ali-OurMessionAndOurVisionSection {
+  padding: 40px 24px;
+}
+
+.OurMessionAndOurVision {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.Ali-About-contents {
+  flex: 1;
+}
+
+.OurMessionAndOurVision-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.Ali-aboutItems {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.OurMessionAndOurVision-title {
+  line-height: 1.7;
+  font-family: manrope, sans-serif;
+  margin-bottom: 12px;
+  color: var(--on-background);
+  font-size: 17px;
+}
+
+.OurMessionAndOurVision-icon {
+  font-size: 30px;
+  /*color: var(--primary-container);*/
+color:var(--vissionIcon);
+}
+
+.OurMessionAndOurVision-heading {
+  font-size: 32px;
+  line-height: 1.3;
+  font-weight: 700;
+  font-family: manrope, sans-serif;
+  color: var(--boxState);
+}
+
+.Ali-villaImageBox {
+  /*flex: 1;*/
+  max-width: 400px;
+  width: 100%;
+}
+
+.Ali-villaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .OurMessionAndOurVision {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .Ali-About-contents {
+    width: 100%;
+  }
+
+  .Ali-villaImageBox {
+    max-width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  .OurMessionAndOurVision-heading {
+    font-size: 28px;
+  }
+
+  .OurMessionAndOurVision-title {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Ali-OurMessionAndOurVisionSection {
+    padding: 30px 16px;
+  }
+
+  .OurMessionAndOurVision {
+    padding: 0;
+    gap: 24px;
+  }
+
+  .Ali-aboutItems {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .OurMessionAndOurVision-icon {
+    font-size: 24px;
+  }
+
+  .OurMessionAndOurVision-heading {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .OurMessionAndOurVision-title {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .Ali-villaImage {
+    border-radius: 12px;
+  }
+}

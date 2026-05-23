@@ -53,6 +53,9 @@
   --h3-card: #191c1edc;
   --viewall:var(--h3-card);
   --getStaredbutton:var(--primary-container);
+  --titleabout: #82f5c1;
+  --buttonAbout:#006c4a;
+  --vissionIcon:rgb(0 108 74 );
 }
 /*Dark mode colors*/
 .dark{

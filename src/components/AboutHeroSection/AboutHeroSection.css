@@ -1,0 +1,148 @@
+    .Ali-aboutHeroSection{
+    position: relative;
+}
+.bgimg{
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, rgba(0, 32, 69, 0.9), rgba(0, 32, 69, 0.4)), url(./IMG-aboutPage/building_About.avif);
+}
+.Ali-aboutHeroSection-content{
+    position: absolute;
+    top: 60%;
+    left: 3%;
+    transform: translateY(-50%);
+}
+.Ali-aboutHeroSection-floatTitle{
+    max-width:300px;
+    color: var(--on-secondary-fixed);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px var(--on-secondary-fixed);
+    text-transform: uppercase;
+    background-color: var(--titleabout);
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 22px;
+}
+.Ali-About-h1{
+    margin-bottom: 8px;
+    color: black;
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 800;
+    font-family: manrope, sans-serif;
+    
+}
+.Ali-About-p{
+    max-width: 600px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 400;
+    color:var(--on-error);
+    font-family: manrope, sans-serif;
+}
+.Ali-aboutHeroSection-buttons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+.Ali-aboutHeroSection-button{
+    padding: 12px 24px;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    /*color: var(--on-primary-container);*/
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.Ali-aboutHeroSection-button:hover{
+    background-color: var(--primary);
+}
+button:first-child{
+    background-color: var(--buttonAbout);
+}
+@media screen and (max-width: 992px) {
+    .bgimg{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+  .Ali-aboutHeroSection-content {
+    width: 92%;
+    left: 4%;
+  }
+
+  .Ali-About-h1 {
+    font-size: 38px;
+  }
+
+  .Ali-About-p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .Ali-aboutHeroSection-floatTitle {
+    font-size: 1.2rem;
+    max-width: 260px;
+  }
+
+  .Ali-aboutHeroSection-buttons {
+    gap: 14px;
+  }
+
+  .Ali-aboutHeroSection-button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bgimg {
+    height: 90vh;
+    /*background-size: 600px 700px;*/
+    background-repeat: no-repeat;
+  }
+
+  .Ali-aboutHeroSection-content {
+    width: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .Ali-aboutHeroSection-floatTitle {
+    margin: 0 auto 12px;
+    font-size: 1rem;
+    max-width: 220px;
+    padding: 8px 14px;
+  }
+
+  .Ali-About-h1 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .Ali-About-p {
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .Ali-aboutHeroSection-buttons {
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .Ali-aboutHeroSection-button {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+  }
+}
