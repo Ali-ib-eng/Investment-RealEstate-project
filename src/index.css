@@ -56,6 +56,8 @@
   --titleabout: #82f5c1;
   --buttonAbout:#006c4a;
   --vissionIcon:rgb(0 108 74 );
+  --cardsshdow:rgba(0, 0, 0, 0.2);
+  --cardshadowonY:rgba(0, 0, 0, 0.19);
 }
 /*Dark mode colors*/
 .dark{
