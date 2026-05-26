@@ -2,6 +2,9 @@ import AboutHeroSection from "../components/AboutHeroSection/AboutHeroSection"
 import { FaHouseUser } from "react-icons/fa6";
 import { IoMdEye } from "react-icons/io";
 import OurMessionAndOurVision from "../components/OurMessionAndOurVision/OurMessionAndOurVision";
+import TitleOnTop from "../components/TitleOnTop/TitleOnTop";
+//import AboutEngineersCards from "../components/AboutEngineersCards/AboutEngineersCards";
+import AboutEngineersCardsData from "../components/AboutEngineersCardsData/AboutEngineersCardsData";
 const About = () => {
   const aboutHeroItems=[{
     floatTitle:"National Renewal",
@@ -28,6 +31,11 @@ const About = () => {
       <OurMessionAndOurVision 
       OurMissin_OurVision={OurMissin_OurVision}
       />
+      <TitleOnTop 
+      heading="Leadership & Governance"
+      title="Our executive team brings decades of experience in international finance, urban planning, and civic administration."
+      />
+      <AboutEngineersCardsData />
     </>
   )
 }
