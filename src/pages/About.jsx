@@ -1,3 +1,4 @@
+import Ethos from "../components/AboutEthos/Ethos";
 import AboutHeroSection from "../components/AboutHeroSection/AboutHeroSection"
 import { FaHouseUser } from "react-icons/fa6";
 import { IoMdEye } from "react-icons/io";
@@ -36,10 +37,12 @@ const About = () => {
       title="Our executive team brings decades of experience in international finance, urban planning, and civic administration."
       />
       <AboutEngineersCardsData />
+      
+      <Ethos />
     </>
   )
 }
 
-export default About
+export default About;
 
 
