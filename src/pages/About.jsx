@@ -66,10 +66,11 @@ const ethosCards = [
       <Ethos
        data={{
       title : "The Pillars Of Our Ethos",
-      paragraph : " Built on trust and engineered for growth , our values guide every brick we lay and every investment we secure .`",
+      paragraph : " Built on trust and engineered for growth , our values guide every brick we lay and every investment we secure .",
        cards: ethosCards 
        }}
       />
+
     </>
   )
 }

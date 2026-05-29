@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 
 
+
 const Ethos = ({ data }) => {
   const { title, paragraph, cards = [] } = data || {};
   return (
