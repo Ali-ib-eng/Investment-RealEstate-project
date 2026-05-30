@@ -7,15 +7,14 @@
   grid-template-columns: repeat(4, 1fr);
 }
 .Ali-boxState > div{
-  background-color: #f5f5f5;
-  padding: 20px;
+  /*background-color: var(--on-surface);*/
   border-radius: 10px;
   text-align: center;
   
   font-size: 48px;
   line-height: 1.2;
   font-weight: 800;
-  color: rgb(0 32 69);
+  color: var(--boxState);
 }
 .Ali-boxState > div div{
     line-height: 1.4;

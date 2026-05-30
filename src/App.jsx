@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
 import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 import logoImg from '/IMG-homePage/pro-logo.png'
+import { useEffect, useState } from 'react'
 function App() {
   const navLinks=[
     { name: 'Invest', path: '/' },
@@ -15,23 +16,33 @@ function App() {
   ]
 const sections=[
     {
-      title: "Links",
-      items: ["Investment Terms", "Privacy Policy"]
+      title:"Links",
+      items:["Investment Terms", "Privacy Policy"]
     },
     {
-      title: "Support",
-      items: ["Contact Us","Help Center"]
+      title:"Support",
+      items:["Contact Us","Help Center"]
     },
     {
-      title: "Legal",
-      items: ["Regional Compliance", "Terms of Use"]
+      title:"Legal",
+      items:["Regional Compliance", "Terms of Use"]
     }
 ];
+const [theme,setTheme]=useState(localStorage.getItem("theme") ||"light");
+useEffect(()=>{localStorage.setItem("theme",theme)},[theme])
+const changeTheme=()=>{
+  //console.log("hello i am",theme)
+  setTheme((prevTheme)=>{
+    return prevTheme==="light"? "dark" :"light";
+  })
+  }
   return (
-    <>
+    <div className={` app ${theme}`}>
     <NavBar navLinks={navLinks} logo={logoImg}
     btnTitle="Get Started"
-     />
+    theme={theme}
+    changeTheme={changeTheme}
+     />     
     <Routes>
       <Route path='/' element={<Invest/>}/>
       <Route path='/properties' element={<Properties/>} />
@@ -43,7 +54,7 @@ const sections=[
     paragaraph="A leading platform for real estate investment management in Syria, licensed and operating according to international governance and transparency standards."
     sections={sections}
     />
-    </>
+    </div>
   )
 }
 export default App

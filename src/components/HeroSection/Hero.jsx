@@ -1,5 +1,6 @@
 import {useEffect, useState } from "react"
 import "./Hero.css"
+import { FaSearch} from "react-icons/fa";
 const Hero = ({title,paragraph,searchBtn}) => {
     const [form,setForm]=useState({
         location:"",
@@ -38,7 +39,7 @@ useEffect(()=>{
     <>
     {error&&<p className="errorMessage">{error}</p>}
         <div className="Ali-hero-container">
-            <div className="Ali-bg-groundImg" >
+            <div className="Ali-bg-groundImg">
                 <div className="Ali-hero-content">
                     <h1 className="Ali-h1-hero">{title}</h1>
                     <p className="Ali-p-hero">{paragraph}</p>
@@ -77,7 +78,9 @@ useEffect(()=>{
                         </div>
                     </div>
                     <button onClick={handleSearch} className="Ali-search-btn">
-                        {searchBtn}</button>
+                        {searchBtn}
+                        <div className="Ali-searchbtnreactIcon"><FaSearch /></div>
+                        </button>
                 </div>
             </div>
             
