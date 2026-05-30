@@ -9,7 +9,7 @@
     padding: 10px 0 20px 0;
 }
 .ahm-partnerCardContainer{
-    /* background-color: red; */
+
     display: flex;
     flex-wrap: wrap;
     gap:10px;
@@ -21,7 +21,8 @@
     width: 340px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 4px 5px 15px 3px rgba(0, 0, 0, 0.20);
+    box-shadow: 4px 5px 15px 3px rgba(117, 114, 114, 0.719);
+    background-color: white;
 }
 .ahm-aboutPartner{
     position: relative;

@@ -36,6 +36,9 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
         </div>
         
       </nav>
+
+      <div className="mobile-menu"
+          style={{ display:show?"block":"none" }}>
         <div className="mobile-menu" style={{ display:show?"block":"none" }}>
         {navLinks.map((link, index) => (
           <NavLink key={index} to={link.path}>
