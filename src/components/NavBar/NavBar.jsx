@@ -51,6 +51,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
           <button className="dark-light-Mode-MobileBtn" onClick={changeTheme}>{theme==="light"?<> <BsCloudMoonFill/> Dark</> : <><FaRegSun /> Light</> }</button>
           
       </div>
+      </div>
       
       
     </>
