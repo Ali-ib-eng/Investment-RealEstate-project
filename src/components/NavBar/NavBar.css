@@ -21,7 +21,7 @@
 .Ali-logo {
   width: 60px;
   height: auto;
-  background-color: black;
+  background-color:var(--on-background);
 }
 
 .Ali-links {
@@ -39,28 +39,46 @@
   padding: 5px 4px;
   transition: 0.3s;
 }
-.show-btn {
+.show-btn{
   display: none;
   padding: 6px;
   border-radius: 6px;
+  padding-top:10px;
   background-color:var(--primary-container);
   font-size: 20px;
+  border: none;
   cursor: pointer;
 }
 .start-btn-desktop{
     padding: 0.625rem 1.5rem;
-    background-color:var(--primary-container);
+    background-color:var(--getStaredbutton);
     color:var(--on-error);
     border: none;
     border-radius:0.5rem ;
     opacity: 0.9;
+    font-size: 16px;
+    cursor: pointer;
+}
+.dark-light-Mode-DesktopBtn{
+  padding: 0.625rem 1.5rem;
+    background-color:var(--getStaredbutton);
+    color:var(--on-error);
+    border: none;
+    border-radius:0.5rem ;
+    opacity: 0.9;
+    font-size: 16px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap:8px;
+    cursor: pointer;
 }
 .Ali-white-link-desktop{
-  color: white;
+  color: var(--on-error);
 }
 .mobile-menu {
   display: none;
-  background-color: #222;
+  background-color: var(--on-tertiary-fixed);
   padding: 10px 50px;
   /*position: relative;
   top:90px;
@@ -87,6 +105,25 @@
 .Alilink-mobile{
   font-size: 18px;
 }
+.dark-light-Mode-MobileBtn{
+  width: 99%;
+  margin-left:10px ;
+  padding: 20px 0;
+  border-radius: 6px;
+  margin-top: 4px;
+  border: none;
+  color: white;
+  font-family: manrope, sans-serif;
+  background-color:var(--primary-container);
+  background: linear-gradient(135deg, #182bffc9, #4a47ff);
+  font-size: 18px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  gap:8px;
+  cursor: pointer;
+
+}
 .start-btn-mobile:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -102,13 +139,13 @@
 }
 .mobile-menu a {
   display: block;
-  color: white;
+  color:var(--on-error);
   padding: 10px;
   text-decoration: none;
 }
 
 .mobile-menu a:hover {
-  background-color: #444;
+  background-color: var(--on-tertiary-fixed-variant);
 }
 @media screen and (max-width: 992px) {
   .Ali-NavBar{

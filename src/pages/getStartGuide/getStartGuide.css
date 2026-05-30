@@ -1,5 +1,5 @@
 .ahm-getStartGuide{
-    background-color: white;
+    /*background-color:var(--on-background);*/
     padding: 20px 0;
     margin: 20px 0;
 }
@@ -16,6 +16,7 @@
     text-align: center;
     border-radius: 7px;
     box-shadow: 0px 0px 5px #888888;
+    background-color: #a3a2a2;
 }
 .ahm-guideList{
     padding: 20px 0;

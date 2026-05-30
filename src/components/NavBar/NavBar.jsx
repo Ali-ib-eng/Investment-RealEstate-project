@@ -33,7 +33,7 @@ const NavBar = ({ navLinks,logo,btnTitle}) => {
         
       </nav>
       <div className="mobile-menu"
-           style={{ display:show?"block":"none" }}>
+          style={{ display:show?"block":"none" }}>
         {navLinks.map((link, index) => (
           <NavLink key={index} to={link.path}>
             {link.name}
