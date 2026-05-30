@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer'
 import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
 import logoImg from '/IMG-homePage/pro-logo.png'
 import { useEffect, useState } from 'react'
+import GetStarted from './pages/GetStarted'
 function App() {
   const navLinks=[
     { name: 'Invest', path: '/' },
@@ -48,6 +49,7 @@ const changeTheme=()=>{
       <Route path='/properties' element={<Properties/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/viewAllInvestments' element={<ViewAllInvestments/>} />
+      <Route path='/getStarted' element={<GetStarted/>} />
       <Route />
     </Routes>
     <Footer title="Syria Rebuild"
