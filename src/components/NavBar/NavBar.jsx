@@ -28,7 +28,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
             ))}
             
             <button className="start-btn-desktop">
-              <Link className="Ali-white-link-desktop" to="/get-started">{btnTitle}</Link>
+              <Link className="Ali-white-link-desktop" to="/GetStarted">{btnTitle}</Link>
               </button>
               <button className="dark-light-Mode-DesktopBtn" onClick={changeTheme}>{theme==="light"?<><BsCloudMoonFill/> Dark</> : <><FaRegSun/> Light</> }</button>
           </div>
@@ -46,7 +46,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
           </NavLink>
         ))}
         <button className="start-btn-mobile">
-          <Link className="Alilink-mobile" to="/get-started">{btnTitle}</Link>
+          <Link className="Alilink-mobile" to="/GetStarted">{btnTitle}</Link>
           </button>
           <button className="dark-light-Mode-MobileBtn" onClick={changeTheme}>{theme==="light"?<> <BsCloudMoonFill/> Dark</> : <><FaRegSun /> Light</> }</button>
           
