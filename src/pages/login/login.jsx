@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './login.css';
 import {FaGoogle, FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
 
 
 export default function Login (){
+    
     const [newAccountData, setNewAccountData] = useState({
         fullname:'', emailAddress:'', password:'', confirmPassword:'', isAgreeToConditions:false
     })
@@ -70,7 +71,7 @@ export default function Login (){
 
     const createAccountForm =()=>{
         return (
-            <div className='ahm-loginContainer'>
+            <div  className='ahm-loginContainer'>
                 <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
                 <h1 className='ahm-loginH1' style={{fontSize:'25px', margin:'5px 0px'}}>Create An Account</h1>
 
@@ -99,7 +100,7 @@ export default function Login (){
                         <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, confirmPassword:e.target.value })} type='password' placeholder={newAccountData.confirmPassword || 'password' } />
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onClick={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
-                    <label  style={{fontSize:'11px' , backgroundColor:'white', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
+                    <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
 
                     <button  disabled={ErrorInput.isErrorInput} onClick={createAccountConfirm} type='button' className='ahm-loginBtn'>Create Account</button>
                 </form>

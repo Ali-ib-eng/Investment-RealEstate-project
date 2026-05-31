@@ -78,15 +78,16 @@
 }
 .mobile-menu {
   display: none;
-  background-color: var(--on-tertiary-fixed);
+  background-color: #AAA;
   padding: 10px 50px;
+  width:300px;
+  height: 100%;
   /*position: relative;
   top:90px;
   z-index: 99;*/
         padding: 10px 10px;
         position: fixed;
-        top: 80px;
-        left: 0;
+        top: 0px;
         right: 0;
         z-index: 1000;
   /*margin-top: 150px;*/
@@ -104,6 +105,7 @@
 }
 .Alilink-mobile{
   font-size: 18px;
+  background-color: transparent;
 }
 .dark-light-Mode-MobileBtn{
   width: 99%;
@@ -145,7 +147,15 @@
 }
 
 .mobile-menu a:hover {
+  
   background-color: var(--on-tertiary-fixed-variant);
+}
+.mobile-menu button {
+  margin: 5px 0;
+}
+.mobile-menu button a:hover {
+  
+  background-color: transparent;
 }
 @media screen and (max-width: 992px) {
   .Ali-NavBar{
