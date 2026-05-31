@@ -1,14 +1,10 @@
 .ahm-loginPage{
-    /* overflow: hidden; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    
     background-color: rgba(128, 128, 128, 0.055);
     width: 100%;
     padding:5px;
-    /* overflow-x: hidden; */
-    /* overflow: hidden; */
     
+    position: relative;
 }
 
 
@@ -94,4 +90,36 @@
     width: 200px;
     height:300px;
     background-color: red;
+}
+.ahm-notification{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(180, 0, 0) ;
+    padding: 20px 50px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px gray;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+.ahm-notification h3{
+    width: 100%;
+}
+.ahm-notification button{
+    padding: 8px 20px;
+    margin: 25px 0 10px;
+    background-color: white;
+    border:none;
+    border-radius: 10px;
+    /* font-size: 20px; */
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.ahm-notification button:hover{
+    background-color: rgba(170, 170, 170, 0.822);
 }
