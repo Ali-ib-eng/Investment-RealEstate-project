@@ -50,7 +50,7 @@
     width: 32%;
     border-radius: 10px;
     box-shadow: 5px 5px 10px #888888;
-    background-color: #dad7d7;
+    /* background-color: #dad7d7; */
 }
 .ahm-imageCard{
     height:50%;
