@@ -16,7 +16,16 @@ export default function CreateAccount(props){
     });
 
     const createAccountConfirm = () => {
-        if(newAccountData.password !== newAccountData.confirmPassword){
+
+        if(newAccountData.fullname === '' || newAccountData.emailAddress === '' || newAccountData.password === '' || newAccountData.confirmPassword === ''){
+            
+            setErrorInput({
+                isErrorInput:true,
+                errorMessage:'please fill all the fields',
+            })
+        }
+
+        else if(newAccountData.password !== newAccountData.confirmPassword){
             setNewAccountData({...newAccountData, password:'', confirmPassword:''})
             
             setErrorInput({
@@ -24,13 +33,7 @@ export default function CreateAccount(props){
                 errorMessage:'passwords do not match',
             })
         }
-        else if(newAccountData.fullname === '' || newAccountData.emailAddress === '' || newAccountData.password === '' || newAccountData.confirmPassword === ''){
-            
-            setErrorInput({
-                isErrorInput:true,
-                errorMessage:'please fill all the fields',
-            })
-        }
+        
         else if(!newAccountData.isAgreeToConditions){
             
             setErrorInput({
