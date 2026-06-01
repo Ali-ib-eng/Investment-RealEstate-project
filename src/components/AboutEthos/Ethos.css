@@ -1,0 +1,91 @@
+.Sh-ethos-section {
+  padding: 80px 20px;
+  background-color: var(--surface);
+}
+
+
+.Sh-ethos-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.Sh-ethos-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--on-background);
+}
+
+
+.Sh-ethos-text {
+  font-size: 16px;
+   color: var(--on-surface-variant);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+
+.Sh-ethos-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+
+.Sh-ethos-card {
+  background-color: var(--surface-container-low);
+  padding: 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--on-surface) 40%, transparent);
+  transition: 0.3s ease;
+}
+
+.Sh-ethos-card:hover {
+  transform: translateY(-4px);
+}
+
+
+.Sh-ethos-iconBox {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface-container-highest);
+  border-radius: 12px;
+}
+
+
+.Sh-ethos-icon {
+  font-size: 30px;
+  color: #006c4a;
+}
+
+
+.Sh-ethos-card-title {
+  font-size: 20px;
+  margin: 0;
+  color: var(--on-background);
+}
+
+
+.Sh-ethos-card-text {
+  font-size: 16px;
+  margin: 0;
+  color: var( --on-tertiary-fixed-varian);
+  line-height: 1.7;
+}
+
+
+@media (max-width: 992px) {
+  .Sh-ethos-cards {
+    grid-template-columns: 1fr;
+  } 
+}
