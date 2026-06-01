@@ -38,7 +38,7 @@ export default function Login (){
         return(
             <div className='ahm-loginContainer'>
                 <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
-                <h1 className='ahm-loginH1' style={{fontSize:'25px', margin:'5px 0px'}}>Sign in</h1>
+                <h1 className='ahm-loginH1' style={{fontSize:'20px', margin:'5px 0px'}}>Sign in</h1>
                 <form className="ahm-loginForm" action="">
                     
 
