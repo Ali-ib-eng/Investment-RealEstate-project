@@ -1,4 +1,5 @@
-import '../../pages/login/login.css'
+// import '../../pages/login/login.css'
+import '../login/login.css'
 
 export default function ErrorNotification(props){
 

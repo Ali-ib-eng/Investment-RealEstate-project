@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../pages/login/login.css'
+import '../login/login.css'
 import {FaGoogle, FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
 import ErrorNotification from '../errorNotification/errorNotification';

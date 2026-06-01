@@ -6,7 +6,6 @@ const GetStarted = () => {
     return (
         <div >
             <Login />
-
         </div>
     )
 }

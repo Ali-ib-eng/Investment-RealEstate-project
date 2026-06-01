@@ -1,0 +1,124 @@
+.ahm-loginPage{
+    
+    background-color: rgba(128, 128, 128, 0.055);
+    width: 100%;
+    padding:5px;
+    
+    position: relative;
+}
+
+
+.ahm-loginContainer{
+    margin: 100px auto 15px ;
+    padding: 10px;
+    background-color: white; 
+    width: 300px;
+    text-align: center;
+
+}
+.ahm-loginForm {
+    
+    text-align: start;
+    padding: 5px;
+
+}
+.ahm-loginForm label{
+    font-size: 12px;
+    margin:10px 0px 0px 5px  ;
+}
+.ahm-loginForm input{
+    width: 100%;
+    padding: 8px 8px 8px 30px;
+    margin: 2px 0px 10px;
+    border-radius: 5px;
+    outline: none;
+    border:0.5px solid gray;
+}
+.ahm-loginBtn{
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0px 0px;
+    background-color: var(--boxState);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px 0px var(--boxState);
+}
+.ahm-loginOr{
+    display: absolute;
+    height: 40px;
+    color: black;
+}
+.ahm-loginOr p{
+    background-color: white;
+    width: fit-content;
+    padding: 0px 5px;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.ahm-loginOr .ahm-loginLine {
+    border: none;               /* حذف الحدود الافتراضية */
+    height: 1.5px;               
+    background-color: gray;   
+}
+.ahm-loginBtnWithGoogle{
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0px 0px;
+    border: 1px solid rgba(128, 128, 128, 0.075);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ahm-loginWithExistAccount{
+    font-size: 12px;
+    margin: 14px 0px 0px;
+}
+.ahm-inputContainer{
+    position: relative ;
+}
+.ahm-inputContainer .ahm-inputIcon{
+    position: absolute ;
+    left:6px;
+    top:10px
+}
+
+.ahm-existAcount{
+    display: inline-flex;
+    width: 200px;
+    height:300px;
+    background-color: red;
+}
+.ahm-notification{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(180, 0, 0) ;
+    padding: 20px 50px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px gray;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+.ahm-notification h3{
+    width: 100%;
+}
+.ahm-notification button{
+    padding: 8px 20px;
+    margin: 25px 0 10px;
+    background-color: white;
+    border:none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.ahm-notification button:hover{
+    background-color: rgba(170, 170, 170, 0.822);
+}
