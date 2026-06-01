@@ -1,10 +1,9 @@
 import partnerImage from '/IMG-homePage/Eng1.png'
-// import partnerImage from '../../../public/IMG-homePage/Eng1.png'
-
-
 import './aboutPartners.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function AboutPartners (){
+    const navigate = useNavigate();
 
     const partnersList =()=>{
         return(
@@ -55,7 +54,7 @@ export default function AboutPartners (){
                 <h1 className='ahm-h1'>Be Part Of Reconstruction History</h1>
                 <p > Lorem ipsum dolor sit amet consectetur adipisicing elit. A sit in totam architecto dolorem </p>
                 <div className='ahm-buttonContainer'>
-                    <button className='ahm-registerBtn'>Register as Investor</button>
+                    <button onClick={()=>navigate('/getStarted')} className='ahm-registerBtn'>Register as Investor</button>
                     <button className='ahm-contactAdvisorBtn'>Contact Advisor</button>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
-import { FaRegSun } from "react-icons/fa";
+import { FaRegSun, FaTimes } from "react-icons/fa";
 import { BsCloudMoonFill } from "react-icons/bs";
 import { FiMenu, FiX } from "react-icons/fi";
 const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
@@ -40,6 +40,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
       <div className="mobile-menu"
           style={{ display:show?"block":"none" }}>
         <div className="mobile-menu" style={{ display:show?"block":"none" }}>
+          <FaTimes style={{margin:'10px', fontSize:'20px', fontWeight:'bold', cursor:'pointer' }} onClick={()=>setShow(false)}/>
         {navLinks.map((link, index) => (
           <NavLink key={index} to={link.path}>
             {link.name}

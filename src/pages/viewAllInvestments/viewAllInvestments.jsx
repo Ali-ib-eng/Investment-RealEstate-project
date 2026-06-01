@@ -4,7 +4,7 @@ import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
 import { useNavigate } from 'react-router-dom'
 
 import './viewAllInvestments.css'
-import '../investmentOpportunities.css'
+import '../investments/investmentOpportunities.css'
 
 export default function viewAllInvestments(){
     const navigate = useNavigate();

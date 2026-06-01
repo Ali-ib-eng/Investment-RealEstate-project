@@ -5,7 +5,8 @@ import Properties from './pages/Properties'
 import About from './pages/About'
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
-import ViewAllInvestments from './pages/investments/viewAllInvestments/viewAllInvestments';
+// import ViewAllInvestments from './pages/viewAllInvestments/viewAllInvestments';
+import ViewAllInvestments from './pages/viewAllInvestments/viewAllInvestments'
 import logoImg from '/IMG-homePage/pro-logo.png'
 import { useEffect, useState } from 'react'
 import GetStarted from './pages/GetStarted'
