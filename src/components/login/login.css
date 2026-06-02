@@ -1,130 +1,236 @@
 .ahm-loginPage{
-    
-    background-color: rgba(128, 128, 128, 0.055);
+    min-height: 100vh;
     width: 100%;
-    padding:5px;
-    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--surface-container-low),
+        var(--surface-container)
+    );
+
     position: relative;
 }
 
-
 .ahm-loginContainer{
-    padding: 80px  0;
+    width: 100%;
+    max-width: 420px;
+
+    background-color: var(--surface-container-lowest);
+
+    padding: 40px 30px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px var(--on-tertiary-fixed);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
-.ahm-loginForm {
-    
-    text-align: start;
-    padding: 5px;
 
+.ahm-loginH1{
+    margin-bottom: 15px;
 }
+
+.ahm-loginForm{
+    width: 100%;
+    text-align: start;
+}
+
 .ahm-loginForm label{
-    font-size: 12px;
-    margin:10px 0px 0px 5px  ;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 4px;
 }
+
+.ahm-inputContainer{
+    position: relative;
+    width: 100%;
+}
+
+.ahm-inputIcon{
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: var(--on-tertiary-fixed-variant);
+}
+
 .ahm-loginForm input{
     width: 100%;
-    padding: 8px 8px 8px 30px;
-    margin: 2px 0px 10px;
-    border-radius: 5px;
+
+    padding: 10px 12px 10px 35px;
+
+    margin: 4px 0 14px;
+
+    border: 1px solid var(--primary-fixed);
+
+    border-radius: 8px;
+
     outline: none;
-    border:0.5px solid gray;
+
+    transition: all .25s ease;
 }
+
+.ahm-loginForm input:focus{
+    border-color: var(--boxState);
+
+    box-shadow:
+        0 0 0 3px var(--boxState);
+}
+
 .ahm-loginBtn{
     width: 100%;
-    padding: 8px;
-    margin: 10px 0px 0px;
-    background-color: var(--boxState);
-    color: white;
+
+    padding: 11px;
+
     border: none;
-    border-radius: 5px;
+
+    border-radius: 8px;
+
+    background-color: var(--boxState);
+
+    color: var(--surface-container-low);
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 2px 2px 5px 0px var(--boxState);
 }
+
+.ahm-loginBtn:hover{
+    opacity: 0.9;
+}
+
+.ahm-loginBtn:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .ahm-loginOr{
-    display: absolute;
-    height: 40px;
-    color: black;
-}
-.ahm-loginOr p{
-    background-color: white;
-    width: fit-content;
-    padding: 0px 5px;
+    width: 100%;
     position: relative;
-    top: 20%;
+    margin: 18px 0;
+}
+
+.ahm-loginLine{
+    border: none;
+    height: 1px;
+    background-color: var(--primary-fixed);
+}
+.ahm-orStyle{
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--surface-container-lowest);
+    padding: 0 10px;
+    color: var(--on-tertiary-fixed-variant);
+    font-size: 13px;
 }
-.ahm-loginOr .ahm-loginLine {
-    border: none;               /* حذف الحدود الافتراضية */
-    height: 1.5px;               
-    background-color: gray;   
-}
+
 .ahm-loginBtnWithGoogle{
     width: 100%;
-    padding: 8px;
-    margin: 5px 0px 0px;
-    border: 1px solid rgba(128, 128, 128, 0.075);
-    border-radius: 5px;
+
+    padding: 11px;
+
+    border: 1px solid var(--primary-fixed);
+
+    border-radius: 8px;
+
+    /*background-color: var(--boxState);*/
+
     cursor: pointer;
-}
-.ahm-loginWithExistAccount{
-    font-size: 12px;
-    margin: 14px 0px 0px;
-}
-.ahm-inputContainer{
-    position: relative ;
-}
-.ahm-inputContainer .ahm-inputIcon{
-    position: absolute ;
-    left:6px;
-    top:10px
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-weight: 500;
+
+    transition: 0.25s;
 }
 
-.ahm-existAcount{
-    display: inline-flex;
-    width: 200px;
-    height:300px;
-    background-color: red;
+.ahm-loginBtnWithGoogle:hover{
+    background-color:rgba(0, 32, 69, 0.527);;
+    
 }
+
+.ahm-loginWithExistAccount{
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.ahm-loginWithExistAccount span{
+    font-weight: 600;
+}
+
 .ahm-notification{
     position: fixed;
-    top: 30%;
+
+    top: 25%;
     left: 50%;
+
     transform: translateX(-50%);
-    background-color: rgb(180, 0, 0) ;
-    padding: 20px 50px;
+
     width: 500px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px 0px gray;
+
+    background-color: rgb(180, 0, 0);
+
     color: white;
+
+    padding: 20px 30px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.25);
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
-}
-.ahm-notification h3{
-    width: 100%;
-}
-.ahm-notification button{
-    padding: 8px 20px;
-    margin: 25px 0 10px;
-    background-color: white;
-    border:none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
+    justify-content: flex-end;
 
+    z-index: 90;
 }
-.ahm-notification button:hover{
-    background-color: rgba(170, 170, 170, 0.822);
+
+.ahm-notification h3{
+    width:100%;
 }
-@media  screen and (max-width:576px) {
+
+.ahm-notification button{
+    padding: 8px 18px;
+
+    border: none;
+    color: var(--on-surface);
+    border-radius: 8px;
+
+    background-color:var(--surface-container-low);
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width:576px){
+
+    .ahm-loginContainer{
+        padding: 30px 20px;
+    }
+
     .ahm-notification{
+        width: 90%;
         top: 15%;
-        width: 50%;
-        padding: 10px 25px;
+        padding: 15px;
+    }
+    .ahm-loginPage{
+        padding: 0px 10px;
     }
 }
