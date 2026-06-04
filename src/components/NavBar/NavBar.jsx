@@ -42,14 +42,14 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
         <div className="mobile-menu" style={{ display:show?"block":"none" }}>
           <FaTimes style={{margin:'10px', fontSize:'20px', fontWeight:'bold', cursor:'pointer' }} onClick={()=>setShow(false)}/>
         {navLinks.map((link, index) => (
-          <NavLink key={index} to={link.path}>
+          <NavLink onClick={()=>setShow(false)} key={index} to={link.path}>
             {link.name}
           </NavLink>
         ))}
-        <button className="start-btn-mobile">
+        <button onClick={()=>setShow(false)} className="start-btn-mobile">
           <Link className="Alilink-mobile" to="/GetStarted">{btnTitle}</Link>
           </button>
-          <button className="dark-light-Mode-MobileBtn" onClick={changeTheme}>{theme==="light"?<> <BsCloudMoonFill/> Dark</> : <><FaRegSun /> Light</> }</button>
+          <button  className="dark-light-Mode-MobileBtn" onClick={changeTheme}>{theme==="light"?<> <BsCloudMoonFill/> Dark</> : <><FaRegSun /> Light</> }</button>
           
       </div>
       </div>
