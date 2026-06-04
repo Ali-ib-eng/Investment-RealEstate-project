@@ -1,0 +1,29 @@
+.ahm-mapSearchContainer{
+    display: flex;
+    /* background-color: tomato; */
+    margin: 5px 0;
+}
+.ahm-mapSearchContainer input{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    background-color: white
+    color: white;
+}
+.ahm-mapSearchContainer .ahm-searchBtnContainer{
+    background-color: white;
+    height: auto;
+    border-radius:0 8px 8px 0;
+    width: 40px;
+    border-left: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+.ahm-mapSearchContainer .ahm-searchBtnContainer:hover{
+    background-color: rgb(177, 163, 163,0.8);
+}
