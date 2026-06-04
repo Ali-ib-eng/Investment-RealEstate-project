@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../login/login.css'
-import {FaGoogle, FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
+import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
 import ErrorNotification from '../errorNotification/errorNotification';
+import { useGoogleLogin } from '@react-oauth/google';
 
 export default function CreateAccount(props){
+const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
+const login = useGoogleLogin({
+  onSuccess: () => setGoogleLoginSuccess("Google login successful!"),
+  onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
+});
+useEffect(()=>{
+    const googleLoginMessageTimeout=setTimeout(() => {
+        setGoogleLoginSuccess("");
+    }, 3000); // Clear the message after 3 seconds
 
+    return ()=>clearTimeout(googleLoginMessageTimeout); // Cleanup the timeout on component unmount
+},[googleLoginSuccess])
     const [ErrorInput, setErrorInput] = useState({
         isErrorInput:false,
         errorMessage:''
@@ -48,6 +60,7 @@ export default function CreateAccount(props){
     }
 
     const createAccountForm =()=>{
+        
         return (
             <div  className='ahm-loginContainer'>
                 <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
@@ -86,7 +99,30 @@ export default function CreateAccount(props){
                     <p className='ahm-orStyle' >or</p>
                     <hr className='ahm-loginLine'/>
                 </div>
-                <button disabled={ErrorInput.isErrorInput} type='button' className='ahm-loginBtnWithGoogle'><FaGoogle/> sign up with google</button>
+                {/*<button disabled={ErrorInput.isErrorInput} type='button' className='ahm-loginBtnWithGoogle'><FaGoogle/> sign up with google</button>*/}
+                
+                {/*<GoogleLogin
+  onSuccess={credentialResponse => {
+    //console.log(credentialResponse);
+    if(credentialResponse){
+        setGoogleLoginSuccess("Google login successful!");
+    }
+    console.log("success")
+  }}
+  onError={() => {
+    setGoogleLoginSuccess("Google login failed. Please try again.");
+    console.log('Login Failed');
+  }}
+  theme="outline"
+  type="standard"
+  size="large"
+  shape="rectangular"
+  text="signin_with"
+  width="0%"
+/>*/}
+<button className='ahm-loginBtnWithGoogle' onClick={() => login()}
+    > <FaGoogle /> Sign in with Google </button>
+                {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
 
             </div>
