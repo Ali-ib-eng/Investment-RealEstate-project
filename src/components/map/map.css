@@ -1,6 +1,5 @@
 .ahm-mapSearchContainer{
     display: flex;
-    /* background-color: tomato; */
     margin: 5px 0;
 }
 .ahm-mapSearchContainer input{
@@ -9,8 +8,8 @@
     border: none;
     border-radius: 8px 0 0 8px;
     outline: none;
-    background-color: white
-    color: white;
+    background-color: white;
+    /* color: white; */
 }
 .ahm-mapSearchContainer .ahm-searchBtnContainer{
     background-color: white;
@@ -26,4 +25,7 @@
 }
 .ahm-mapSearchContainer .ahm-searchBtnContainer:hover{
     background-color: rgb(177, 163, 163,0.8);
+}
+.ahm-mapaaaa .ahm-notification{
+    top: 0%  ;
 }
