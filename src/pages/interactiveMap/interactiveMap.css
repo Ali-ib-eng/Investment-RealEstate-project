@@ -54,7 +54,7 @@
     color: #888888;
 }
 .ahm-mapContainer{
-    background-color: white;
+    /* background-color: white; */
     height: 400px;
     color:var(--on-tertiary-fixed-variant);
 }
