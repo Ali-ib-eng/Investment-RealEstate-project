@@ -5,11 +5,13 @@ import Properties from './pages/Properties'
 import About from './pages/About'
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
-// import ViewAllInvestments from './pages/viewAllInvestments/viewAllInvestments';
-import ViewAllInvestments from './pages/viewAllInvestments/viewAllInvestments'
+import ViewAllInvestments from './pages/viewAllInvestments/viewAllInvestments';
+import UserDashboard from './components/userDashboard/userDashboard';
 import logoImg from '/IMG-homePage/pro-logo.png'
 import { useEffect, useState } from 'react'
 import GetStarted from './pages/GetStarted'
+import UpdatePassword from './components/updateAccount/updateAccount'
+
 function App() {
   const navLinks=[
     { name: 'Invest', path: '/' },
@@ -51,6 +53,8 @@ const changeTheme=()=>{
       <Route path='/about' element={<About/>} />
       <Route path='/viewAllInvestments' element={<ViewAllInvestments/>} />
       <Route path='/getStarted' element={<GetStarted/>} />
+      <Route path='/userDashboard' element={<UserDashboard/>} />
+      <Route path='/updatePassword' element={<UpdatePassword/>} />
       <Route />
     </Routes>
     <Footer title="Syria Rebuild"
