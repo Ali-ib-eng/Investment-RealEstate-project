@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from 'react';
 import '../login/login.css'
 import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
@@ -24,40 +25,106 @@ useEffect(()=>{
     })
 
     const [newAccountData, setNewAccountData] = useState({
-        fullname:'', emailAddress:'', password:'', confirmPassword:'', isAgreeToConditions:false
+        fullname:'',
+         emailAddress:'',
+        password:'',
+        confirmPassword:'',
+        isAgreeToConditions:false
+    });
+    const [loading, setLoading]=useState(false);
+   const createAccountConfirm=()=>{
+
+  if(
+    !newAccountData.fullname||
+    !newAccountData.emailAddress||
+    !newAccountData.password||
+    !newAccountData.confirmPassword
+  ) {
+
+    setErrorInput({
+      isErrorInput:true,
+      errorMessage:'please fill all the fields',
+    });
+    return false;
+  }
+
+  if (newAccountData.password !== newAccountData.confirmPassword) {
+
+    setNewAccountData({
+      ...newAccountData,
+      password: '',
+      confirmPassword: ''
     });
 
-    const createAccountConfirm = () => {
+    setErrorInput({
+      isErrorInput: true,
+      errorMessage: 'passwords do not match',
+    });
 
-        if(newAccountData.fullname === '' || newAccountData.emailAddress === '' || newAccountData.password === '' || newAccountData.confirmPassword === ''){
-            
-            setErrorInput({
-                isErrorInput:true,
-                errorMessage:'please fill all the fields',
-            })
-        }
+    return false;
+  }
 
-        else if(newAccountData.password !== newAccountData.confirmPassword){
-            setNewAccountData({...newAccountData, password:'', confirmPassword:''})
-            
-            setErrorInput({
-                isErrorInput:true,
-                errorMessage:'passwords do not match',
-            })
-        }
-        
-        else if(!newAccountData.isAgreeToConditions){
-            
-            setErrorInput({
-                isErrorInput:true,
-                errorMessage:'you must agree to the terms of service and privacy policy to create an account',
-            })
-        }
-        
-        else{
-            alert('account created successfully')
-        }
+  if (!newAccountData.isAgreeToConditions) {
+
+    setErrorInput({
+      isErrorInput: true,
+      errorMessage:
+        'you must agree to the terms of service and privacy policy to create an account',
+    });
+    return false;
+  }
+  return true;
+};
+const UserRegister=async()=>{
+  try{
+    setLoading(true);
+
+    const response = await axios.post(
+      "https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/register",
+      {
+        name: newAccountData.fullname,
+        email: newAccountData.emailAddress,
+        password: newAccountData.password,
+        password_confirmation:
+          newAccountData.confirmPassword,
+        is_agree_to_conditions:
+          newAccountData.isAgreeToConditions,
+      }
+    );
+
+    console.log(response.data);
+//save token in local storage
+    if (response.data.token) {
+      localStorage.setItem("token",response.data.token);
     }
+    alert("Account created successfully");
+    //setLoading(false);
+
+  }catch(error){
+    console.log(error);
+    setErrorInput({
+      isErrorInput: true,
+      errorMessage:
+        error.response?.data?.message ||
+        "Registration failed"
+    });
+
+  }finally{
+    setLoading(false);
+  }
+};
+const handleCreateAccount=async()=>{
+  const isValid=createAccountConfirm();
+  if (!isValid)
+  return;
+  try{
+    await UserRegister();
+  }
+  catch(error){
+    console.log(error)
+  }
+  
+};
 
     const createAccountForm =()=>{
         
@@ -92,36 +159,17 @@ useEffect(()=>{
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
-
-                    <button  disabled={ErrorInput.isErrorInput} onClick={createAccountConfirm} type='button' className='ahm-loginBtn'>Create Account</button>
+                    <button  disabled={ErrorInput.isErrorInput} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? "Creating account Now...":"Create Account"}</button>
+                    
                 </form>
                 <div className='ahm-loginOr'>
                     <p className='ahm-orStyle' >or</p>
                     <hr className='ahm-loginLine'/>
                 </div>
-                {/*<button disabled={ErrorInput.isErrorInput} type='button' className='ahm-loginBtnWithGoogle'><FaGoogle/> sign up with google</button>*/}
                 
-                {/*<GoogleLogin
-  onSuccess={credentialResponse => {
-    //console.log(credentialResponse);
-    if(credentialResponse){
-        setGoogleLoginSuccess("Google login successful!");
-    }
-    console.log("success")
-  }}
-  onError={() => {
-    setGoogleLoginSuccess("Google login failed. Please try again.");
-    console.log('Login Failed');
-  }}
-  theme="outline"
-  type="standard"
-  size="large"
-  shape="rectangular"
-  text="signin_with"
-  width="0%"
-/>*/}
+          
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
-    > <FaGoogle /> Sign in with Google </button>
+    ><FaGoogle /> Sign in with Google </button>
                 {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
 
@@ -136,5 +184,5 @@ useEffect(()=>{
             {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput} />}
         </div>
         
-    );
+    )
 }
