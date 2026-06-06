@@ -1,5 +1,6 @@
 import './interactiveMap.css'
 import { FaCircle } from 'react-icons/fa';
+import MapPicker from '../../components/map/map';
 
 export default function InteractiveMap(){
 
@@ -38,7 +39,9 @@ export default function InteractiveMap(){
 
 
             </div>
-            <div className="ahm-mapContainer">Map</div>
+            <div className="ahm-mapContainer">
+                <MapPicker/>
+            </div>
         </div>
     );
 }
