@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import '../login/login.css'
 import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
@@ -58,6 +59,8 @@ useEffect(()=>{
             alert('account created successfully')
         }
     }
+    
+
 
     const createAccountForm =()=>{
         
@@ -99,27 +102,8 @@ useEffect(()=>{
                     <p className='ahm-orStyle' >or</p>
                     <hr className='ahm-loginLine'/>
                 </div>
-                {/*<button disabled={ErrorInput.isErrorInput} type='button' className='ahm-loginBtnWithGoogle'><FaGoogle/> sign up with google</button>*/}
-                
-                {/*<GoogleLogin
-  onSuccess={credentialResponse => {
-    //console.log(credentialResponse);
-    if(credentialResponse){
-        setGoogleLoginSuccess("Google login successful!");
-    }
-    console.log("success")
-  }}
-  onError={() => {
-    setGoogleLoginSuccess("Google login failed. Please try again.");
-    console.log('Login Failed');
-  }}
-  theme="outline"
-  type="standard"
-  size="large"
-  shape="rectangular"
-  text="signin_with"
-  width="0%"
-/>*/}
+               
+
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     > <FaGoogle /> Sign in with Google </button>
                 {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
@@ -134,6 +118,7 @@ useEffect(()=>{
         <div className="ahm-loginPage">
             {createAccountForm()}
             {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput} />}
+        
         </div>
         
     );
