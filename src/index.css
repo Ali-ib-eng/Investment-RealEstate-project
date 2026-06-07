@@ -109,7 +109,7 @@
 
 
 ::-webkit-scrollbar-thumb{
-  background: rgb(101, 101, 241);
+  background: rgb(0, 50, 107);;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-track{

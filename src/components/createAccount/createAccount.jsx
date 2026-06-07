@@ -97,6 +97,7 @@ const UserRegister=async()=>{
     if (response.data.token) {
       localStorage.setItem("token",response.data.token);
     }
+    
     alert("Account created successfully");
     //setLoading(false);
 
@@ -165,6 +166,11 @@ const handleCreateAccount=async()=>{
                 <div className='ahm-loginOr'>
                     <p className='ahm-orStyle' >or</p>
                     <hr className='ahm-loginLine'/>
+                </div>
+               
+
+<button className='ahm-loginBtnWithGoogle' onClick={() => login()}
+    > <FaGoogle /> Sign in with Google </button>
                 </div>                             
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     ><FaGoogle /> Sign in with Google </button>
