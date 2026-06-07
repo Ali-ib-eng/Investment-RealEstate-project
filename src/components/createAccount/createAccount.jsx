@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../login/login.css'
 import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
@@ -7,9 +8,13 @@ import ErrorNotification from '../errorNotification/errorNotification';
 import { useGoogleLogin } from '@react-oauth/google';
 
 export default function CreateAccount(props){
+const navigate = useNavigate();
 const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
 const login = useGoogleLogin({
-  onSuccess: () => setGoogleLoginSuccess("Google login successful!"),
+  onSuccess: () =>( 
+    setGoogleLoginSuccess("Google login successful!"),
+    setTimeout(() => {navigate(-1)},3000)
+  ),
   onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
 });
 useEffect(()=>{
@@ -77,6 +82,7 @@ useEffect(()=>{
 };
 const UserRegister=async()=>{
   try{
+    
     setLoading(true);
 
     const response = await axios.post(
