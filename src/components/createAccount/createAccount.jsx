@@ -165,9 +165,7 @@ const handleCreateAccount=async()=>{
                 <div className='ahm-loginOr'>
                     <p className='ahm-orStyle' >or</p>
                     <hr className='ahm-loginLine'/>
-                </div>
-                
-          
+                </div>                             
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     ><FaGoogle /> Sign in with Google </button>
                 {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
@@ -182,6 +180,7 @@ const handleCreateAccount=async()=>{
         <div className="ahm-loginPage">
             {createAccountForm()}
             {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput} />}
+        
         </div>
         
     )

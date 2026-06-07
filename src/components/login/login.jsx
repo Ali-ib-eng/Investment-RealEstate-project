@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import './login.css';
 import {FaGoogle, FaRegEnvelope, FaLock } from 'react-icons/fa';
@@ -30,7 +31,12 @@ useEffect(()=>{
         errorMessage:''
     })
 
-
+//use Axios
+/*const GetApi=async()=>{
+    const res=await fetch("http://127.0.0.1:8000/api/auth/login");
+    const data=await res.json();
+    console.log(data);
+}*/
 
 
     const loginConfirm =()=>{
@@ -85,6 +91,7 @@ useEffect(()=>{
             {isCreateNewAccount ? <CreateAccount setIsCreateNewAccount={setIsCreateNewAccount} /> : logInFormWithExistAccount()}
             {/* {logInFormWithExistAccount()} */}
             {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput}  />}
+            
         </div>
     );
 }
