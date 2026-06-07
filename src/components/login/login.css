@@ -20,7 +20,6 @@
 .ahm-loginContainer{
     width: 100%;
     max-width: 420px;
-
     background-color: var(--surface-container-lowest);
 
     padding: 40px 30px;
@@ -34,6 +33,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    position: relative;
 }
 
 .ahm-loginH1{
@@ -50,7 +50,18 @@
     font-weight: 500;
     margin-left: 4px;
 }
-
+.Ali-googleAuth{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    padding: 20px 5px ;
+    border-radius: 8px;
+    color:white;
+    margin-top :10px;
+    z-index:20000;
+}
 .ahm-inputContainer{
     position: relative;
     width: 100%;
@@ -144,7 +155,7 @@
     border-radius: 8px;
 
     /*background-color: var(--boxState);*/
-
+    font-size: 20px;
     cursor: pointer;
 
     display: flex;
@@ -154,12 +165,48 @@
 
     font-weight: 500;
 
-    transition: 0.25s;
+    transition: 1.25s;
 }
 
 .ahm-loginBtnWithGoogle:hover{
-    background-color:rgba(0, 32, 69, 0.527);;
+    background-color:rgba(0, 32, 69, 0.527);
     
+}
+/*some animitions byAli*/
+.ahm-loginBtnWithGoogle svg{
+    transition: transform 0.3s ease;
+}
+.ahm-loginBtnWithGoogle:hover svg{
+    transform: rotate(12deg) scale(1.1);
+}
+.ahm-loginBtnWithGoogle:hover svg{
+    transform: translateX(-3px);
+}
+.ahm-loginBtnWithGoogle{
+    position:relative;
+    overflow:hidden;
+}
+
+.ahm-loginBtnWithGoogle::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(3, 241, 58, 0.35),
+        transparent
+    );
+
+    transition:left 1.7s;
+}
+
+.ahm-loginBtnWithGoogle:hover::before{
+    left:150%;
 }
 
 .ahm-loginWithExistAccount{
@@ -232,5 +279,6 @@
     }
     .ahm-loginPage{
         padding: 0px 10px;
+        margin-bottom: 30px;
     }
 }

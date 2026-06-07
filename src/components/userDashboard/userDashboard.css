@@ -33,6 +33,10 @@
 .ahm-userInfo {
     padding: 10px;
 }
+.ahm-userInfo a{
+    text-decoration: none;
+    color: var(--on-surface);
+}
 .ahm-userInfo .ahm-userInfoItem{
     display: flex;
     gap: 10px;

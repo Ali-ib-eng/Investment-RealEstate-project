@@ -2,7 +2,7 @@
 const Properties = () => {
   return (
     <div>
-      <h1>hello from Properties</h1>
+      <h1 style={{padding:"100px"}}>hello from Properties</h1>
     </div>
   )
 }
