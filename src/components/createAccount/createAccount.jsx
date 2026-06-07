@@ -170,15 +170,12 @@ const handleCreateAccount=async()=>{
                
 
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
-    > <FaGoogle /> Sign in with Google </button>
-                </div>                             
-<button className='ahm-loginBtnWithGoogle' onClick={() => login()}
-    ><FaGoogle /> Sign in with Google </button>
+    > <FaGoogle /> Sign in with Google </button>                            
                 {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
 
             </div>
-        );
+        )
     }
     
 
