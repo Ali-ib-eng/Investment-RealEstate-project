@@ -108,3 +108,13 @@
 }
 
 
+::-webkit-scrollbar-thumb{
+  background: rgb(101, 101, 241);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track{
+background-color: transparent;
+}
+::-webkit-scrollbar{
+width: 10px;
+}

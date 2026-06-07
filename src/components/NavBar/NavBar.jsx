@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
-import { FaRegSun, FaTimes } from "react-icons/fa";
+import { FaRegSun, FaTimes, FaUserCircle } from "react-icons/fa";
 import { BsCloudMoonFill } from "react-icons/bs";
 import { FiMenu, FiX } from "react-icons/fi";
 const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
@@ -11,14 +11,24 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
       <nav className="Ali-NavBar">
         <div className="Ali-Container">
           <img src={logo} alt="Logo" className="Ali-logo" />
-          <button
-            className="show-btn"
-            onClick={()=>setShow(!show)}
-          >
-            {show==false? <><FiMenu/> </>:<> <FiX/></>}
-            
-          </button>
+
+          <div className="ahm-show-btn-container">
+            <button
+              className="show-btn"
+              onClick={()=>setShow(!show)}
+            >
+              {show==false? <><FiMenu/> </>:<> <FiX/></>}
+              
+            </button>
+            { show==false? <Link className="user-btn-desktop" to="/userDashboard">
+                  <FaUserCircle className="ahm-user-icon" />
+                </Link> : ""
+            }
+          </div>
+
+          
           <div className="Ali-links">
+            
             {navLinks.map((link, index) => (
               <NavLink key={index} to={link.path}
               className={({ isActive, isPending }) =>
@@ -31,6 +41,9 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme}) => {
               <Link className="Ali-white-link-desktop" to="/GetStarted">{btnTitle}</Link>
               </button>
               <button className="dark-light-Mode-DesktopBtn" onClick={changeTheme}>{theme==="light"?<><BsCloudMoonFill/> Dark</> : <><FaRegSun/> Light</> }</button>
+              <Link className="user-btn-desktop" to="/userDashboard">
+                <FaUserCircle className="ahm-user-icon" />
+              </Link>
           </div>
           
         </div>

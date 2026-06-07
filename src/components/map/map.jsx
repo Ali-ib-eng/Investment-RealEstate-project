@@ -49,7 +49,7 @@ export default function MapSearch() {
                 <input
                 
                 type="text"
-                placeholder="enter location ..."
+                placeholder="Location of Country and City..."
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 />

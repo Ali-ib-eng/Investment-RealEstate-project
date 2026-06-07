@@ -1,0 +1,217 @@
+.ahm-userDashboard{
+    padding-top:90px;
+    display: flex;
+    margin-bottom: 30px;
+}
+.ahm-userDashboard .ahm-userdetails{
+    background-color: var(--surface-container-high);
+    width:20%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+
+}
+.ahm-userDashboard .ahm-userImageContainer{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin :0;
+    margin: 40px auto;
+}
+.ahm-userDashboard .ahm-userImageContainer img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.ahm-userDashboard hr{
+    border: none;
+    height: 1px;
+    background-color: var(--on-surface);
+    margin: 20px 0;
+}
+.ahm-userInfo {
+    padding: 10px;
+}
+.ahm-userInfo .ahm-userInfoItem{
+    display: flex;
+    gap: 10px;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+.ahm-userInfo .ahm-userInfoItem p{
+    font-size: 13px;
+}
+.ahm-userInfoActive {
+    cursor: pointer;
+    background-color: var(--titleabout);
+    
+}
+.ahm-userInfoActive:hover{
+    background-color: var(--on-tertiary-container)
+}
+.ahm-logout{
+    background-color: var(--error) !important;
+    color : white !important;
+}
+.ahm-logout:hover {
+    background-color: var(--on-error-container) !important;
+}
+
+.ahm-userDashboard-investment{
+    background-color: var(--surface-container-high);
+    width: 55%;
+    flex: 1;
+    margin: 5px;
+    border-radius: 10px;
+}
+.ahm-userDashboard-investment h2{
+    margin: 10px 20px ;
+}
+.ahm-userDashboard-investment 
+.ahm-new-investmentContainer{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    max-height: 250px;
+}
+
+
+.ahm-new-investmentContainer
+.ahm-title-container{
+    display: flex;
+    gap:5px;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.ahm-userDashboard-investment hr{
+    margin:5px 0;
+}
+.ahm-investment-search-Container{
+    position: relative;
+}
+.ahm-investment-search-Container
+.ahm-search-incon{
+    position: absolute;
+    top:13px;
+    left: 10px;
+    
+}
+.ahm-userDashboard-investment input{
+    padding: 10px 10px 10px 35px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.ahm-new-investmentContainer
+.ahm-investmentItem-container{
+    width:full;
+    max-height: 270px;
+    overflow-y: auto;
+}
+
+.ahm-investmentItem-container
+.ahm-investmentItem{
+    background-color: var(--inverse-primary);
+    margin: 5px 5px 5px 0px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.ahm-investmentItem-container
+.ahm-investmentItem p{
+    padding: 10px;
+    margin-left: 10px;
+    width: 25%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ahm-investmentItem p:hover{
+    overflow: visible;
+    white-space: normal;
+}
+
+.ahm-userDashboard-statistics{
+    width: 23%;
+    background-color: var(--surface-container-high);
+    border-radius: 10px;
+    margin:5px;
+    padding: 5px 10px;
+}
+
+.ahm-userDashboard-statistics
+.ahm-statistics-investmentTitle{
+    text-align: center;
+    padding: 20px 0 5px;
+}
+.ahm-statistics-locationContainer{
+    padding: 10px 20px ;
+    /* background-color: red; */
+    max-height: 200px;
+    overflow-y: auto;
+}
+.ahm-statistics-locationContainer p{
+    padding: 5px 0;
+}
+
+@media (max-width:992px){
+    .ahm-userDashboard{
+        flex-wrap: wrap;
+    }
+    .ahm-userDashboard .ahm-userdetails{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .ahm-userDashboard .ahm-userImageContainer{
+        background-color: white;
+        margin: 10px;
+        width: 150px;
+        height: 150px;
+    }
+    .ahm-userDashboard-investment{
+        width: 100%;
+        height: 400px;
+    }
+    .ahm-userDashboard-statistics{
+        width: 100%;
+    }
+}
+@media (max-width:576px){
+    .ahm-userDashboard .ahm-userdetails{
+        width: 100%;
+        display: block;
+        
+    }
+    .ahm-userDashboard .ahm-userImageContainer{
+        background-color: white;
+        margin: 10px auto;
+        width: 150px;
+        height: 150px;
+    }
+    .ahm-investmentItem-container
+    .ahm-investmentItem{
+        flex-wrap: wrap;
+    }
+    .ahm-investmentItem-container
+    .ahm-investmentItem p{
+        width:45%;
+        
+    }
+}
+@media (max-width:350px){
+    .ahm-investmentItem-container
+    .ahm-investmentItem p{
+        width:100%;
+        text-align: start;
+    }
+}
