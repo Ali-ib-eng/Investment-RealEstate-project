@@ -40,7 +40,7 @@
   transition: 0.3s;
 }
 .show-btn{
-  display: none;
+  
   padding: 6px;
   border-radius: 6px;
   padding-top:10px;
@@ -48,6 +48,11 @@
   font-size: 20px;
   border: none;
   cursor: pointer;
+}
+.ahm-show-btn-container{
+  display: none;
+  align-items: center;
+  gap: 10px;
 }
 .start-btn-desktop{
     padding: 0.625rem 1.5rem;
@@ -76,6 +81,22 @@
 .Ali-white-link-desktop{
   color: var(--on-error);
 }
+
+.user-btn-desktop{
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.user-btn-desktop .ahm-user-icon{
+  color: var(--primary);
+  font-size: 30px;
+}
+
 .mobile-menu {
   display: none;
   background-color: #AAA;
@@ -166,6 +187,9 @@
   }
   .show-btn {
     display: block;
+  }
+  .ahm-show-btn-container {
+    display: flex;
   }
   .mobile-menu{
     padding: 10px 10px;
