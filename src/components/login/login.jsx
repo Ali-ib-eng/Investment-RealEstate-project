@@ -2,21 +2,26 @@
 import { useState, useEffect } from 'react';
 import './login.css';
 import {FaGoogle, FaRegEnvelope, FaLock } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../errorNotification/errorNotification';
 import CreateAccount from '../createAccount/createAccount';
 import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 export default function Login (){
+const navigate = useNavigate();
     const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
 const login = useGoogleLogin({
-  onSuccess: () => setGoogleLoginSuccess("Google login successful!"),
+  onSuccess: () => ( 
+    setGoogleLoginSuccess("Google login successful!"),
+    setTimeout(() => {navigate(-1)},3000)
+  ),
   onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
 });
 useEffect(()=>{
     const googleLoginMessageTimeout=setTimeout(() => {
         setGoogleLoginSuccess("");
     }, 3000); // Clear the message after 3 seconds
-
     return ()=>clearTimeout(googleLoginMessageTimeout); // Cleanup the timeout on component unmount
 },[googleLoginSuccess])
     const [existAccountData, setExistAccountData]= useState({
@@ -31,13 +36,19 @@ useEffect(()=>{
         errorMessage:''
     })
 
-//use Axios
-/*const GetApi=async()=>{
-    const res=await fetch("http://127.0.0.1:8000/api/auth/login");
-    const data=await res.json();
-    console.log(data);
-}*/
-
+    const postLoginData = async()=>{
+        try{
+            const response = await axios.post('https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/login', {email: existAccountData.emailAddress, password: existAccountData.password});
+            console.log(response.data); // Handle the response as needed
+            setExistAccountData({emailAddress:'', password:''});
+        }catch(err){
+            console.log(err);
+            setErrorInput({
+                isErrorInput:true,
+                errorMessage:'Login failed. Please check your credentials and try again.'
+            })
+        }
+    }
 
     const loginConfirm =()=>{
         if(existAccountData.emailAddress === "" || existAccountData.password === ""){
@@ -46,7 +57,7 @@ useEffect(()=>{
                 errorMessage:'please fill all the fields'
             })
         }
-        
+        else postLoginData()
     }
 
     const logInFormWithExistAccount =()=>{
