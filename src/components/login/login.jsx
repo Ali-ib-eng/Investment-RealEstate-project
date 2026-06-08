@@ -49,7 +49,6 @@ useEffect(()=>{
             })
         }
     }
-
     const loginConfirm =()=>{
         if(existAccountData.emailAddress === "" || existAccountData.password === ""){
             setErrorInput({
@@ -89,7 +88,7 @@ useEffect(()=>{
                 </div>
                 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     > <FaGoogle /> Sign in with Google </button>
-                {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
+                {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>New to Syria Rebuild? <span onClick={()=>(!ErrorInput.isErrorInput &&  setIsCreateNewAccount(true))} style={{color:'blue',cursor:'pointer'}}>Create new account</span></p>
 
             </div>
