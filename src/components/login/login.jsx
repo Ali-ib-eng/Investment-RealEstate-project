@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import './login.css';
 import {FaGoogle, FaRegEnvelope, FaLock } from 'react-icons/fa';
-
 import ErrorNotification from '../errorNotification/errorNotification';
 import CreateAccount from '../createAccount/createAccount';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -30,15 +29,6 @@ useEffect(()=>{
         isErrorInput:false,
         errorMessage:''
     })
-
-//use Axios
-/*const GetApi=async()=>{
-    const res=await fetch("http://127.0.0.1:8000/api/auth/login");
-    const data=await res.json();
-    console.log(data);
-}*/
-
-
     const loginConfirm =()=>{
         if(existAccountData.emailAddress === "" || existAccountData.password === ""){
             setErrorInput({
@@ -78,7 +68,7 @@ useEffect(()=>{
                 </div>
                 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     > <FaGoogle /> Sign in with Google </button>
-                {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
+                {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>New to Syria Rebuild? <span onClick={()=>(!ErrorInput.isErrorInput &&  setIsCreateNewAccount(true))} style={{color:'blue',cursor:'pointer'}}>Create new account</span></p>
 
             </div>
