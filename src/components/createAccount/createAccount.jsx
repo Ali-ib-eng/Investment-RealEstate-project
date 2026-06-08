@@ -10,20 +10,29 @@ import { useGoogleLogin } from '@react-oauth/google';
 export default function CreateAccount(props){
 const navigate = useNavigate();
 const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
+const [loading, setLoading]=useState(false);
+const [createAccountSuccess, setCreateAccountSuccess]=useState(false);
 const login = useGoogleLogin({
   onSuccess: () =>( 
     setGoogleLoginSuccess("Google login successful!"),
     setTimeout(() => {navigate(-1)},3000)
   ),
-  onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
+  onError: () => (
+    setGoogleLoginSuccess("Google login failed. Please try again."),
+    setTimeout(() => {setGoogleLoginSuccess("")},3000)
+  ),
+
 });
 useEffect(()=>{
-    const googleLoginMessageTimeout=setTimeout(() => {
-        setGoogleLoginSuccess("");
+    const CreateAccount=setTimeout(() => {
+        
+        
+        setCreateAccountSuccess(false);
     }, 3000); // Clear the message after 3 seconds
 
-    return ()=>clearTimeout(googleLoginMessageTimeout); // Cleanup the timeout on component unmount
-},[googleLoginSuccess])
+    return ()=>clearTimeout(CreateAccount); // Cleanup the timeout on component unmount
+    
+},[createAccountSuccess]);
     const [ErrorInput, setErrorInput] = useState({
         isErrorInput:false,
         errorMessage:''
@@ -36,7 +45,7 @@ useEffect(()=>{
         confirmPassword:'',
         isAgreeToConditions:false
     });
-    const [loading, setLoading]=useState(false);
+    
    const createAccountConfirm=()=>{
 
   if(
@@ -103,9 +112,8 @@ const UserRegister=async()=>{
     if (response.data.token) {
       localStorage.setItem("token",response.data.token);
     }
-    
-    alert("Account created successfully");
-    //setLoading(false);
+    setCreateAccountSuccess(true);
+    //alert("Account created successfully");
 
   }catch(error){
     console.log(error);
@@ -167,6 +175,7 @@ const handleCreateAccount=async()=>{
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
                     <button  disabled={ErrorInput.isErrorInput} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? "Creating account Now...":"Create Account"}</button>
+                    {createAccountSuccess && <p className="Ali-googleAndAccountAuth">Account created successfully! Please log in.</p>}
                     
                 </form>
                 <div className='ahm-loginOr'>
@@ -179,7 +188,6 @@ const handleCreateAccount=async()=>{
     > <FaGoogle /> Sign in with Google </button>                            
                 {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
-
             </div>
         )
     }
