@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './login.css';
 import {FaGoogle, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ export default function Login (){
 const navigate = useNavigate();
     const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
     const [loginSuccess, setLoginSuccess]=useState(false);
+    const [loading, setLoading]=useState(false);
 const login = useGoogleLogin({
   onSuccess: () => ( 
     setGoogleLoginSuccess("Google login successful!"),
@@ -19,12 +20,12 @@ const login = useGoogleLogin({
   ),
   onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
 });
-useEffect(()=>{
+/*useEffect(()=>{
     const googleLoginMessageTimeout=setTimeout(() => {
         setGoogleLoginSuccess("");
     }, 3000); // Clear the message after 3 seconds
     return ()=>clearTimeout(googleLoginMessageTimeout); // Cleanup the timeout on component unmount
-},[googleLoginSuccess])
+},[googleLoginSuccess])*/
     const [existAccountData, setExistAccountData]= useState({
         emailAddress:'', password:'',
     })
@@ -39,6 +40,7 @@ useEffect(()=>{
 
     const postLoginData = async()=>{
         try{
+            setLoading(true);
             const response = await axios.post('https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/login', {email: existAccountData.emailAddress, password: existAccountData.password});
             console.log(response.data); // Handle the response as needed
             setExistAccountData({emailAddress:'', password:''});
@@ -53,6 +55,9 @@ useEffect(()=>{
                 isErrorInput:true,
                 errorMessage:'Login failed. Please check your credentials and try again.'
             })
+        }
+        finally{
+            setLoading(false);
         }
     }
     const loginConfirm =()=>{
@@ -86,7 +91,8 @@ useEffect(()=>{
 
                     
                     
-                    <button disabled={ErrorInput.isErrorInput} onClick={loginConfirm} type='button' className='ahm-loginBtn'>sign in</button>
+                    <button disabled={ErrorInput.isErrorInput} onClick={loginConfirm} type='button' className='ahm-loginBtn'>{loading ? "Signing in..." : "Sign in"}</button>
+
                 </form>
                 <div className='ahm-loginOr'>
                     <p className='ahm-orStyle' >or</p>
