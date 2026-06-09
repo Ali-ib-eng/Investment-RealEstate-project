@@ -15,7 +15,7 @@ const [createAccountSuccess, setCreateAccountSuccess]=useState(false);
 const login = useGoogleLogin({
   onSuccess: () =>( 
     setGoogleLoginSuccess("Google login successful!"),
-    setTimeout(() => {navigate(-1)},3000)
+    setTimeout(() => {props.setIsCreateNewAccount(false)},3000)
   ),
   onError: () => (
     setGoogleLoginSuccess("Google login failed. Please try again."),
@@ -114,7 +114,7 @@ const UserRegister=async()=>{
     }
     setCreateAccountSuccess(true);
     //alert("Account created successfully");
-
+    setTimeout(()=>{props.setIsCreateNewAccount(false)},3000)
   }catch(error){
     console.log(error);
     setErrorInput({

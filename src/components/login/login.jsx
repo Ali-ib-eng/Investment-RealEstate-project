@@ -11,6 +11,7 @@ import axios from 'axios';
 export default function Login (){
 const navigate = useNavigate();
     const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
+    const [loginSuccess, setLoginSuccess]=useState(false);
 const login = useGoogleLogin({
   onSuccess: () => ( 
     setGoogleLoginSuccess("Google login successful!"),
@@ -41,6 +42,11 @@ useEffect(()=>{
             const response = await axios.post('https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/login', {email: existAccountData.emailAddress, password: existAccountData.password});
             console.log(response.data); // Handle the response as needed
             setExistAccountData({emailAddress:'', password:''});
+            setLoginSuccess(true);
+            setTimeout(()=>{
+                setLoginSuccess(false);
+                navigate(-1);
+            },3000)
         }catch(err){
             console.log(err);
             setErrorInput({
@@ -90,7 +96,7 @@ useEffect(()=>{
     > <FaGoogle /> Sign in with Google </button>
                 {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>New to Syria Rebuild? <span onClick={()=>(!ErrorInput.isErrorInput &&  setIsCreateNewAccount(true))} style={{color:'blue',cursor:'pointer'}}>Create new account</span></p>
-
+                {loginSuccess && <p className="Ali-googleAndAccountAuth"> Log in Successed.</p>}
             </div>
         );
     }
