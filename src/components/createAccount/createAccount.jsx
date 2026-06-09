@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {  useState } from 'react';
+//import { useNavigate } from 'react-router-dom';
 import '../login/login.css'
 import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
@@ -8,7 +8,7 @@ import ErrorNotification from '../errorNotification/errorNotification';
 import { useGoogleLogin } from '@react-oauth/google';
 
 export default function CreateAccount(props){
-const navigate = useNavigate();
+//const navigate = useNavigate();
 const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
 const [loading, setLoading]=useState(false);
 const [createAccountSuccess, setCreateAccountSuccess]=useState(false);
@@ -23,7 +23,7 @@ const login = useGoogleLogin({
   ),
 
 });
-useEffect(()=>{
+/*useEffect(()=>{
     const CreateAccount=setTimeout(() => {
         
         
@@ -32,7 +32,7 @@ useEffect(()=>{
 
     return ()=>clearTimeout(CreateAccount); // Cleanup the timeout on component unmount
     
-},[createAccountSuccess]);
+},[createAccountSuccess]);*/
     const [ErrorInput, setErrorInput] = useState({
         isErrorInput:false,
         errorMessage:''
@@ -186,7 +186,7 @@ const handleCreateAccount=async()=>{
 
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
     > <FaGoogle /> Sign in with Google </button>                            
-                {googleLoginSuccess && <p className="Ali-googleAuth">{googleLoginSuccess}</p>} 
+                {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
             </div>
         )
