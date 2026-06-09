@@ -73,7 +73,10 @@
     top: 12px;
     color: var(--on-tertiary-fixed-variant);
 }
-
+ .Ali-inputslogin::placeholder{
+    color:black;
+    font-size: 13px;
+}
 .ahm-loginForm input{
     width: 100%;
 

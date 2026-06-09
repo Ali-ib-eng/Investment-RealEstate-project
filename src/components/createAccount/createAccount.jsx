@@ -152,25 +152,25 @@ const handleCreateAccount=async()=>{
                     <label>Full name</label><br />
                     <div className='ahm-inputContainer' >
                         <FaUser className='ahm-inputIcon'/>
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, fullname:e.target.value })} type='text' placeholder={newAccountData.fullname || "Ahmed Salmo"} />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, fullname:e.target.value })} type='text' placeholder={newAccountData.fullname || "User name"} />
                     </div>
 
                     <label>Email Address</label><br />
                     <div className='ahm-inputContainer' >
                         <FaRegEnvelope className='ahm-inputIcon'/>
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, emailAddress:e.target.value })} type='email' placeholder={newAccountData.emailAddress || "email@gmail.com"} />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, emailAddress:e.target.value })} type='email' placeholder={newAccountData.emailAddress || "Email@gmail.com"} />
                     </div>
 
                     <label>Password</label><br />
                     <div className='ahm-inputContainer' >
                         <FaLock className='ahm-inputIcon'/>
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, password:e.target.value })} type='password' placeholder={newAccountData.password || 'password' } />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, password:e.target.value })} type='password' placeholder={newAccountData.password || 'Password' } />
                     </div>
 
                     <label>Confirm Password</label><br />
                     <div className='ahm-inputContainer' >
                         <MdOutlinePassword className='ahm-inputIcon' />
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, confirmPassword:e.target.value })} type='password' placeholder={newAccountData.confirmPassword || 'password' } />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, confirmPassword:e.target.value })} type='password' placeholder={newAccountData.confirmPassword || 'Confirm Password' } />
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />

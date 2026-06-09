@@ -80,13 +80,13 @@ const login = useGoogleLogin({
                     <label>Email Address</label><br />
                     <div className='ahm-inputContainer' >
                         <FaRegEnvelope className='ahm-inputIcon'/>
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, emailAddress:e.target.value })} type='email' placeholder={existAccountData.emailAddress || "email@gmail.com"} />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, emailAddress:e.target.value })} type='email' placeholder={existAccountData.emailAddress || "Email@gmail.com"} />
                     </div>
 
                     <label>Password</label><br />
                     <div className='ahm-inputContainer' >
                         <FaLock className='ahm-inputIcon'/>
-                        <input disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, password:e.target.value })} type='password' placeholder={existAccountData.password || 'password' } />
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, password:e.target.value })} type='password' placeholder={existAccountData.password || 'Password' } />
                     </div>
 
                     
