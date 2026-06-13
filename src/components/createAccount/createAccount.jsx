@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import {  useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
@@ -89,21 +90,23 @@ const login = useGoogleLogin({
   }
   return true;
 };
-const UserRegister=async()=>{
+// mmmmm
+
+ const UserRegister=async(formData)=>{
   try{
     
     setLoading(true);
-
-    const response = await axios.post(
+    
+     const response = await axios.post(
       "https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/register",
       {
-        name: newAccountData.fullname,
-        email: newAccountData.emailAddress,
-        password: newAccountData.password,
+        name: formData.fullname,
+        email: formData.emailAddress,
+        password: formData.password,
         password_confirmation:
-          newAccountData.confirmPassword,
+          formData.confirmPassword,
         is_agree_to_conditions:
-          newAccountData.isAgreeToConditions,
+          formData.isAgreeToConditions,
       }
     );
 
@@ -114,7 +117,7 @@ const UserRegister=async()=>{
     }
     setCreateAccountSuccess(true);
     //alert("Account created successfully");
-    setTimeout(()=>{props.setIsCreateNewAccount(false)},3000)
+   setTimeout(()=>{props.setIsCreateNewAccount(false)},3000)
   }catch(error){
     console.log(error);
     setErrorInput({
@@ -123,17 +126,36 @@ const UserRegister=async()=>{
         error.response?.data?.message ||
         "Registration failed"
     });
+    
 
-  }finally{
+}finally{
     setLoading(false);
   }
+  
 };
 const handleCreateAccount=async()=>{
   const isValid=createAccountConfirm();
   if (!isValid)
-  return;
+  return ;
+
+  const formData = { ...newAccountData };
+  
   try{
-    await UserRegister();
+    await UserRegister(formData);
+
+     setNewAccountData({
+      fullname: '',
+      emailAddress: '',
+      password: '',
+      confirmPassword: '',
+      isAgreeToConditions: false
+    });
+
+    setCreateAccountSuccess(true);
+
+    setTimeout(() => {
+      props.setIsCreateNewAccount(false);
+    }, 3000);
   }
   catch(error){
     console.log(error)
@@ -152,25 +174,26 @@ const handleCreateAccount=async()=>{
                     <label>Full name</label><br />
                     <div className='ahm-inputContainer' >
                         <FaUser className='ahm-inputIcon'/>
-                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, fullname:e.target.value })} type='text' placeholder={newAccountData.fullname || "User name"} />
+                      
+                        <input className="Ali-inputslogin" value={newAccountData.fullname} disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, fullname:e.target.value })} type='text' placeholder={newAccountData.fullname || "User name"} />
                     </div>
 
                     <label>Email Address</label><br />
                     <div className='ahm-inputContainer' >
                         <FaRegEnvelope className='ahm-inputIcon'/>
-                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, emailAddress:e.target.value })} type='email' placeholder={newAccountData.emailAddress || "Email@gmail.com"} />
+                        <input className="Ali-inputslogin" value={newAccountData.emailAddress} disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, emailAddress:e.target.value })} type='email' placeholder={newAccountData.emailAddress || "Email@gmail.com"} />
                     </div>
 
                     <label>Password</label><br />
                     <div className='ahm-inputContainer' >
                         <FaLock className='ahm-inputIcon'/>
-                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, password:e.target.value })} type='password' placeholder={newAccountData.password || 'Password' } />
+                        <input className="Ali-inputslogin" value={newAccountData.password} disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, password:e.target.value })} type='password' placeholder={newAccountData.password || 'Password' } />
                     </div>
 
                     <label>Confirm Password</label><br />
                     <div className='ahm-inputContainer' >
                         <MdOutlinePassword className='ahm-inputIcon' />
-                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, confirmPassword:e.target.value })} type='password' placeholder={newAccountData.confirmPassword || 'Confirm Password' } />
+                        <input className="Ali-inputslogin" value={newAccountData.confirmPassword}  disabled={ErrorInput.isErrorInput} onChange={(e)=>setNewAccountData({...newAccountData, confirmPassword:e.target.value })} type='password' placeholder={newAccountData.confirmPassword || 'Confirm Password' } />
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
