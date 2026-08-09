@@ -2,11 +2,11 @@ import axios from "axios";
 import {  useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import '../login/login.css'
-import { FaGoogle ,FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
+import { FaUser, FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { MdOutlinePassword } from "react-icons/md";
 import ErrorNotification from '../errorNotification/errorNotification';
 import { useGoogleLogin } from '@react-oauth/google';
-
+import { FcGoogle } from "react-icons/fc";
 export default function CreateAccount(props){
 //const navigate = useNavigate();
 const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
@@ -95,7 +95,7 @@ const UserRegister=async()=>{
     setLoading(true);
 
     const response = await axios.post(
-      "https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/register",
+      `https://zoological-flow-production-40af.up.railway.app/api/auth/register`,
       {
         name: newAccountData.fullname,
         email: newAccountData.emailAddress,
@@ -104,10 +104,16 @@ const UserRegister=async()=>{
           newAccountData.confirmPassword,
         is_agree_to_conditions:
           newAccountData.isAgreeToConditions,
+      },
+      {
+        headers:{
+          
+          "Content-Type": "application/json",
+        }
       }
     );
-
-    console.log(response.data);
+    
+    console.log(response.data); // Handle the response as needed
 //save token in local storage
     if (response.data.token) {
       localStorage.setItem("token",response.data.token);
@@ -174,7 +180,7 @@ const handleCreateAccount=async()=>{
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
-                    <button  disabled={ErrorInput.isErrorInput} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? "Creating account Now...":"Create Account"}</button>
+                    <button  disabled={ErrorInput.isErrorInput} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? <>{"Creating account Now..."} </>:"Create Account"}</button>
                     {createAccountSuccess && <p className="Ali-googleAndAccountAuth">Account created successfully! Please log in.</p>}
                     
                 </form>
@@ -185,7 +191,7 @@ const handleCreateAccount=async()=>{
                
 
 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
-    > <FaGoogle /> Sign in with Google </button>                            
+    > <FcGoogle /> Sign in with Google </button>                            
                 {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>Already have an account? <span  onClick={()=>(!ErrorInput.isErrorInput && props.setIsCreateNewAccount(false))} style={{color:'blue',cursor:'pointer'}}>Log in</span></p>
             </div>
