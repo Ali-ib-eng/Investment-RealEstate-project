@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
 import './login.css';
-import {FaGoogle, FaRegEnvelope, FaLock } from 'react-icons/fa';
+import { FaRegEnvelope, FaLock } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../errorNotification/errorNotification';
 import CreateAccount from '../createAccount/createAccount';
@@ -41,7 +42,12 @@ const login = useGoogleLogin({
     const postLoginData = async()=>{
         try{
             setLoading(true);
-            const response = await axios.post('https://pogo-exponent-jiffy.ngrok-free.dev/api/auth/login', {email: existAccountData.emailAddress, password: existAccountData.password});
+            const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {email: existAccountData.emailAddress, password: existAccountData.password}, {
+                headers:{
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                }
+            });
             console.log(response.data); // Handle the response as needed
             setExistAccountData({emailAddress:'', password:''});
             setLoginSuccess(true);
@@ -99,7 +105,7 @@ const login = useGoogleLogin({
                     <hr className='ahm-loginLine'/>
                 </div>
                 <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
-    > <FaGoogle /> Sign in with Google </button>
+    > <FcGoogle /> Sign in with Google </button>
                 {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
                 <p className='ahm-loginWithExistAccount'>New to Syria Rebuild? <span onClick={()=>(!ErrorInput.isErrorInput &&  setIsCreateNewAccount(true))} style={{color:'blue',cursor:'pointer'}}>Create new account</span></p>
                 {loginSuccess && <p className="Ali-googleAndAccountAuth"> Log in Successed.</p>}
