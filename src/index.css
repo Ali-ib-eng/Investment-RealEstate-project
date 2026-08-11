@@ -21,9 +21,10 @@
   --on-primary-container:#86a0cd;
   --inverse-primary: #adc7f7;
   --secondary: #006c4a;
+  --active:rgb(0, 128, 0);
   --on-secondary: #ffffff;
   --secondary-container: #82f5c1;
-  --on-secondary-container:#007140;
+  --on-secondary-container:#3fa277;
   --tertiary: #1d2123;
   --tertiary-container:#333638;
   --on-tertiary-container:#9c9fa1;
