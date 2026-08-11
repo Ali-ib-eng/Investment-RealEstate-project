@@ -2,35 +2,57 @@ import {useEffect,useState} from 'react';
 import { FaChevronLeft, FaSearch,FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
 import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 import './viewAllInvestments.css'
 import '../investments/investmentOpportunities.css'
 import axios from 'axios';
 
+
+
 export default function viewAllInvestments(){
     const [data, setData] = useState([]);
+
+    const [searchData, setSearchData] = useState(null)
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+
     useEffect(()=>{
         const getData = async()=>{
             const response = await axios.get('https://zoological-flow-production-40af.up.railway.app/api/investments');
             setData(response.data);
+            console.log(response.data)
         }
         getData();
+        const formData = location.state?.formData || null;
+        setSearchData(formData);
+        
     },[])
 
 
-    const navigate = useNavigate();
+    
     const [SearchValue, setSearchValue] = useState({
         location:'',
         money:'',
     })
 
+    const searchHandler = ()=>{
+        // const filteredData = data.filter(item => {
+        //     const locationMatch = SearchValue.location ? item.location.toLowerCase().includes(SearchValue.location.toLowerCase()) : true;
+        //     const moneyMatch = SearchValue.money ? item.money <= parseFloat(SearchValue.money) : true;
+        //     return locationMatch && moneyMatch;
+        // });
+        // setSearchData(filteredData);
+    }
 
     const SearchForm=()=>{
         return(
             <div className='ahm-formContainerVeiwAll'>
                 <div className='ahm-searchContainer '>
                     <input onChange={e=>setSearchValue({...SearchValue, money:e.target.value})} className='ahm-input ' placeholder='money...' />
-                    <div className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                    <div onClick={ searchHandler} className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
                 </div>
                 <select onChange={(e)=>setSearchValue({...SearchValue, location:e.target.value})} className='ahm-selectLocation '>
                     <option value=''>select Location</option>
@@ -147,7 +169,7 @@ export default function viewAllInvestments(){
                 <p  className=''>All Investment Opportunties</p>
             </div>
             <hr className='ahm-lineInViewAll'/>
-            {SearchForm()}
+            { searchData == null ? SearchForm():''}
             {InvestmentOpportunitesList()}
         </div>
     )
