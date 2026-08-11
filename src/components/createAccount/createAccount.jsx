@@ -114,6 +114,10 @@ const UserRegister=async()=>{
     );
     
     console.log(response.data); // Handle the response as needed
+//save token in local storage
+    if (response.data.token) {
+      localStorage.setItem("token",response.data.token);
+    }
     setCreateAccountSuccess(true);
     //alert("Account created successfully");
     setTimeout(()=>{props.setIsCreateNewAccount(false)},3000)

@@ -26,38 +26,54 @@
 }
 .ahm-selectLocation{
     background-color: rgba(226, 223, 223, 0.411);
-    padding: 12px;
+    padding: 10px;
     outline: none;
     cursor: pointer;
     border-radius: 10px;
     color: #888888;
     border: none;
+    width: 395px;
+    /* background-color: green; */
+}
+.ahm-searchContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    width: 400px;
+    /* background-color: blue; */
+    position: relative;
+    margin: auto;
+
 }
 .ahm-input{
     background-color: rgba(226, 223, 223, 0.411);
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
     outline: none;
     cursor: pointer;
     border-radius: 10px;
-    width: 30%;
+    width: 100%;
     color: #858484;
     border: none;
 }
 .ahm-formContainerVeiwAll{
-    display: flex;
+    /* display: flex; */
     /* background-color: red; */
     align-items: center;
     gap:5px;
     justify-content: center;
-
+    text-align: center;
 }
 .ahm-containerSearchIcon{
-    padding: 10px;
+    padding:0px 5px 0px 15px;
     color:rgb(228, 228, 27);
-    background-color: rgba(226, 223, 223, 0.411);
+    /* border-right: 1px solid black ; */
+    /* background-color: rgba(226, 223, 223, 0.411); */
     width: fit-content;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
+    position: absolute;
+    left:0px;
 }
 
 .ahm-InvestmentOpportunitesList{

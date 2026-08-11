@@ -36,6 +36,7 @@ const GoToLogHome=()=>{
     const postLoginData = async()=>{
         try{
             setLoading(true);
+            const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {email: existAccountData.emailAddress, password: existAccountData.password}, {
             const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {
             email: existAccountData.emailAddress,
             password: existAccountData.password},

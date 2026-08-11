@@ -1,12 +1,23 @@
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import { FaChevronLeft, FaSearch,FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
 import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
 import { useNavigate } from 'react-router-dom'
 
 import './viewAllInvestments.css'
 import '../investments/investmentOpportunities.css'
+import axios from 'axios';
 
 export default function viewAllInvestments(){
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        const getData = async()=>{
+            const response = await axios.get('https://zoological-flow-production-40af.up.railway.app/api/investments');
+            setData(response.data);
+        }
+        getData();
+    },[])
+
+
     const navigate = useNavigate();
     const [SearchValue, setSearchValue] = useState({
         location:'',
@@ -17,14 +28,17 @@ export default function viewAllInvestments(){
     const SearchForm=()=>{
         return(
             <div className='ahm-formContainerVeiwAll'>
+                <div className='ahm-searchContainer '>
+                    <input onChange={e=>setSearchValue({...SearchValue, money:e.target.value})} className='ahm-input ' placeholder='money...' />
+                    <div className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                </div>
                 <select onChange={(e)=>setSearchValue({...SearchValue, location:e.target.value})} className='ahm-selectLocation '>
                     <option value=''>select Location</option>
                     <option value='lattakia'>Lattakia</option>
                     <option value='aleppo'>Aleppo</option>
                     <option value='damascuse'>Damascuse</option>
                 </select> <br/>
-                <input onChange={e=>setSearchValue({...SearchValue, money:e.target.value})} className='ahm-input ' placeholder='money...' />
-                <div className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                
             </div>
         );
     }
