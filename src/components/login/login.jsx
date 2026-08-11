@@ -1,5 +1,5 @@
-
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './login.css';
 import { FaRegEnvelope, FaLock } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
@@ -8,30 +8,24 @@ import ErrorNotification from '../errorNotification/errorNotification';
 import CreateAccount from '../createAccount/createAccount';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-
-export default function Login (){
+export default function Login(){
 const navigate = useNavigate();
     const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
     const [loginSuccess, setLoginSuccess]=useState(false);
     const [loading, setLoading]=useState(false);
-const login = useGoogleLogin({
+    const login=useGoogleLogin({
   onSuccess: () => ( 
     setGoogleLoginSuccess("Google login successful!"),
     setTimeout(() => {navigate(-1)},3000)
   ),
   onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
 });
-/*useEffect(()=>{
-    const googleLoginMessageTimeout=setTimeout(() => {
-        setGoogleLoginSuccess("");
-    }, 3000); // Clear the message after 3 seconds
-    return ()=>clearTimeout(googleLoginMessageTimeout); // Cleanup the timeout on component unmount
-},[googleLoginSuccess])*/
+const GoToLogHome=()=>{
+        navigate('/');
+    };
     const [existAccountData, setExistAccountData]= useState({
         emailAddress:'', password:'',
     })
-
-
     const [isCreateNewAccount, setIsCreateNewAccount]= useState(true);
 
     const [ErrorInput, setErrorInput] = useState({
@@ -42,18 +36,25 @@ const login = useGoogleLogin({
     const postLoginData = async()=>{
         try{
             setLoading(true);
-            const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {email: existAccountData.emailAddress, password: existAccountData.password}, {
+            const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {
+            email: existAccountData.emailAddress,
+            password: existAccountData.password},
+            {
                 headers:{
                     "Content-Type": "application/json",
                     Accept: "application/json"
                 }
             });
             console.log(response.data); // Handle the response as needed
+            if (response.data.token) {
+      localStorage.setItem("token",response.data.token);
+    }
             setExistAccountData({emailAddress:'', password:''});
             setLoginSuccess(true);
             setTimeout(()=>{
                 setLoginSuccess(false);
-                navigate(-1);
+                //navigate(-1);
+                GoToLogHome();
             },3000)
         }catch(err){
             console.log(err);
@@ -77,6 +78,7 @@ const login = useGoogleLogin({
     }
 
     const logInFormWithExistAccount =()=>{
+        
         return(
             <div className='ahm-loginContainer'>
                 <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
@@ -98,7 +100,7 @@ const login = useGoogleLogin({
                     
                     
                     <button disabled={ErrorInput.isErrorInput} onClick={loginConfirm} type='button' className='ahm-loginBtn'>{loading ? "Signing in..." : "Sign in"}</button>
-
+                    {/* */}
                 </form>
                 <div className='ahm-loginOr'>
                     <p className='ahm-orStyle' >or</p>
@@ -112,14 +114,25 @@ const login = useGoogleLogin({
             </div>
         );
     }
-
-
+    //recall uselocation
+    const location = useLocation();
+    //hook useState
+    const [message,setMessage]=useState(location.state?.message || "");
+    //hook2 useEffect
+    useEffect(()=>{
+        if(message){
+            const timer=setTimeout(() => {
+                setMessage("");
+            }, 2000);
+        return () => clearTimeout(timer);
+        }
+    },[message])
     return(
         <div className="ahm-loginPage">
+            {message && <p className="Ali-logout-successMessage">{message}</p>}
             {isCreateNewAccount ? <CreateAccount setIsCreateNewAccount={setIsCreateNewAccount} /> : logInFormWithExistAccount()}
             {/* {logInFormWithExistAccount()} */}
             {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput}  />}
-            
         </div>
     );
 }
