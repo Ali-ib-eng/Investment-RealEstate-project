@@ -50,6 +50,19 @@
     font-weight: 500;
     margin-left: 4px;
 }
+.Ali-logout-successMessage{
+    width: 50%;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(128, 0, 0);
+    color:var(--on-secondary);
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
 .Ali-googleAndAccountAuth{
     position: absolute;
     top: 50%;

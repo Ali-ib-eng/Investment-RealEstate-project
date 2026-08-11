@@ -1,9 +1,49 @@
+import axios from 'axios';
 import './userDashboard.css';
 import { FaUser, FaGoogle, FaPen,FaMapMarkerAlt, FaSearch  } from 'react-icons/fa';
 import { MdLogout } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 export default function UserDashboard() {
+    const [loading, setLoading]=useState(false);
+    const [logoutisSuccess,setlogoutisSuccess]=useState(false);
+    const navigate=useNavigate();
+    const GoToLogIn=()=>{
+        navigate("/GetStarted", {state:{message:"You have been logged out successfully. Please log in again."}});
+    };
+    // api/auth/logout
+const logoutUser = async () => {
+  const token=localStorage.getItem("token")?.trim();
+  if (!token) {
+    console.log("Token is missing from localStorage");
+    //GoToLogIn();
+    return;
+  }
+  try {
+    setLoading(true);
+    const response = await axios.post(
+      "https://zoological-flow-production-40af.up.railway.app/api/auth/logout",
+      {},
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    setlogoutisSuccess(true)
+    console.log("Logout response:", response.data);
+    //remove token from local storage and navigate to login page
+    localStorage.removeItem("token");
+    GoToLogIn();
+  } catch (error) {
+    console.error("Logout status:", error.response?.status);
+    console.error("Logout response:", error.response?.data);
+  } finally {
+    setLoading(false);
+  }
+};
+
     return (
         <div className="ahm-userDashboard">
             <div className='ahm-userdetails'>
@@ -27,11 +67,11 @@ export default function UserDashboard() {
                         <FaPen className='ahm-userDashboard-icons'/>
                         <p className='ahm-userName'> Update Email | Password  </p>
                     </Link>
-                    
-
-                    <div className='ahm-userInfoItem ahm-userInfoActive ahm-logout' >
+                    {/*className='ahm-userInfoItem ahm-userInfoActive ahm-logout'  */}
+                    <div  className='Ali-logout'>
                         <MdLogout className='ahm-userDashboard-icons'/>
-                        <p className='ahm-userName'> Log out </p>
+                        <button disabled={loading}  className='Ali-logoutButton' onClick={logoutUser}>{loading ? "Logging out...":"Log out"}</button>
+                        {logoutisSuccess &&<p className="Ali-logout-message"> Logout Successed. please log in</p>}
                     </div>
                     
 

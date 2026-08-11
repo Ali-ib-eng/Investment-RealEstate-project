@@ -55,14 +55,41 @@
 .ahm-userInfoActive:hover{
     background-color: var(--on-tertiary-container)
 }
-.ahm-logout{
+/*.ahm-logout{
     background-color: var(--error) !important;
     color : white !important;
 }
 .ahm-logout:hover {
     background-color: var(--on-error-container) !important;
 }
-
+*/
+.Ali-logout{
+    display: flex;
+    gap: 10px;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--error) !important;
+    color : white !important;
+}
+.Ali-logoutButton{
+    border: none;
+     background-color: var(--error) !important;
+    color : white !important;
+}
+/*.Ali-logout-message{
+  width: 50%;
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(128, 0, 0);
+        color:var(--on-secondary);
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 1000;
+}*/
 .ahm-userDashboard-investment{
     background-color: var(--surface-container-high);
     width: 55%;
