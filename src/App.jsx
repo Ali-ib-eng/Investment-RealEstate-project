@@ -11,6 +11,7 @@ import logoImg from "/IMG-homePage/pro-logo.png";
 import { useEffect, useState } from "react";
 import GetStarted from "./pages/GetStarted";
 import UpdatePassword from "./components/updateAccount/updateAccount";
+import FormForInverstorData from "./components/formForInverstorData/formForInverstorData";
 //auto transform
 function ProtectedRoute({ children }) {
   const token=localStorage.getItem("token")?.trim();
@@ -146,6 +147,10 @@ function App() {
         <Route
           path="*"
           element={<Navigate to="/getStarted" replace />}
+        />
+        <Route
+          path="/formForInverstorData"
+          element={<FormForInverstorData />}
         />
       </Routes>
 

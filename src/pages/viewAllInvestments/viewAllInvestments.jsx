@@ -85,17 +85,21 @@ export default function viewAllInvestments(){
                         <p className='ahm-progressPercent2'></p>
                     </div>
                     <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
+                    
                         <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
+                        
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
                 </div>
+                
                 
                 
                 <div className='ahm-card '> 
                     <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
                     <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
+                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
                         <p className=''>18%</p>
                     </div>
                     <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
@@ -107,17 +111,21 @@ export default function viewAllInvestments(){
                         <p className='ahm-progressPercent2'></p>
                     </div>
                     <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
+                    
                         <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
+                        
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
                 </div>
+                
                 
                 
                 <div className='ahm-card '> 
                     <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
                     <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
+                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
                         <p className=''>18%</p>
                     </div>
                     <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
@@ -129,17 +137,21 @@ export default function viewAllInvestments(){
                         <p className='ahm-progressPercent2'></p>
                     </div>
                     <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
+                    
                         <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
+                        
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
                 </div>
+                
                 
                 
                 <div className='ahm-card '> 
                     <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
                     <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
+                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
                         <p className=''>18%</p>
                     </div>
                     <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
@@ -151,14 +163,43 @@ export default function viewAllInvestments(){
                         <p className='ahm-progressPercent2'></p>
                     </div>
                     <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
+                    
                         <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
+                        
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
                 </div>
                 
-
-            </div>
+                
+                
+                <div className='ahm-card '> 
+                    <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
+                    <div className=' ahm-infoCard '>
+                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
+                        <p className=''>18%</p>
+                    </div>
+                    <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
+                    <div className='ahm-progress '>
+                        <p>Progress</p>
+                        <p>75%</p>
+                    </div>
+                    <div className='ahm-progressPercent'>
+                        <p className='ahm-progressPercent2'></p>
+                    </div>
+                    <hr className='ahm-line  '/>
+                    
+                        <p className=' ahm-investmentCost'>2500 $</p>
+                        
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
+                </div>
+                
+                
+                </div>
         );
     }
 

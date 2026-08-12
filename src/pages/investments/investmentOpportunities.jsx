@@ -9,6 +9,8 @@ import GetStartGuide from '../getStartGuide/getStartGuide'
 import InteractiveMap from '../interactiveMap/interactiveMap'
 import AboutPartners from '../aboutPartners/aboutPartners'
 
+import { Link } from 'react-router-dom'
+
 export default function InvestmentOpportunites (){
     const navigate = useNavigate();
 
@@ -50,21 +52,14 @@ export default function InvestmentOpportunites (){
                             <img src={investment.image} alt='invest img' className='ahm-imageCard  '/> 
                             <div className=' ahm-infoCard '>
                                 <h3 className=' '>{investment.title}</h3>
-                                <p className=''>{investment.parcent}</p>
                             </div>
                             <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
-                            <div className='ahm-progress '>
-                                <p>Progress</p>
-                                <p>{investment.progress}</p>
-                            </div>
-                            <div className='ahm-progressPercent'>
-                                <p  className='ahm-progressPercent2' ></p>
-                            </div>
+                            
                             <hr className='ahm-line '/>
-                            <div className='ahm-costContainer'>
                                 <p className='ahm-investmentCost '>{investment.cost}$</p>
-                                <p className='ahm-detailsBtn '>Details <FaChevronRight /> </p>
-                            </div>
+                            <button  className='ahm-buyBTN'>
+                                <Link to='/formForInverstorData' className='ahm-linkForBuyBTN'>Buy</Link>
+                            </button>
                         </div>
                     ))
                 }
@@ -92,10 +87,12 @@ export default function InvestmentOpportunites (){
                         <p  className= 'ahm-progressPercent2' ></p>
                     </div>
                     <hr className='ahm-line '/>
-                    <div className='ahm-costContainer'>
+                    
                         <p className='ahm-investmentCost  '>{investmentsData[counterForIvestCard].cost}$</p>
-                        <p className='ahm-detailsBtn '>Details <FaChevronRight /> </p>
-                    </div>
+                        <button  className='ahm-buyBTN'>
+                            Buy
+                        </button>
+                    
                 </div>
 
                 <hr />

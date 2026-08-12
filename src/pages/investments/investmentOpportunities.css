@@ -100,31 +100,34 @@
 .ahm-line{
     margin: 20px 0px 10px; 
 }
-.ahm-costContainer{
-    padding:0px 20px;
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.ahm-detailsBtn{
-    padding:5px 10px;
-    display: flex;
-    gap:5px;
-    align-items: center;
-    color: #888888;
-}
-.ahm-detailsBtn:hover{
-    color:black;
-    cursor: pointer;
-    border-radius: 10px;
-    
-    background-color: rgba(128, 128, 128, 0.24);
-}
 
 .ahm-investmentCost{
+    margin:10px;
     font-size: 25px;
     font-weight: bold;
+}
+
+.ahm-buyBTN{
+    all: unset;
+    background-color: rgb(68, 68, 255);
+    padding: 10px 0px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.ahm-linkForBuyBTN {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+}
+.ahm-buyBTN:hover{
+    background-color: rgb(22, 22, 255);
 }
 
 .ahm-investCardForMobile{
