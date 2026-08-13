@@ -124,7 +124,8 @@
 .ahm-linkForBuyBTN {
     text-decoration: none;
     color: white;
-    background-color: red;
+
+    padding:10px 85px;
 }
 .ahm-buyBTN:hover{
     background-color: rgb(22, 22, 255);

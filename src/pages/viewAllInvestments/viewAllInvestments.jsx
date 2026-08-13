@@ -21,7 +21,8 @@ export default function viewAllInvestments(){
 
     useEffect(()=>{
         const getData = async()=>{
-            const response = await axios.get('https://zoological-flow-production-40af.up.railway.app/api/investments');
+            const response = 
+                await axios.get('https://zoological-flow-production-40af.up.railway.app/api/investments');
             setData(response.data);
             console.log(response.data)
         }
