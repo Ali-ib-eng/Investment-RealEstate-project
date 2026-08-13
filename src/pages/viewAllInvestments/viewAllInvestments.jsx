@@ -14,22 +14,41 @@ export default function viewAllInvestments(){
     const [data, setData] = useState([]);
 
     const [searchData, setSearchData] = useState(null)
+    const [isSearching, setIsSearching] = useState(false);
+
+    const [dataAfterFilter, setDataAfterFilter] = useState([]);
 
     const location = useLocation();
     const navigate = useNavigate();
     
 
     useEffect(()=>{
-        const getData = async()=>{
-            const response = 
-                await axios.get('https://zoological-flow-production-40af.up.railway.app/api/projects');
-            setData(response.data.data);
-            console.log(response.data.data)
+        try{
+            const getData = async()=>{
+                const response = 
+                    await axios.get('https://zoological-flow-production-40af.up.railway.app/api/projects');
+                setData(response.data.data);
+                console.log(response.data.data);
+
+                const formData= location.state?.formData
+                formData === undefined ? null : setIsSearching(true)
+                const filteredData = response.data.data.filter(item => {
+                    const locationTest = item.location.toLowerCase() === formData.location.toLowerCase();
+                    const moneyTest = parseFloat( item.total_budget ) <= parseFloat(formData.budget)
+                    return locationTest && moneyTest;
+                    // return item.location.toLowerCase() === (formData).location.toLowerCase();
+                })
+                setDataAfterFilter(filteredData)
+            }
+            getData();
+            
+            // const formData= location.state?.formData
+            // setSearchData(formData);
+            // (location.state?.formData) === undefined ? null: filteringData();
+        }catch(error){
+            console.log(error)
         }
-        getData();
-        const formData = location.state?.formData || null;
-        setSearchData(formData);
-        
+
     },[])
 
 
@@ -47,6 +66,17 @@ export default function viewAllInvestments(){
         // });
         // setSearchData(filteredData);
     }
+
+    // const filteringData =()=>{
+    //     const filteredData = data.filter(item => {
+    //         // const locationTest = item.location.toLowerCase() === searchData.location.toLowerCase();
+    //         // const moneyTest = parseFloat( item.total_budget ) <= parseFloat(searchData.budget)
+    //         // return locationTest && moneyTest;
+    //         return item.location.toLowerCase() === searchData.location.toLowerCase();
+    //     })
+    //     console.log(filteredData)
+    //     setDataAfterFilter(filteredData);
+    // }
 
     const SearchForm=()=>{
         return(
@@ -73,7 +103,7 @@ export default function viewAllInvestments(){
                 {
                     data.length>0 && data.map((investment)=>(
                         <div className='ahm-card ' key={investment.id}> 
-                            <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
                             <div className=' ahm-infoCard '>
                                 <h3 className='ah-h3-card'>{investment.name}</h3>
                             </div>
@@ -91,16 +121,34 @@ export default function viewAllInvestments(){
                     ))
                 }
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                </div>
+        );
+    }
+
+    const filteredData = ()=>{
+        return(
+            <div className='ahm-InvestmentOpportunitesList '>
+
+                {
+                    dataAfterFilter.length>0 && dataAfterFilter.map((investment)=>(
+                        <div className='ahm-card ' key={investment.id}> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
+                            <div className=' ahm-infoCard '>
+                                <h3 className='ah-h3-card'>{investment.name}</h3>
+                            </div>
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            
+                            <hr className='ahm-line  '/>
+                            
+                                <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
+                                
+                                <button  className='ahm-buyBTN'>
+                                    Buy
+                                </button>
+                            
+                        </div>
+                    ))
+                }
                 
                 </div>
         );
@@ -114,7 +162,7 @@ export default function viewAllInvestments(){
             </div>
             <hr className='ahm-lineInViewAll'/>
             { searchData == null ? SearchForm():''}
-            {InvestmentOpportunitesList()}
+            {isSearching == true ?  filteredData():InvestmentOpportunitesList() }
         </div>
     )
 }
