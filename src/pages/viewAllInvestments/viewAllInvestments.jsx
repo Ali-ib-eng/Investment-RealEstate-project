@@ -60,46 +60,40 @@ export default function viewAllInvestments(){
     })
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     const searchHandler = ()=>{
-        if( SearchValue.location === '' && SearchValue.money === '' ){
-            alert('please enter location or money');
-        }
-        else {
-            console.log(data)
-            console.log(SearchValue)
-            const filteredData = data.filter(item => {
-                const locationTest = item.location.toLowerCase() === SearchValue.location.toLowerCase();
-                const moneyTest = parseFloat( item.total_budget ) <= parseFloat(SearchValue.money)
-                return locationTest && moneyTest;
-            })
-            console.log(filteredData);
-
-            return(
-                <div className='ahm-InvestmentOpportunitesList '>
     
-                    {
-                        filteredData.length>0 && filteredData.map((investment)=>(
-                            <div className='ahm-card ' key={investment.id}> 
-                                {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
-                                <div className=' ahm-infoCard '>
-                                    <h3 className='ah-h3-card'>{investment.name}</h3>
-                                </div>
-                                <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
-                                
-                                <hr className='ahm-line  '/>
-                                
-                                    <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
-                                    
-                                    <button  className='ahm-buyBTN'>
-                                        Buy
-                                    </button>
-                                
+        const filteredData = data.filter(item => {
+            const locationTest = item.location.toLowerCase() === SearchValue.location.toLowerCase();
+            const moneyTest = parseFloat( item.total_budget ) <= parseFloat(SearchValue.money)
+            return locationTest && moneyTest;
+        })
+
+        return(
+            <div className='ahm-InvestmentOpportunitesList '>
+
+                {
+                    filteredData.length>0 && filteredData.map((investment)=>(
+                        <div className='ahm-card ' key={investment.id}> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
+                            <div className=' ahm-infoCard '>
+                                <h3 className='ah-h3-card'>{investment.name}</h3>
                             </div>
-                        ))
-                    }
-                    
-                    </div>
-            );
-        }
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            
+                            <hr className='ahm-line  '/>
+                            
+                                <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
+                                
+                                <button  className='ahm-buyBTN'>
+                                    Buy
+                                </button>
+                            
+                        </div>
+                    ))
+                }
+                
+                </div>
+        );
+    
     }
 
 
@@ -108,7 +102,10 @@ export default function viewAllInvestments(){
             <div className='ahm-formContainerVeiwAll'>
                 <div className='ahm-searchContainer '>
                     <input onChange={e=>setSearchValue({...SearchValue, money:e.target.value})} className='ahm-input ' placeholder='money...' />
-                    <div onClick={()=> (searchHandler, setIsInnerSearching(true)) } className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                    {SearchValue.location == '' || SearchValue.money=='' ?  
+                        <div style={{color:'red', opacity:'0.2', cursor:'auto'}} className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                        :<div onClick={()=> (searchHandler, setIsInnerSearching(true)) } className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                    }
                 </div>
                 <select onChange={(e)=>setSearchValue({...SearchValue, location:e.target.value})} className='ahm-selectLocation '>
                     <option value=''>select Location</option>
