@@ -23,10 +23,11 @@ label{
     color: black;
     margin: 10px 0%;
 }
-.ahm-formForInverstorData-Form input{
+.ahm-formForInverstorData-Form input ,
+.ahm-formForInverstorData-Form select{
     padding: 5px;
     font-size: 18px;
-    color:white;
+    /* color:white; */
     background-color: white;
     border-radius: 10px;
     border : none;

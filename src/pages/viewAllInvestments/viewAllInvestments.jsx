@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react';
 import { FaChevronLeft, FaSearch,FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
 import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
 import './viewAllInvestments.css'
@@ -58,7 +58,7 @@ export default function viewAllInvestments(){
         location:'',
         money:'',
     })
-////////////////////////////////////////////////////////////////////////////////////////////////////
+
     const searchHandler = ()=>{
     
         const filteredData = data.filter(item => {
@@ -83,8 +83,10 @@ export default function viewAllInvestments(){
                             
                                 <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
                                 
-                                <button  className='ahm-buyBTN'>
-                                    Buy
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
                                 </button>
                             
                         </div>
@@ -135,8 +137,10 @@ export default function viewAllInvestments(){
                             
                                 <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
                                 
-                                <button  className='ahm-buyBTN'>
-                                    Buy
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
                                 </button>
                             
                         </div>
@@ -164,8 +168,10 @@ export default function viewAllInvestments(){
                             
                                 <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
                                 
-                                <button  className='ahm-buyBTN'>
-                                    Buy
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
                                 </button>
                             
                         </div>

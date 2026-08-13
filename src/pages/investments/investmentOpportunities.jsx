@@ -1,15 +1,12 @@
 import { useState,useEffect } from 'react'
 import {FaArrowRight, FaMapMarkerAlt, FaChevronRight, FaArrowCircleLeft, FaArrowCircleRight  } from 'react-icons/fa'
-import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
-import CentralBusinessTower from '/IMG-homePage/CentralBusinessTower.png'
-import JasmineResidentialComplex from '/IMG-homePage/JasmineResidentialComplex.png'
+
 import {useNavigate} from 'react-router-dom'
 import './investmentOpportunities.css'
 import GetStartGuide from '../getStartGuide/getStartGuide'
 import InteractiveMap from '../interactiveMap/interactiveMap'
 import AboutPartners from '../aboutPartners/aboutPartners'
 
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default function InvestmentOpportunites (){
@@ -52,8 +49,10 @@ export default function InvestmentOpportunites (){
                             
                                 <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
                                 
-                                <button  className='ahm-buyBTN'>
-                                    Buy
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
                                 </button>
                             
                         </div>
@@ -80,16 +79,18 @@ export default function InvestmentOpportunites (){
                     <hr className='ahm-line '/>
                     
                         <p className='ahm-investmentCost  '>{investmentsData[counterForIvestCard].total_budget}$</p>
-                        <button  className='ahm-buyBTN'>
-                            Buy
+                        <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                            
+                                Buy
+                            
                         </button>
                     
                 </div>
 
                 <hr />
                 <div className='ahm-arrowContainer'>
-                    <FaArrowCircleLeft className='ahm-arrows' onClick={()=>( counterForIvestCard===0 ? setCounterForIvestCard(investmentsData.length-1): setCounterForIvestCard(counterForIvestCard-1) )} />
-                    <FaArrowCircleRight className='ahm-arrows' onClick={()=>( counterForIvestCard===investmentsData.length-1 ? setCounterForIvestCard(0): setCounterForIvestCard(counterForIvestCard +1) )} />
+                    <FaArrowCircleLeft className='ahm-arrows' onClick={()=>( counterForIvestCard===0 ? setCounterForIvestCard(2 || investmentsData.length-1): setCounterForIvestCard(counterForIvestCard-1) )} />
+                    <FaArrowCircleRight className='ahm-arrows' onClick={()=>( counterForIvestCard===2|| counterForIvestCard===investmentsData.length-1 ? setCounterForIvestCard(0): setCounterForIvestCard(counterForIvestCard +1) )} />
                 </div>
             </div>
             }
