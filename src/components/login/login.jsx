@@ -64,7 +64,7 @@ const GoToLogHome=()=>{
                 errorMessage:'Login failed. Please check your credentials and try again.'
             })
         }
-        finally{
+        finally{//ايقاف الطلب وحتى بعد الفشل
             setLoading(false);
         }
     }

@@ -1,9 +1,9 @@
 import partnerImage from '/IMG-homePage/Eng1.png'
 import './aboutPartners.css'
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 export default function AboutPartners (){
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const partnersList =()=>{
         return(
@@ -48,7 +48,7 @@ export default function AboutPartners (){
         );
     }
     
-    const encourageCustomerToBeInvestor =()=>{
+    /*const encourageCustomerToBeInvestor =()=>{
         return (
             <div className='ahm-joinPartContainer'>
                 <h1 className='ahm-h1'>Be Part Of Reconstruction History</h1>
@@ -59,12 +59,12 @@ export default function AboutPartners (){
                 </div>
             </div>
         );
-    }
+    }*/
 
     return (
         <>
             {partnersList()}
-            {encourageCustomerToBeInvestor()}
+            {/*encourageCustomerToBeInvestor()*/}
         </>
     );
 }
