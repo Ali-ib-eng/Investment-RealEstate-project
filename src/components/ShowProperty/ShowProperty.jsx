@@ -12,9 +12,9 @@ const ShowProperty = () => {
         try{
             
             //const res=await axios.get("https://pogo-exponent-jiffy.ngrok-free.dev/api/projects/1")
-            const res=await axios.get("https://jsonplaceholder.typicode.com/todos")
-            console.log(res);
-            setProperty(res.data);
+            const res=await axios.get("https://zoological-flow-production-40af.up.railway.app/api/properties")
+            console.log(res.data.data);
+            setProperty(res.data.data);
             if(res){setLoading(false);}
         }catch(err){
             console.log( err);

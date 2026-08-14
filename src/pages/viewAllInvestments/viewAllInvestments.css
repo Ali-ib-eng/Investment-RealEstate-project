@@ -33,6 +33,7 @@
     color: #888888;
     border: none;
     width: 395px;
+    /* width: 100%; */
     /* background-color: green; */
 }
 .ahm-searchContainer{
@@ -55,18 +56,21 @@
     width: 100%;
     color: #858484;
     border: none;
+    /* background-color: red; */
 }
 .ahm-formContainerVeiwAll{
     /* display: flex; */
     /* background-color: red; */
+    width: 100%;
     align-items: center;
     gap:5px;
     justify-content: center;
     text-align: center;
 }
 .ahm-containerSearchIcon{
-    padding:0px 5px 0px 15px;
-    color:rgb(228, 228, 27);
+    width: fit-content;
+    padding:5px 5px 5px 15px;
+    color:rgb(190, 190, 0);
     /* border-right: 1px solid black ; */
     /* background-color: rgba(226, 223, 223, 0.411); */
     width: fit-content;
@@ -74,6 +78,7 @@
     cursor: pointer;
     position: absolute;
     left:0px;
+    /* background-color: red; */
 }
 
 .ahm-InvestmentOpportunitesList{
@@ -90,6 +95,9 @@
 }
 
 @media  (max-width:992px){
+    .ahm-searchContainer{
+        width:100%
+    }
     .ahm-formContainerVeiwAll{
         display: block;
         width: 100%;
@@ -99,7 +107,7 @@
     }
     .ahm-selectLocation{
         width: 80%;
-        margin-left: 10%;
+        /* margin-left: 10%; */
         margin-top:3px;
         margin-bottom:3px;
     }
@@ -110,7 +118,7 @@
         margin-bottom:3px;
     }
     .ahm-containerSearchIcon{
-        width: 80%;
+        /* width: 80%; */
         margin-left: 10%;
         margin-top:3px;
         margin-bottom:3px;
@@ -140,7 +148,7 @@
     }
     .ahm-selectLocation{
         width: 80%;
-        margin-left: 10%;
+        /* margin-left: 10%; */
         margin-top:3px;
         margin-bottom:3px;
     }
@@ -151,7 +159,7 @@
         margin-bottom:3px;
     }
     .ahm-containerSearchIcon{
-        width: 80%;
+        /* width: 80%; */
         margin-left: 10%;
         margin-top:3px;
         margin-bottom:3px;

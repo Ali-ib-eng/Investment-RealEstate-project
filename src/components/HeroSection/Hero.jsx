@@ -1,7 +1,11 @@
 import {useEffect, useState } from "react"
 import "./Hero.css"
 import { FaSearch} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 const Hero = ({title,paragraph,searchBtn}) => {
+    const navigate = useNavigate();
+
     const [form,setForm]=useState({
         location:"",
         type:"",
@@ -26,6 +30,8 @@ const handleSearch=()=>{
         type:"",
         budget:""
     })
+    form.location==""||form.type==""||form.budget==""?setError("Please fill all the fields"):
+    navigate('/viewAllInvestments', {state:{formData:form}});
 }
 useEffect(()=>{
     if(error){

@@ -1,28 +1,102 @@
 import {useEffect,useState} from 'react';
 import { FaChevronLeft, FaSearch,FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa';
 import GoldenBeachImage from '/IMG-homePage/Golden Beach Resort.png'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 import './viewAllInvestments.css'
 import '../investments/investmentOpportunities.css'
 import axios from 'axios';
 
+
+
 export default function viewAllInvestments(){
     const [data, setData] = useState([]);
+
+    const [searchData, setSearchData] = useState(null)
+    const [isSearching, setIsSearching] = useState(false);
+    const [isInnerSearching, setIsInnerSearching]= useState(false)
+
+    const [dataAfterFilter, setDataAfterFilter] = useState([]);
+    const [dataAfterSearch, setDataAfterSearch] = useState([]);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+
     useEffect(()=>{
-        const getData = async()=>{
-            const response = await axios.get('https://zoological-flow-production-40af.up.railway.app/api/investments');
-            setData(response.data);
+        try{
+            const getData = async()=>{
+                const response = 
+                    await axios.get('https://zoological-flow-production-40af.up.railway.app/api/projects');
+                setData(response.data.data);
+                console.log(response.data.data);
+
+                const formData= location.state?.formData
+                formData === undefined ? null : setIsSearching(true)
+                if(formData !== undefined){
+                    const filteredData = response.data.data.filter(item => {
+                        const locationTest = item.location.toLowerCase() === formData.location.toLowerCase();
+                        const moneyTest = parseFloat( item.total_budget ) <= parseFloat(formData.budget)
+                        return locationTest && moneyTest;
+                        // return item.location.toLowerCase() === (formData).location.toLowerCase();
+                    })
+                    setDataAfterFilter(filteredData)
+                }
+            }
+            getData();
+
+        }catch(error){
+            console.log(error)
         }
-        getData();
+
     },[])
 
 
-    const navigate = useNavigate();
+    
     const [SearchValue, setSearchValue] = useState({
         location:'',
         money:'',
     })
+
+    const searchHandler = ()=>{
+    
+        const filteredData = data.filter(item => {
+            const locationTest = item.location.toLowerCase() === SearchValue.location.toLowerCase();
+            const moneyTest = parseFloat( item.total_budget ) <= parseFloat(SearchValue.money)
+            return locationTest && moneyTest;
+        })
+
+        return(
+            <div className='ahm-InvestmentOpportunitesList '>
+
+                {
+                    filteredData.length>0 && filteredData.map((investment)=>(
+                        <div className='ahm-card ' key={investment.id}> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
+                            <div className=' ahm-infoCard '>
+                                <h3 className='ah-h3-card'>{investment.name}</h3>
+                            </div>
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            
+                            <hr className='ahm-line  '/>
+                            
+                                <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
+                                
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
+                                </button>
+                            
+                        </div>
+                    ))
+                }
+                
+                </div>
+        );
+    
+    }
 
 
     const SearchForm=()=>{
@@ -30,13 +104,16 @@ export default function viewAllInvestments(){
             <div className='ahm-formContainerVeiwAll'>
                 <div className='ahm-searchContainer '>
                     <input onChange={e=>setSearchValue({...SearchValue, money:e.target.value})} className='ahm-input ' placeholder='money...' />
-                    <div className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                    {SearchValue.location == '' || SearchValue.money=='' ?  
+                        <div style={{color:'red', opacity:'0.2', cursor:'auto'}} className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                        :<div onClick={()=> (searchHandler, setIsInnerSearching(true)) } className='ahm-containerSearchIcon'> <FaSearch className='ahm-searchIcon'/> </div>
+                    }
                 </div>
                 <select onChange={(e)=>setSearchValue({...SearchValue, location:e.target.value})} className='ahm-selectLocation '>
                     <option value=''>select Location</option>
                     <option value='lattakia'>Lattakia</option>
                     <option value='aleppo'>Aleppo</option>
-                    <option value='damascuse'>Damascuse</option>
+                    <option value='damascus'>Damascus</option>
                 </select> <br/>
                 
             </div>
@@ -47,96 +124,61 @@ export default function viewAllInvestments(){
         return(
             <div className='ahm-InvestmentOpportunitesList '>
 
+                {
+                    data.length>0 && data.map((investment)=>(
+                        <div className='ahm-card ' key={investment.id}> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
+                            <div className=' ahm-infoCard '>
+                                <h3 className='ah-h3-card'>{investment.name}</h3>
+                            </div>
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            
+                            <hr className='ahm-line  '/>
+                            
+                                <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
+                                
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
+                                </button>
+                            
+                        </div>
+                    ))
+                }
                 
-                <div className='ahm-card '> 
-                    <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
-                    <div className=' ahm-infoCard '>
-                        <h3 className='ah-h3-card'>Golden Beach Resort</h3>
-                        <p className=''>18%</p>
-                    </div>
-                    <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
-                    <div className='ahm-progress '>
-                        <p>Progress</p>
-                        <p>75%</p>
-                    </div>
-                    <div className='ahm-progressPercent'>
-                        <p className='ahm-progressPercent2'></p>
-                    </div>
-                    <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
-                        <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
                 </div>
-                
-                
-                <div className='ahm-card '> 
-                    <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
-                    <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
-                        <p className=''>18%</p>
-                    </div>
-                    <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
-                    <div className='ahm-progress '>
-                        <p>Progress</p>
-                        <p>75%</p>
-                    </div>
-                    <div className='ahm-progressPercent'>
-                        <p className='ahm-progressPercent2'></p>
-                    </div>
-                    <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
-                        <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
-                </div>
-                
-                
-                <div className='ahm-card '> 
-                    <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
-                    <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
-                        <p className=''>18%</p>
-                    </div>
-                    <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
-                    <div className='ahm-progress '>
-                        <p>Progress</p>
-                        <p>75%</p>
-                    </div>
-                    <div className='ahm-progressPercent'>
-                        <p className='ahm-progressPercent2'></p>
-                    </div>
-                    <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
-                        <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
-                </div>
-                
-                
-                <div className='ahm-card '> 
-                    <img src={GoldenBeachImage} alt='invest img' className='ahm-imageCard  '/> 
-                    <div className=' ahm-infoCard '>
-                        <h3 className=''>Golden Beach Resort</h3>
-                        <p className=''>18%</p>
-                    </div>
-                    <p className='ahm-investLocation '> <FaMapMarkerAlt /> Location</p>
-                    <div className='ahm-progress '>
-                        <p>Progress</p>
-                        <p>75%</p>
-                    </div>
-                    <div className='ahm-progressPercent'>
-                        <p className='ahm-progressPercent2'></p>
-                    </div>
-                    <hr className='ahm-line  '/>
-                    <div className='ahm-costContainer'>
-                        <p className=' ahm-investmentCost'>2500 $</p>
-                        <p className='ahm-detailsBtn  '>Details <FaChevronRight /> </p>
-                    </div>
-                </div>
-                
+        );
+    }
 
-            </div>
+    const filteredData = ()=>{
+        return(
+            <div className='ahm-InvestmentOpportunitesList '>
+
+                {
+                    dataAfterFilter.length>0 && dataAfterFilter.map((investment)=>(
+                        <div className='ahm-card ' key={investment.id}> 
+                            {/* <img src={investment.image} alt='invest img' className='ahm-imageCard  '/>  */}
+                            <div className=' ahm-infoCard '>
+                                <h3 className='ah-h3-card'>{investment.name}</h3>
+                            </div>
+                            <p className='ahm-investLocation '> <FaMapMarkerAlt /> {investment.location}</p>
+                            
+                            <hr className='ahm-line  '/>
+                            
+                                <p className=' ahm-investmentCost'>{investment.total_budget} $</p>
+                                
+                                <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                                    
+                                        Buy
+                                    
+                                </button>
+                            
+                        </div>
+                    ))
+                }
+                
+                </div>
         );
     }
 
@@ -147,8 +189,10 @@ export default function viewAllInvestments(){
                 <p  className=''>All Investment Opportunties</p>
             </div>
             <hr className='ahm-lineInViewAll'/>
-            {SearchForm()}
-            {InvestmentOpportunitesList()}
+            { searchData == null ? SearchForm():''}
+            {isSearching == true ?  filteredData():'' }
+            {isInnerSearching == true ? searchHandler():''}
+            {isInnerSearching == false && isSearching == false ? InvestmentOpportunitesList():''}
         </div>
     )
 }
