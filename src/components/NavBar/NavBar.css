@@ -64,6 +64,16 @@
     font-size: 16px;
     cursor: pointer;
 }
+.logout-btn-desktop{
+    padding: 0.625rem 1.5rem;
+    background-color:var(--error);
+    color:var(--on-error);
+    border: none;
+    border-radius:0.5rem ;
+    opacity: 0.9;
+    font-size: 16px;
+    cursor: pointer;
+}
 .dark-light-Mode-DesktopBtn{
   padding: 0.625rem 1.5rem;
     background-color:var(--getStaredbutton);
@@ -82,19 +92,17 @@
   color: var(--on-error);
 }
 
-.user-btn-desktop{
-  /* background-color: red; */
-  display: flex;
-  justify-content: center;
+.start-btn-desktop,
+.start-btn-mobile {
+  display: inline-flex;
   align-items: center;
-  padding: 3px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+  justify-content: center;
+  gap: 8px;
 }
-.user-btn-desktop .ahm-user-icon{
-  color: var(--primary);
-  font-size: 30px;
+.start-btn-desktop:disabled,
+.start-btn-mobile:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .mobile-menu {
@@ -118,8 +126,8 @@
   margin-left:10px ;
   padding: 10px 0;
   border-radius: 6px;
-  background-color:var(--primary-container);
-  background: linear-gradient(135deg, #182bffc9, #4a47ff);
+  background-color:var(--error);
+  /*background: linear-gradient(135deg, #182bffc9, #4a47ff);*/
   transition: all 0.3s ease;
   border: none;
   color: white;
@@ -131,7 +139,7 @@
 .dark-light-Mode-MobileBtn{
   width: 99%;
   margin-left:10px ;
-  padding: 20px 0;
+  padding: 10px 0;
   border-radius: 6px;
   margin-top: 4px;
   border: none;

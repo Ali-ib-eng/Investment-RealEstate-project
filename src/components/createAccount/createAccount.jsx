@@ -180,7 +180,7 @@ const handleCreateAccount=async()=>{
                     </div>
                     <input disabled={ErrorInput.isErrorInput} checked={newAccountData.isAgreeToConditions} onChange={()=>setNewAccountData({...newAccountData, isAgreeToConditions:!newAccountData.isAgreeToConditions})} type='checkbox' style={{ width:'fit-content', margin:'10px 0px'}}/> 
                     <label  style={{fontSize:'11px', width:"fit-content", margin:'10px 0px 10px 5px'}}>I agree to the terms of service and privacy policy</label><br />
-                    <button  disabled={ErrorInput.isErrorInput} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? <>{"Creating account Now..."} </>:"Create Account"}</button>
+                    <button  disabled={ErrorInput.isErrorInput || loading} onClick={handleCreateAccount} type='button' className='ahm-loginBtn'>{loading ? <>{"Creating account Now..."} </>:"Create Account"}</button>
                     {createAccountSuccess && <p className="Ali-googleAndAccountAuth">Account created successfully! Please log in.</p>}
                     
                 </form>
