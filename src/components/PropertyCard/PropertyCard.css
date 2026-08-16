@@ -58,6 +58,10 @@
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
+.Ali-PropertyCard h2,
+.Ali-PropertyCard h4{
+  padding: 5px 10px;
+}
 .ahm-nameContainer {
   padding-top: 16px !important;
   color: var(--on-surface) !important;

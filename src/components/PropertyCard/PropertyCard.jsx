@@ -11,8 +11,10 @@ const PropertyCard = ({property}) => {
                 <img src={property.image} alt={property.title} className="Ali-PropertyCardImage" />
             </div>
 
-            <p className="ahm-nameContainer"> {property.project.name}</p>
+            <h2 className="ahm-nameContainer"> {property.project.name}</h2>
+            <h4>{property.title} </h4>
             <p>{property.project.location} , {property.area}</p>
+            
             <p>type: {property.type} </p>
 
             <p className="ahm-priceContainer"> {property.price} $</p>
