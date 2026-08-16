@@ -4,35 +4,70 @@ import './formForInverstorData.css';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
+import axios from "axios";
+
 export default function FormForInverstorData(){
     const navigate = useNavigate();
     const location = useLocation();
     const [productID, setProductID] = useState(null);
-
-    useEffect(()=>{
-        const id = location.state?.id;
-        setProductID(id);
-        console.log(id);
-    },[])
+    const [token, setToken] = useState(null);
     const [data, setData]= useState({
         email:'',
         name:'',
         phone:'',
         amount:0,
-        paymentType:''
+        paymentType:'',
+        payment_date:''
     });
+
+    useEffect(()=>{
+        const id = location.state?.id;
+        setProductID(parseInt(id));
+        console.log(id);
+        setData({
+            ...data,
+            payment_date: new Date().toISOString().substring(0, 10)
+        })
+        const fetchToken = localStorage.getItem('token');
+        setToken(fetchToken);
+    },[])
+    
     const [isError, setIsError] = useState(false);
 
     const submitHandler = (e)=>{
         e.preventDefault();
+        
         console.log(data);
         if(data.email=='' || data.name=='' || data.phone=='' || data.amount==0 || data.paymentType==""){
             setIsError(true);
         }
         else{
             setIsError(false);
-            // send data to server
+            
+            postData();
             console.log('data sent to server');
+        }
+    }
+
+    const postData = async()=>{
+        try{
+            const posting = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/payments`, {
+                investment_id:productID,
+                amount:parseInt(data.amount),
+                payment_type:data.paymentType,
+                payment_date:data.payment_date,
+                status:'paid'
+            },
+                {
+                    headers:{
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                console.log(posting.data);
+        }catch(err){
+            console.log(err.response.data);
         }
     }
 

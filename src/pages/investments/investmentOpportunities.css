@@ -44,6 +44,10 @@
     justify-content: space-evenly;
     
 }
+.ahm-card:hover{
+    transform: translateY(-5px);
+  box-shadow: 0 10px 24px var(--cardshadowonY);
+}
 .ahm-card{
     margin: 10px 0;
     height: 470px;
@@ -51,6 +55,9 @@
     border-radius: 10px;
     box-shadow: 5px 5px 10px #888888;
     /* background-color: #dad7d7; */
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .ahm-imageCard{
     height:50%;
