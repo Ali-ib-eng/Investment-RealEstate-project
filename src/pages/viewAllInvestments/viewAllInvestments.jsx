@@ -61,6 +61,7 @@ function SearchForm({
 function InvestmentOpportunitesList({ investments, onBuy }) {
   return (
     <div className="ahm-InvestmentOpportunitesList">
+      {investments.length === 0 &&  <h1 style={{textAlign:'center', fontWeight:'bold'}} >No investment opportunities found yet ...</h1>}
       {investments.map((investment) => (
         <div className="ahm-card" key={investment.id}>
           

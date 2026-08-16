@@ -112,8 +112,10 @@ export default function InvestmentOpportunites (){
                     <p >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam in id voluptatibus impedit.</p>
                     <button onClick={()=>navigate('/viewAllInvestments')} className='ahm-veiwAll'>View All <FaArrowRight /></button> 
                 </div>
+                {investmentsData.length===0 && !loading && <h1 style={{textAlign:'center', fontWeight:'bold'}} >No investment opportunities found yet ...</h1>}
                 {investCard()}
                 {investCardForMobile()}
+                
             </div>
             <GetStartGuide />
             <InteractiveMap />
