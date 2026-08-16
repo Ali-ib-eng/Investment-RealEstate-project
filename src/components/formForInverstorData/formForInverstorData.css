@@ -24,7 +24,7 @@ label{
     margin: 10px 0%;
 }
 .ahm-formForInverstorData-Form input ,
-.ahm-formForInverstorData-Form select{
+.ahm-formForInverstorData-Form .ahm-textArea{
     padding: 5px;
     font-size: 18px;
     /* color:white; */
@@ -46,6 +46,18 @@ label{
     margin: 10px ;
     color: white;
     cursor: pointer;
+}
+.ahm-formForInverstorData .ahm-postingSuccess{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    padding: 20px 5px ;
+    border-radius: 8px;
+    color:white;
+    margin-top :10px;
+    z-index:20000;
 }
 .ahm-formForInverstorData-Form  
 .ahm-formForInverstorData-Form-btn-cancel{

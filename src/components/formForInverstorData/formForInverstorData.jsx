@@ -4,35 +4,85 @@ import './formForInverstorData.css';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
+import ErrorNotification from "../errorNotification/errorNotification";
+
+import axios from "axios";
+
 export default function FormForInverstorData(){
     const navigate = useNavigate();
     const location = useLocation();
     const [productID, setProductID] = useState(null);
-
-    useEffect(()=>{
-        const id = location.state?.id;
-        setProductID(id);
-        console.log(id);
-    },[])
+    const [token, setToken] = useState(null);
+    const [successPosting, setSuccessPosting] = useState(null);
+    const [ErrorInput, setErrorInput] = useState({
+        isErrorInput:false,
+        errorMessage:''
+    });
     const [data, setData]= useState({
         email:'',
         name:'',
         phone:'',
-        amount:0,
-        paymentType:''
+        buyer_national_id:'',
+        offer_amount:0,
+        note:''
     });
-    const [isError, setIsError] = useState(false);
+
+    useEffect(()=>{
+        const id = location.state?.id;
+        setProductID(parseInt(id));
+        console.log(id);
+        const fetchToken = localStorage.getItem('token');
+        setToken(fetchToken);
+    },[])
+    
+    
 
     const submitHandler = (e)=>{
         e.preventDefault();
-        console.log(data);
-        if(data.email=='' || data.name=='' || data.phone=='' || data.amount==0 || data.paymentType==""){
-            setIsError(true);
+        
+        if(data.email=='' || data.name=='' || data.phone=='' || data.offer_amount==0 || data.buyer_national_id==""){
+            setErrorInput({...ErrorInput, isErrorInput:true, errorMessage:'Please fill all fields'});
         }
         else{
-            setIsError(false);
-            // send data to server
-            console.log('data sent to server');
+            setErrorInput({...ErrorInput, isErrorInput:false, errorMessage:''});
+            postData();
+        }
+    }
+
+    const postData = async()=>{
+        try{
+            await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/project-purchase-requests`, {
+                project_id:productID,
+                buyer_name:data.name,
+                buyer_phone:data.phone,
+                buyer_email:data.email,
+                buyer_national_id:data.buyer_national_id,
+                offer_amount:data.offer_amount,
+                notes:data.note,
+            },
+                {
+                    headers:{
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                setSuccessPosting(true);
+                setTimeout(()=>{
+                    setSuccessPosting(false);
+                    setData({
+                        email:'',
+                        name:'',
+                        phone:'',
+                        buyer_national_id:'',
+                        offer_amount:0,
+                        note:''
+                    });
+                    navigate(-1)
+                },3000)
+        }catch(err){
+            setErrorInput({isErrorInput:true, errorMessage:'Failed to submit data. Please try again.'});
+            console.log(err.response.data);
         }
     }
 
@@ -42,10 +92,10 @@ export default function FormForInverstorData(){
             email:'',
             name:'',
             phone:'',
-            amount:0,
-            paymentType:''
+            buyer_national_id:'',
+            offer_amount:0,
+            note:''
         });
-        setIsError(false);
         navigate(-1)
     }
 
@@ -70,17 +120,20 @@ export default function FormForInverstorData(){
                     type="text" 
                     onChange={(e)=>setData({...data,phone:e.target.value})}
                 />
-                <label htmlFor="amount">Amount:</label>
+                <label htmlFor="amount">National ID:</label>
                 <input 
                     type="number" 
-                    onChange={(e)=>setData({...data,amount:e.target.value})}
+                    onChange={(e)=>setData({...data,buyer_national_id:e.target.value})}
+                />
+
+                <label htmlFor="amount">Offer Amount:</label>
+                <input 
+                    type="number" 
+                    onChange={(e)=>setData({...data,offer_amount:e.target.value})}
                 />
                 
-                <select onChange={(e)=> setData({...data, paymentType:e.target.value})}>
-                    <option value="">select payment type</option>
-                    <option value="bank_transfer">Bank transfer</option>
-                    <option value="sham_cash">Sham cash</option>
-                </select>
+                <textarea onChange={(e)=>setData({...data, note:e.target.value})} className="ahm-textArea" placeholder="Note"/>
+                
 
                     <button 
                         type="submit"  
@@ -95,8 +148,8 @@ export default function FormForInverstorData(){
                 
             </form>
 
-            
-            
+            {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput}/>}
+            {successPosting && <p className="ahm-postingSuccess"> Reguest Success </p>}
         </div>
     );
 }
