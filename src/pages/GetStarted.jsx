@@ -2,10 +2,10 @@
 
 import Login from "../components/login/login"
 
-const GetStarted = () => {
+const GetStarted = ({onLoginSuccess}) => {
     return (
         <div >
-            <Login />
+            <Login onLoginSuccess={onLoginSuccess} />
         </div>
     )
 }

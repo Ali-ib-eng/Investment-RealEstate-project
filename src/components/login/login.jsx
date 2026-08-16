@@ -8,7 +8,7 @@ import ErrorNotification from '../errorNotification/errorNotification';
 import CreateAccount from '../createAccount/createAccount';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-export default function Login(){
+export default function Login({onLoginSuccess}) {
 const navigate = useNavigate();
     const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
     const [loginSuccess, setLoginSuccess]=useState(false);
@@ -16,7 +16,7 @@ const navigate = useNavigate();
     const login=useGoogleLogin({
   onSuccess: () => ( 
     setGoogleLoginSuccess("Google login successful!"),
-    setTimeout(() => {navigate(-1)},3000)
+    setTimeout(() => {navigate(-1)},1000)
   ),
   onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
 });
@@ -50,6 +50,7 @@ const GoToLogHome=()=>{
             if (response.data.token) {
       localStorage.setItem("token",response.data.token);
     }
+    onLoginSuccess?.();
             setExistAccountData({emailAddress:'', password:''});
             setLoginSuccess(true);
             setTimeout(()=>{
@@ -100,7 +101,7 @@ const GoToLogHome=()=>{
 
                     
                     
-                    <button disabled={ErrorInput.isErrorInput} onClick={loginConfirm} type='button' className='ahm-loginBtn'>{loading ? "Signing in..." : "Sign in"}</button>
+                    <button disabled={ErrorInput.isErrorInput || loading}  onClick={loginConfirm} type='button' className='ahm-loginBtn'>{loading ? "Signing in..." : "Sign in"}</button>
                     {/* */}
                 </form>
                 <div className='ahm-loginOr'>

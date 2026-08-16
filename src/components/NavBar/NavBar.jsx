@@ -1,80 +1,133 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./NavBar.css";
+import axios from "axios";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {FaRegSun,FaTimes,FaUserCircle} from "react-icons/fa";
-import { BsCloudMoonFill }from "react-icons/bs";
-import { FiMenu, FiX }from "react-icons/fi";
-const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,})=>{
+import { FaRegSun, FaTimes } from "react-icons/fa";
+import { BsCloudMoonFill } from "react-icons/bs";
+import { FiMenu, FiX } from "react-icons/fi";
+import { MdLogout } from "react-icons/md";
+import "./NavBar.css";
+const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,isLoggedIn,onLogout,}) => {
   const [show, setShow] = useState(false);
-  //اضافة دالة التنقل بين الصفحات
+  const [logoutLoading, setLogoutLoading] = useState(false);
+
   const navigate = useNavigate();
-  //is user logged in or not
-  const isLoggedIn=Boolean(
-    localStorage.getItem("token")?.trim()
-  );
-  const handleNavClick = (event,link)=>{
+
+  const handleNavClick = (event, link) => {
     const token = localStorage.getItem("token")?.trim();
     if (link.requiresAuth && !token) {
-      // Prevent navigation and redirect to login eg \properties
       event.preventDefault();
       navigate("/getStarted");
     }
     setShow(false);
   };
 
-  const userPagePath=isLoggedIn?"/userDashboard": "/getStarted";
+  const goToGetStarted = () => {
+    setShow(false);
+    navigate("/getStarted");
+  };
+  const finishLocalLogout = () => {
+    localStorage.removeItem("token");
+    onLogout?.();
+    setShow(false);
+    navigate("/getStarted", {
+      replace: true,
+      state: {
+        message:
+          "You have been logged out successfully. Please log in again.",
+      },
+    });
+  };
+
+  const logoutUser = async () => {
+    if (logoutLoading) return;
+    const token = localStorage.getItem("token")?.trim();
+    if (!token) {
+      finishLocalLogout();
+      return;
+    }
+
+    try {
+      setLogoutLoading(true);
+      const response = await axios.post(
+        "https://zoological-flow-production-40af.up.railway.app/api/auth/logout",
+        {},
+        {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Logout response:", response.data);
+    } catch (error) {
+      console.error("Logout status:", error.response?.status);
+      console.error("Logout response:", error.response?.data);
+    } finally {
+      finishLocalLogout();
+      setLogoutLoading(false);
+    }
+  };
   return (
     <>
       <nav className="Ali-NavBar">
         <div className="Ali-Container">
-          <img src={logo} alt="Logo" className="Ali-logo" />
-
+          <img
+            src={logo}
+            alt="Logo"
+            className="Ali-logo"
+          />
           <div className="ahm-show-btn-container">
             <button
+              type="button"
               className="show-btn"
-              onClick={() => setShow(!show)}>{!show ? <FiMenu /> : <FiX />}
+              aria-expanded={show}
+              onClick={() => setShow(!show)}
+            >
+              {!show ? <FiMenu /> : <FiX />}
             </button>
-            {!show && (
-              <Link
-                className="user-btn-desktop" to={userPagePath}
-              >
-                <FaUserCircle className="ahm-user-icon" />
-              </Link>
-            )}
           </div>
-          {/*desktop view*/}
+
+          {/* Desktop navigation */}
           <div className="Ali-links">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <NavLink
-                key={index}
+                key={link.path}
                 to={link.path}
                 onClick={(event) =>
                   handleNavClick(event, link)
                 }
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                      ? "active"
-                      : ""
-                }
+                className={({ isActive, isPending }) => {
+                  if (isPending) return "pending";
+                  if (isActive) return "active";
+                  return "";
+                }}
               >
                 {link.name}
               </NavLink>
             ))}
 
-            {!isLoggedIn && (
-              <button className="start-btn-desktop">
-                <Link
-                  className="Ali-white-link-desktop"
-                  to="/getStarted"
-                >
+            {isLoggedIn ? (
+              <button
+                type="button"
+                className="logout-btn-desktop"
+                onClick={logoutUser}
+                disabled={logoutLoading}
+              >
+                <MdLogout aria-hidden="true" /> {logoutLoading? "Logging out...": "Log out"}
+              </button>):(
+              <button
+                type="button"
+                className="start-btn-desktop"
+                onClick={goToGetStarted}
+              >
+                <span className="Ali-white-link-desktop">
                   {btnTitle}
-                </Link>
+                </span>
               </button>
             )}
 
             <button
+              type="button"
               className="dark-light-Mode-DesktopBtn"
               onClick={changeTheme}
             >
@@ -88,22 +141,19 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,})=>{
                 </>
               )}
             </button>
-
-            <Link
-              className="user-btn-desktop"
-              to={userPagePath}
-            >
-              <FaUserCircle className="ahm-user-icon" />
-            </Link>
           </div>
         </div>
       </nav>
-      {/*mobile view*/}
+
+      {/* Mobile navigation */}
       <div
         className="mobile-menu"
-        style={{ display: show ? "block" : "none" }}
+        style={{
+          display: show ? "block" : "none",
+        }}
       >
         <FaTimes
+          aria-label="Close navigation menu"
           style={{
             margin: "10px",
             fontSize: "20px",
@@ -113,9 +163,9 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,})=>{
           onClick={() => setShow(false)}
         />
 
-        {navLinks.map((link, index) => (
+        {navLinks.map((link) => (
           <NavLink
-            key={index}
+            key={link.path}
             to={link.path}
             onClick={(event) =>
               handleNavClick(event, link)
@@ -124,24 +174,38 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,})=>{
             {link.name}
           </NavLink>
         ))}
-        
-        {!isLoggedIn && (
+
+        {isLoggedIn ? (
           <button
-            onClick={() => setShow(false)}
+            type="button"
             className="start-btn-mobile"
+            onClick={logoutUser}
+            disabled={logoutLoading}
           >
-            <Link
-              className="Alilink-mobile"
-              to="/getStarted"
-            >
-              {btnTitle}
-            </Link>
+            <MdLogout aria-hidden="true" />
+
+            {logoutLoading
+              ? "Logging out..."
+              : "Log out"}
           </button>
-        )}<button
+        ) : (
+          <button
+            type="button"
+            className="start-btn-mobile"
+            onClick={goToGetStarted}
+          >
+            <span className="Alilink-mobile">
+              {btnTitle}
+            </span>
+          </button>
+        )}
+
+        <button
+          type="button"
           className="dark-light-Mode-MobileBtn"
           onClick={changeTheme}
         >
-          {theme==="light" ?(
+          {theme === "light" ? (
             <>
               <BsCloudMoonFill /> Dark
             </>
@@ -151,14 +215,6 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,})=>{
             </>
           )}
         </button>
-
-        <Link
-          onClick={() => setShow(false)}
-          className="user-btn-desktop"
-          to={userPagePath}
-        >
-          <FaUserCircle className="ahm-user-icon" />
-        </Link>
       </div>
     </>
   );

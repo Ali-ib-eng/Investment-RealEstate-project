@@ -63,13 +63,13 @@ function InvestmentOpportunitesList({ investments, onBuy }) {
     <div className="ahm-InvestmentOpportunitesList">
       {investments.map((investment) => (
         <div className="ahm-card" key={investment.id}>
-          {/*
+          
           <img
             src={investment.image}
             alt="invest img"
             className="ahm-imageCard"
           />
-            */}
+          
           <div className="ahm-infoCard">
             <h3 className="ah-h3-card">
               {investment.name}
