@@ -34,7 +34,7 @@ const ShowProperty = () => {
             property={property}
             />
             ))}
-            
+            {property.length===0 && !loading && <h1 style={{textAlign:'center', fontWeight:'bold'}} className="Ali-noProperty">No property found yet ...</h1>}
         </div>
     )
 }
