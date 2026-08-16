@@ -177,6 +177,7 @@ export default function FormForInverstorData(){
                         type="submit"  
                         className="ahm-formForInverstorData-Form-btn-submit"
                         onClick={submitHandler}
+                        disabled={isSubmiting}
                     > {isSubmiting===false ? <FaTelegram style={{fontSize:'18px'}}/>:''} {isSubmiting?"Waiting...":"Submit"}</button>
                     <button 
                         type="cancel" 
