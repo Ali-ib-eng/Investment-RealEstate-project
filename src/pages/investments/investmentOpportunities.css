@@ -27,10 +27,19 @@
     align-items: center;
     gap: 5px;
     /*color: rgba(0, 0, 0, 0.685);*/
-    color:var(--viewall);
+    color:white;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: rgb(73, 73, 230);
+    border-radius:10px ;
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .ahm-description .ahm-veiwAll:hover{
-    color: black; 
+    transform: translateY(-5px);
+    background-color: rgb(32, 32, 230);
     cursor: pointer;
 }
 .ahm-investCard {
@@ -72,7 +81,7 @@
     /*color:rgb(134, 133, 133);*/
 }
 .ahm-infoCard .ah-h3-card{
-    color:var(--on-tertiary-fixed);
+    color:var(--on-surface);
     font-size: 22px;
     
 }

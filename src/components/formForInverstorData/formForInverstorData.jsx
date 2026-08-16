@@ -14,6 +14,7 @@ export default function FormForInverstorData(){
     const [productID, setProductID] = useState(null);
     const [token, setToken] = useState(null);
     const [successPosting, setSuccessPosting] = useState(null);
+    const [isSubmiting, setIsSubmiting] = useState(false);
     const [ErrorInput, setErrorInput] = useState({
         isErrorInput:false,
         errorMessage:''
@@ -44,6 +45,7 @@ export default function FormForInverstorData(){
             setErrorInput({...ErrorInput, isErrorInput:true, errorMessage:'Please fill all fields'});
         }
         else{
+            setIsSubmiting(true)
             setErrorInput({...ErrorInput, isErrorInput:false, errorMessage:''});
             postData();
         }
@@ -67,6 +69,7 @@ export default function FormForInverstorData(){
                         "Authorization": `Bearer ${token}`
                     }
                 });
+                setIsSubmiting(false);
                 setSuccessPosting(true);
                 setTimeout(()=>{
                     setSuccessPosting(false);
@@ -139,7 +142,7 @@ export default function FormForInverstorData(){
                         type="submit"  
                         className="ahm-formForInverstorData-Form-btn-submit"
                         onClick={submitHandler}
-                    >Submit</button>
+                    >{isSubmiting?"Waiting...":"Submit"}</button>
                     <button 
                         type="cancel" 
                         className="ahm-formForInverstorData-Form-btn-cancel"
