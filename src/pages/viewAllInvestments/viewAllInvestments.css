@@ -30,7 +30,7 @@
     outline: none;
     cursor: pointer;
     border-radius: 10px;
-    color: #888888;
+    color:  var(--on-surface);
     border: none;
     width: 395px;
     /* width: 100%; */
@@ -54,7 +54,7 @@
     cursor: pointer;
     border-radius: 10px;
     width: 100%;
-    color: #858484;
+    color: var(--on-surface);
     border: none;
     /* background-color: red; */
 }
