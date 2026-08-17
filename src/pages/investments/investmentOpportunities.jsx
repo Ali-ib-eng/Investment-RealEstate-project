@@ -6,7 +6,7 @@ import './investmentOpportunities.css'
 import GetStartGuide from '../getStartGuide/getStartGuide'
 import InteractiveMap from '../interactiveMap/interactiveMap'
 import AboutPartners from '../aboutPartners/aboutPartners'
-
+import ShowDetails from '../../components/showDetails/showDetails'
 import axios from 'axios'
 import Loadinginvsetments from '../viewAllInvestments/Loadingfor_invsetments/Loadinginvsetments'
 
@@ -17,6 +17,12 @@ export default function InvestmentOpportunites (){
     const [investmentsData, setInvestmentsData] = useState([]);
     const [counterForIvestCard, setCounterForIvestCard] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [showDetails, setShowDetails] = useState({
+        isShow:false,
+        from:'projects',
+        id:''
+    })
+
 
     useEffect(()=>{
 
@@ -44,8 +50,8 @@ export default function InvestmentOpportunites (){
                     investmentsData.length>0 && 
                     investmentsData.map((investment)=>(
                         investmentsData.indexOf(investment)<3 &&
-                        <div className='ahm-card ' key={investment.id}> 
-                            <img src={investment.image} alt='invest img' className='ahm-imageCard  '/> 
+                        <div className='ahm-card ' key={investment.id} > 
+                            <img onClick={()=>setShowDetails({...showDetails, isShow:true,id:investment.id})} src={investment.image} alt='invest img' className='ahm-imageCard  '/> 
                             <div className=' ahm-infoCard '>
                                 <h3 className='ah-h3-card'>{investment.name}</h3>
                             </div>
@@ -85,7 +91,7 @@ export default function InvestmentOpportunites (){
                     <hr className='ahm-line '/>
                     
                         <p className='ahm-investmentCost  '>{investmentsData[counterForIvestCard].total_budget}$</p>
-                        <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investment.id}})}>
+                        <button  className='ahm-buyBTN' onClick={()=>navigate('/formForInverstorData',{state:{id:investmentsData[counterForIvestCard].id}})}>
                             
                                 Buy
                             
@@ -115,7 +121,9 @@ export default function InvestmentOpportunites (){
                 {investmentsData.length===0 && !loading && <h1 style={{textAlign:'center', fontWeight:'bold'}} >No investment opportunities found yet ...</h1>}
                 {investCard()}
                 {investCardForMobile()}
-                
+                {showDetails.isShow && <ShowDetails 
+                            setShowDetails={setShowDetails} 
+                            showDetails={showDetails} />}
             </div>
             <GetStartGuide />
             <InteractiveMap />

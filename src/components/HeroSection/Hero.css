@@ -17,7 +17,7 @@
   position: relative;
 }
 .Ali-bg-groundImg {
-  background-image: url('/IMG-homePage/Hero-homepage.png');
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,22 +25,27 @@
   width: 100%;
 }
 .Ali-hero-content {
-  max-width: 600px;
-  position: absolute;
-  top: 40%;
-  left: 0;
-  transform: translate(4%, -30%);
+  /* max-width: 600px; */
+  width: 96%;
+  /* position: absolute; */
+  /* display: flex; */
+  /* top: 10%;
+  left: 2%; */
+  /* transform: translate(4%, -30%); */
   /*color:var(--on-secondary);*/
+  margin:80px 2% 0px   ;
   color:white;
   background-color: var(--herocontent);
   z-index: 11;
 }
 .Ali-h1-hero {
+  text-align: center;
   width: 100%;
   padding-left: 20px;
   font-size: 48px;
-  line-height: 1.2;
-  font-weight: 800;
+  /* line-height: 1.2; */
+  /* font-weight: 800; */
+  color:var(--on-background);
 }
 .Ali-p-hero {
   width: 100%;
@@ -49,11 +54,14 @@
   font-weight: 400;
   padding-top: 10px;
   padding-left: 20px;
-
+  color:var(--on-background);
+}
+.ahm-form-container-hero{
+  
 }
 .Ali-inputFileds {
-  min-height: 15vh;
-  padding: 18px;
+  /* min-height: 15vh; */
+  padding: 0 18px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,13 +124,15 @@
 @media screen and (max-width: 768px) {
   .Ali-hero-content {
     width: 90%;
-    left: 50%;
-    transform: translate(-50%,-30%);
+    margin-left:5% ;
+    /* left: 50%; */
+    /* transform: translate(-50%,-30%); */
   }
   .Ali-inputFileds {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+     
   }
 
   .Ali-selectKind,
@@ -136,4 +146,18 @@
   .Ali-p-hero {
     font-size: 16px;
   }
+  .ahm-form-container-hero{
+    width: 100%;
+  }
 }
+
+/* @media (max-width:768px){
+  .Ali-h1-hero {
+    font-size: 28px;
+  }
+  .Ali-selectKind,
+  .Ali-inputPrice {
+    width: 100%;
+    font-size: 16px;
+  }
+} */
