@@ -5,7 +5,7 @@
 .ahm-formForInverstorData-Form{
     /* background-color: #DDD; */
     background-color: var(--background);
-    width:600px;
+    width:500px;
     margin: 50px auto;
     border-radius: 20px;
     padding: 20px;
@@ -35,6 +35,11 @@ label{
     width: 100%;
     margin: 10px 0px 20px;
     border: 0.5px solid var(--on-surface);;
+}
+.ahm-formForInverstorData-Form input{
+    padding:10px 10px 10px 40px;
+    font-size: 16px;
+
 }
 .ahm-formForInverstorData-Form button{
     all: unset;
@@ -80,6 +85,19 @@ label{
     background-color: rgb(2, 219, 2)
 }
 
+.ahm-fliedContainer{
+    position: relative;
+}
+.ahm-fliedContainer .ahm-formForInverstorData-Form-icon{
+    position: absolute;
+    top:20px;
+    left:10px;
+    color: rgb(62, 62, 248);
+    font-size: 22px;
+
+    padding-right: 5px;
+    border-right: 1px solid black;
+}
 @media (max-width:992px){
     .ahm-formForInverstorData-Form{
         width: 90%;
