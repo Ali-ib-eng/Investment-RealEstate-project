@@ -4,7 +4,28 @@ import { FaSearch} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import HeroCards from "../sectionHerCards/heroCards";
 
+
+const governorates = [
+    "Damascus",
+    "Rif Dimashq",
+    "Aleppo",
+    "Homs",
+    "Hama",
+    "Latakia",
+    "Tartus",
+    "Idlib",
+    "Raqqa",
+    "Deir ez-Zor",
+    "Hasakah",
+    "Daraa",
+    "As-Suwayda",
+    "Quneitra"
+  ];
+
+const Hero = ({title,paragraph,searchBtn}) => {
+
 const Hero = ({title,paragraph,searchBtn,isLoggedIn}) => {
+
     const navigate = useNavigate();
 
     const [form,setForm]=useState({
@@ -31,7 +52,7 @@ const handleSearch=()=>{
         type:"",
         budget:""
     })
-    form.location==""||form.type==""||form.budget==""?setError("Please fill all the fields"):
+    form.location==""||form.type==""||form.budget==""|| parseFloat(form.budget)<50000 ?setError("Please fill all the fields"):
     navigate('/viewAllInvestments', {state:{formData:form}});
 }
 useEffect(()=>{
@@ -62,10 +83,15 @@ useEffect(()=>{
                                 onChange={handleChange}
                                 >
                                 <option value="">Select a country</option>   
-                                <option value="Damascus">Damascus</option>
+                                {
+                                    governorates.map((governorate,index)=>(
+                                        <option value={governorate} key={index}>{governorate}</option>
+                                    ))
+                                }
+                                {/* <option value="Damascus">Damascus</option>
                                 <option value="Aleppo">Aleppo</option>
                                 <option value="Lattakia">Lattakia</option>
-                                <option value="Homs">Homs</option>
+                                <option value="Homs">Homs</option> */}
                             </select>
                             </div>
                             <div className="Ali-PropertyType">
@@ -87,10 +113,7 @@ useEffect(()=>{
                                 onChange={handleChange}
                                 placeholder=" $50,000" />
                             </div>
-                            {/* <button onClick={handleSearch} className="Ali-search-btn">
-                                {searchBtn}
-                                <div className="Ali-searchbtnreactIcon"><FaSearch /></div>
-                            </button> */}
+                            
                         </div>
                         <button onClick={handleSearch} className="Ali-search-btn">
                                 {searchBtn}
