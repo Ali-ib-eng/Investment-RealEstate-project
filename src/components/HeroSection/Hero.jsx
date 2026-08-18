@@ -4,7 +4,7 @@ import { FaSearch} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import HeroCards from "../sectionHerCards/heroCards";
 
-const Hero = ({title,paragraph,searchBtn}) => {
+const Hero = ({title,paragraph,searchBtn,isLoggedIn}) => {
     const navigate = useNavigate();
 
     const [form,setForm]=useState({
@@ -100,7 +100,7 @@ useEffect(()=>{
                     
                 </div>
                 <div>
-                    <HeroCards />
+                    <HeroCards isLoggedIn={isLoggedIn}/>
                 </div>
             </div>
             </div>

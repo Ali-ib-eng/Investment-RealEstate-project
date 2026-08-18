@@ -1,4 +1,4 @@
-import {  Route, Routes } from "react-router-dom";
+import {  Navigate, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./index.css";
 import Invest from "./pages/Invest";
@@ -14,12 +14,12 @@ const hasStoredToken=() => {
   return Boolean(localStorage.getItem("token")?.trim());
 };
 
-/*function ProtectedRoute({ children, isLoggedIn }) {
+function PurchaseProtectedRoute({ children, isLoggedIn }) {
   if (!isLoggedIn) {
     return <Navigate to="/getStarted" replace />;
   }
   return children;
-}*/
+}
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(hasStoredToken);
   const [theme, setTheme] = useState(
@@ -104,7 +104,7 @@ function App() {
         <Route
           path="/"
           element={
-              <Invest />
+              <Invest isLoggedIn={isLoggedIn} />
           }
         />
 
@@ -118,15 +118,21 @@ function App() {
         <Route
           path="/viewAllInvestments"
           element={
-              <ViewAllInvestments />
+              <ViewAllInvestments
+                isLoggedIn={isLoggedIn}
+               />
           }
         />
         <Route
-          path="/formForInverstorData"
-          element={<FormForInverstorData />}
-        />
+  path="/formForInverstorData"
+  element={
+    <PurchaseProtectedRoute isLoggedIn={isLoggedIn}>
+      <FormForInverstorData />
+    </PurchaseProtectedRoute>
+  }
+/>
+</Routes>
         
-      </Routes>
 
       <Footer
         title="Syria Rebuild"

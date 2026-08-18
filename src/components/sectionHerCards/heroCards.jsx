@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ShowDetails from "../showDetails/showDetails";
 
-export default function HeroCards(){
+export default function HeroCards({isLoggedIn}) {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [showDetails, setShowDetails] = useState({
@@ -39,7 +39,13 @@ export default function HeroCards(){
                             <p>{property.location}</p>
                             <h3>{property.price} $</h3>
                             <div className="ahm-hero-BTN-container">
-                                <button onClick={()=>navigate('/formForInverstorData',{state:{id:property.id}})} className="ahm-hero-btn-buy">Buy</button>
+                                {/* <button className="ahm-hero-btn-buy">Buy</button> */}
+                    {isLoggedIn && (<button
+                        onClick={(e) => {e.stopPropagation();navigate("/formForInverstorData",
+                            { state: { id: property.id },});}}
+                            className="ahm-hero-btn-buy">
+                            Buy
+                            </button>)}
                                 {/* <button className="ahm-hero-btn-rent">Rent</button> */}
         
                             </div>
