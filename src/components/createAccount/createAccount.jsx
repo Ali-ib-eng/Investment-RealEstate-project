@@ -61,6 +61,14 @@ const login = useGoogleLogin({
     });
     return false;
   }
+  const protectuserName = /^[A-Za-z\u0600-\u06FF\s]+$/;;
+  if (!protectuserName.test(newAccountData.fullname)) {
+    setErrorInput({
+      isErrorInput: true,
+      errorMessage: 'full name should only contain letters and spaces only',
+    });
+    return false;
+  }
 
   if (newAccountData.password !== newAccountData.confirmPassword) {
 
@@ -151,7 +159,7 @@ const handleCreateAccount=async()=>{
         
         return (
             <div  className='ahm-loginContainer'>
-                <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
+                <img src='/IMG-homePage/rebuild.jpg' alt='logo' style={{height:"80px", width:'80px'}} />
                 <h1 className='ahm-loginH1' style={{fontSize:'25px', margin:'5px 0px'}}>Create An Account</h1>
 
                 <form className="ahm-loginForm" action="">
