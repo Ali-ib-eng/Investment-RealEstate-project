@@ -175,7 +175,7 @@ import Properties from "./pages/Properties";
 import About from "./pages/About";
 import GetStarted from "./pages/GetStarted";
 import ViewAllInvestments from "./pages/viewAllInvestments/viewAllInvestments";
-
+import SaleProduct from "./components/saleProduct/saleProduct";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import FormForInverstorData from "./components/formForInverstorData/formForInverstorData";
@@ -198,6 +198,11 @@ function App() {
 
   const navLinks = [
     {
+      name: "sale",
+      path: "/sale",
+      requiresAuth: true,
+    },
+    {
       name: "Invest",
       path: "/",
       requiresAuth: true,
@@ -212,6 +217,7 @@ function App() {
       path: "/properties",
       requiresAuth: true,
     },
+    
   ];
 
   const sections = [
@@ -285,6 +291,14 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <Properties />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/sale"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <SaleProduct />
             </ProtectedRoute>
           }
         />
