@@ -5,6 +5,7 @@ import axios from "axios";
 import "./viewAllInvestments.css";
 import "../investments/investmentOpportunities.css";
 import LoadingAnimation from "../../components/LoadingAnimation/LoadingAnimation";
+import ShowDetails from "../../components/showDetails/showDetails";
 function SearchForm({
   searchValue,
   onMoneyChange,
@@ -58,7 +59,8 @@ function SearchForm({
   );
 }
 
-function InvestmentOpportunitesList({ investments, onBuy }) {
+function InvestmentOpportunitesList({ investments, onBuy , setShowDetails, showDetails}) {
+  
   return (
     <div className="ahm-InvestmentOpportunitesList">
       {investments.length === 0 &&  <h1 style={{textAlign:'center', fontWeight:'bold'}} >No investment opportunities found yet ...</h1>}
@@ -69,6 +71,7 @@ function InvestmentOpportunitesList({ investments, onBuy }) {
             src={investment.image}
             alt="invest img"
             className="ahm-imageCard"
+            onClick={()=>setShowDetails({...showDetails, isShow:true,id:investment.id})}
           />
           
           <div className="ahm-infoCard">
@@ -108,6 +111,11 @@ export default function ViewAllInvestments() {
     location: "",
     money: "",
   });
+  const [showDetails, setShowDetails] = useState({
+      isShow:false,
+      from:'projects',
+      id:''
+  })
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -122,9 +130,10 @@ export default function ViewAllInvestments() {
         setData(projects);
         console.log(projects);
         const formData = location.state?.formData;
+        console.log(formData)
         if (formData !== undefined) {
           setIsSearching(true);
-
+          console.log(projects)
           const filteredData = projects.filter((item) => {
             const locationTest =
               item.location.toLowerCase() ===
@@ -132,7 +141,11 @@ export default function ViewAllInvestments() {
               const moneyTest =
               parseFloat(item.total_budget) <=
               parseFloat(formData.budget);
-            return locationTest && moneyTest;
+              // const typeTest = 
+              // item.type ===
+              // formData.type;
+            // return locationTest && moneyTest && typeTest
+            return locationTest && moneyTest 
           });
           setDataAfterFilter(filteredData);
         }else{
@@ -217,8 +230,14 @@ export default function ViewAllInvestments() {
         <InvestmentOpportunitesList
           investments={investmentsToDisplay}
           onBuy={buyHandler}
+          setShowDetails={setShowDetails}
+          showDetails={showDetails}
         />
       )}
+      {showDetails.isShow && <ShowDetails 
+        setShowDetails={setShowDetails} 
+        showDetails={showDetails} />
+      }
     </div>
   );
 }

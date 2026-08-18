@@ -72,6 +72,7 @@
     height:50%;
     border-radius: 13px 13px 0px 0px;
     width: 100%;
+    cursor: pointer;
 }
 .ahm-infoCard{
     padding: 10px 15px;
