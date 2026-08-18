@@ -127,9 +127,9 @@ function App() {
         <Route
           path="/sale"
           element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <PurchaseProtectedRoute isLoggedIn={isLoggedIn}>
               <SaleProduct />
-            </ProtectedRoute>
+            </PurchaseProtectedRoute>
           }
         />
 
