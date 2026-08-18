@@ -1,0 +1,244 @@
+
+.ahm-investmentsopportunties {
+    width:full;
+    /*background-color: var(--surface-bright);*/
+    /*height: 100vh;*/
+}
+.ahm-investmentsopportunties .ahm-h2 {
+    padding: 10px 0 5px 20px;
+    /* font-size: 30px; */
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+.ahm-description{
+    padding: 5px 0 10px 20px;
+    color: rgba(128, 128, 128, 0.562);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: blue; */
+}
+.ahm-description .ahm-veiwAll {
+    all: unset;
+    padding: 5px 10px 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /*color: rgba(0, 0, 0, 0.685);*/
+    color:white;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: rgb(73, 73, 230);
+    border-radius:10px ;
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.ahm-description .ahm-veiwAll:hover{
+    transform: translateY(-5px);
+    background-color: rgb(32, 32, 230);
+    cursor: pointer;
+}
+.ahm-investCard {
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    /* background-color: red; */
+    width: 80%;
+    margin: auto;
+    justify-content: space-evenly;
+    
+}
+.ahm-card:hover{
+    transform: translateY(-5px);
+  box-shadow: 0 10px 24px var(--cardshadowonY);
+}
+.ahm-card{
+    margin: 10px 0;
+    height: 470px;
+    width: 32%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
+    /* background-color: #dad7d7; */
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.ahm-imageCard{
+    height:50%;
+    border-radius: 13px 13px 0px 0px;
+    width: 100%;
+    cursor: pointer;
+}
+.ahm-infoCard{
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*color:rgb(134, 133, 133);*/
+}
+.ahm-infoCard .ah-h3-card{
+    color:var(--on-surface);
+    font-size: 22px;
+    
+}
+.ahm-investLocation {
+    padding: 5px 20px 10px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #888888;
+}
+.ahm-progress{
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #888888;
+}
+.ahm-progressPercent{
+    border-radius: 10px;
+    width: 90%;
+    
+    margin: auto;
+    background-color: rgb(180, 178, 178);
+    
+}
+.ahm-progressPercent2{
+    border-radius: 10px;
+    padding: 2px;
+    width: 75%;
+    margin: 0px;
+    background-color: blue;
+}
+.ahm-line{
+    margin: 20px 0px 10px; 
+}
+
+.ahm-investmentCost{
+    margin:10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.ahm-buyBTN{
+    all: unset;
+    background-color: rgb(68, 68, 255);
+    padding: 10px 0px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.ahm-linkForBuyBTN {
+    text-decoration: none;
+    color: white;
+
+    padding:10px 85px;
+}
+.ahm-buyBTN:hover{
+    background-color: rgb(22, 22, 255);
+}
+
+.ahm-investCardForMobile{
+    display: none;
+    width: 80%;
+    margin: auto;
+}
+.ahm-investCardForMobile .ahm-arrowContainer{
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+.ahm-investCardForMobile .ahm-arrows{
+    font-size: 40px;
+    color:var(--on-primary-container)
+}
+
+@media (max-width:992px){
+    .ahm-investmentsopportunties .ahm-h2{
+        padding: 10px 0 5px 10px;
+        font-size: 27px;
+    }
+    .ahm-description{
+        display: block;
+        padding: 5px 5px 10px 5px;
+        width:80%;
+        margin-left:10% ;
+    }
+    .ahm-description .ahm-veiwAll{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(211, 206, 206);
+        width: 100%;
+        margin: auto;
+        border-radius: 5px;
+        align-items: center;
+        font-size: 20px;
+        padding: 0;
+        margin: 4px 0;
+        gap:0px;
+    }
+    .ahm-investCard{
+        width: 95%;
+        /* background-color: red; */
+        /* display: block; */
+        flex-wrap: wrap;
+        
+    }
+    .ahm-card{
+        width: 48%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width:576px){
+    .ahm-investmentsopportunties .ahm-h2{
+        padding: 10px 0 5px 10px;
+        font-size: 27px;
+    }
+    .ahm-description{
+        display: block;
+        padding: 5px 5px 10px 5px;
+        width:80%;
+        margin-left:10% ;
+    }
+    .ahm-description .ahm-veiwAll{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(211, 206, 206);
+        width: 100%;
+        margin: auto;
+        border-radius: 5px;
+        align-items: center;
+        font-size: 20px;
+        padding: 0;
+        margin: 4px 0;
+        gap:0px;
+    }
+    .ahm-investCard{
+        width: 80%;
+        /* background-color: red; */
+        display: none;
+        
+    }
+    .ahm-investCardForMobile{
+        display: block;
+    }
+    .ahm-card{
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+

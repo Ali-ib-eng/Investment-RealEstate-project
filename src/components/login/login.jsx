@@ -1,0 +1,140 @@
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './login.css';
+import { FaRegEnvelope, FaLock } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom';
+import ErrorNotification from '../errorNotification/errorNotification';
+import CreateAccount from '../createAccount/createAccount';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+export default function Login({onLoginSuccess}) {
+const navigate = useNavigate();
+    const [googleLoginSuccess,setGoogleLoginSuccess]=useState("");
+    const [loginSuccess, setLoginSuccess]=useState(false);
+    const [loading, setLoading]=useState(false);
+    const login=useGoogleLogin({
+  onSuccess: () => ( 
+    setGoogleLoginSuccess("Google login successful!"),
+    setTimeout(() => {navigate(-1)},1000)
+  ),
+  onError: () => setGoogleLoginSuccess("Google login failed. Please try again."),
+});
+const GoToLogHome=()=>{
+        navigate('/');
+    };
+    const [existAccountData, setExistAccountData]= useState({
+        emailAddress:'', password:'',
+    })
+    const [isCreateNewAccount, setIsCreateNewAccount]= useState(true);
+
+    const [ErrorInput, setErrorInput] = useState({
+        isErrorInput:false,
+        errorMessage:''
+    })
+
+    const postLoginData = async()=>{
+        try{
+            setLoading(true);
+            // const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {email: existAccountData.emailAddress, password: existAccountData.password}, {
+            const response = await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/auth/login`, {
+            email: existAccountData.emailAddress,
+            password: existAccountData.password},
+            {
+                headers:{
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                }
+            });
+            console.log(response.data); // Handle the response as needed
+            if (response.data.token) {
+      localStorage.setItem("token",response.data.token);
+    }
+    onLoginSuccess?.();
+            setExistAccountData({emailAddress:'', password:''});
+            setLoginSuccess(true);
+            setTimeout(()=>{
+                setLoginSuccess(false);
+                //navigate(-1);
+                GoToLogHome();
+            },3000)
+        }catch(err){
+            console.log(err);
+            setErrorInput({
+                isErrorInput:true,
+                errorMessage:'Login failed. Please check your credentials and try again.'
+            })
+        }
+        finally{//ايقاف الطلب وحتى بعد الفشل
+            setLoading(false);
+        }
+    }
+    const loginConfirm =()=>{
+        if(existAccountData.emailAddress === "" || existAccountData.password === ""){
+            setErrorInput({
+                isErrorInput:true,
+                errorMessage:'please fill all the fields'
+            })
+        }
+        else postLoginData()
+    }
+
+    const logInFormWithExistAccount =()=>{
+        
+        return(
+            <div className='ahm-loginContainer'>
+                <img src='/IMG-homePage/pro-logo.png' alt='logo' style={{height:"80px", width:'80px'}} />
+                <h1 className='ahm-loginH1' style={{fontSize:'20px', margin:'5px 0px'}}>Sign in</h1>
+                <form className="ahm-loginForm" action="">
+                    
+                    <label>Email Address</label><br />
+                    <div className='ahm-inputContainer' >
+                        <FaRegEnvelope className='ahm-inputIcon'/>
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, emailAddress:e.target.value })} type='email' placeholder={existAccountData.emailAddress || "Email@gmail.com"} />
+                    </div>
+
+                    <label>Password</label><br />
+                    <div className='ahm-inputContainer' >
+                        <FaLock className='ahm-inputIcon'/>
+                        <input className="Ali-inputslogin" disabled={ErrorInput.isErrorInput} onChange={(e)=>setExistAccountData({...existAccountData, password:e.target.value })} type='password' placeholder={existAccountData.password || 'Password' } />
+                    </div>
+
+                    
+                    
+                    <button disabled={ErrorInput.isErrorInput || loading}  onClick={loginConfirm} type='button' className='ahm-loginBtn'>{loading ? "Signing in..." : "Sign in"}</button>
+                    {/* */}
+                </form>
+                <div className='ahm-loginOr'>
+                    <p className='ahm-orStyle' >or</p>
+                    <hr className='ahm-loginLine'/>
+                </div>
+                <button className='ahm-loginBtnWithGoogle' onClick={() => login()}
+    > <FcGoogle /> Sign in with Google </button>
+                {googleLoginSuccess && <p className="Ali-googleAndAccountAuth">{googleLoginSuccess}</p>} 
+                <p className='ahm-loginWithExistAccount'>New to Syria Rebuild? <span onClick={()=>(!ErrorInput.isErrorInput &&  setIsCreateNewAccount(true))} style={{color:'blue',cursor:'pointer'}}>Create new account</span></p>
+                {loginSuccess && <p className="Ali-googleAndAccountAuth"> Log in Successed.</p>}
+            </div>
+        );
+    }
+    //recall uselocation
+    const location = useLocation();
+    //hook useState
+    const [message,setMessage]=useState(location.state?.message || "");
+    //hook2 useEffect
+    useEffect(()=>{
+        if(message){
+            const timer=setTimeout(() => {
+                setMessage("");
+            }, 2000);
+        return () => clearTimeout(timer);
+        }
+    },[message])
+    return(
+        <div className="ahm-loginPage">
+            {message && <p className="Ali-logout-successMessage">{message}</p>}
+            {isCreateNewAccount ? <CreateAccount setIsCreateNewAccount={setIsCreateNewAccount} /> : logInFormWithExistAccount()}
+            {/* {logInFormWithExistAccount()} */}
+            {ErrorInput.isErrorInput && <ErrorNotification ErrorMessage={ErrorInput.errorMessage} setErrorInput={setErrorInput}  />}
+        </div>
+    );
+}

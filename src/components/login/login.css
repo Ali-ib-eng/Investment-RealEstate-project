@@ -1,0 +1,300 @@
+.ahm-loginPage{
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--surface-container-low),
+        var(--surface-container)
+    );
+
+    position: relative;
+}
+
+.ahm-loginContainer{
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--surface-container-lowest);
+
+    padding: 40px 30px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px var(--on-tertiary-fixed);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.ahm-loginH1{
+    margin-bottom: 15px;
+}
+
+.ahm-loginForm{
+    width: 100%;
+    text-align: start;
+}
+
+.ahm-loginForm label{
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 4px;
+}
+.Ali-logout-successMessage{
+    width: 50%;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(128, 0, 0);
+    color:var(--on-secondary);
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+.Ali-googleAndAccountAuth{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    padding: 20px 5px ;
+    border-radius: 8px;
+    color:white;
+    margin-top :10px;
+    z-index:20000;
+}
+.ahm-inputContainer{
+    position: relative;
+    width: 100%;
+}
+
+.ahm-inputIcon{
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: var(--on-tertiary-fixed-variant);
+}
+ .Ali-inputslogin::placeholder{
+    color:black;
+    font-size: 13px;
+}
+.ahm-loginForm input{
+    width: 100%;
+
+    padding: 10px 12px 10px 35px;
+
+    margin: 4px 0 14px;
+
+    border: 1px solid var(--primary-fixed);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    transition: all .25s ease;
+}
+
+.ahm-loginForm input:focus{
+    border-color: var(--boxState);
+
+    box-shadow:
+        0 0 0 3px var(--boxState);
+}
+
+.ahm-loginBtn{
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: var(--boxState);
+
+    color: var(--surface-container-low);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ahm-loginBtn:hover{
+    opacity: 0.9;
+}
+
+.ahm-loginBtn:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.ahm-loginOr{
+    width: 100%;
+    position: relative;
+    margin: 18px 0;
+}
+
+.ahm-loginLine{
+    border: none;
+    height: 1px;
+    background-color: var(--primary-fixed);
+}
+.ahm-orStyle{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--surface-container-lowest);
+    padding: 0 10px;
+    color: var(--on-tertiary-fixed-variant);
+    font-size: 13px;
+}
+
+.ahm-loginBtnWithGoogle{
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid var(--primary-fixed);
+
+    border-radius: 8px;
+
+    /*background-color: var(--boxState);*/
+    font-size: 20px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-weight: 500;
+
+    transition: 1.25s;
+}
+
+.ahm-loginBtnWithGoogle:hover{
+    background-color:rgba(0, 32, 69, 0.527);
+    
+}
+/*some animitions byAli*/
+.ahm-loginBtnWithGoogle svg{
+    transition: transform 0.3s ease;
+}
+.ahm-loginBtnWithGoogle:hover svg{
+    transform: rotate(12deg) scale(1.1);
+}
+.ahm-loginBtnWithGoogle:hover svg{
+    transform: translateX(-3px);
+}
+.ahm-loginBtnWithGoogle{
+    position:relative;
+    overflow:hidden;
+}
+
+.ahm-loginBtnWithGoogle::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(3, 241, 58, 0.35),
+        transparent
+    );
+
+    transition:left 1.7s;
+}
+
+.ahm-loginBtnWithGoogle:hover::before{
+    left:150%;
+}
+
+.ahm-loginWithExistAccount{
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.ahm-loginWithExistAccount span{
+    font-weight: 600;
+}
+
+.ahm-notification{
+    position: fixed;
+
+    top: 25%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 500px;
+
+    background-color: rgb(180, 0, 0);
+
+    color: white;
+
+    padding: 20px 30px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    z-index: 90;
+}
+
+.ahm-notification h3{
+    width:100%;
+}
+
+.ahm-notification button{
+    padding: 8px 18px;
+
+    border: none;
+    color: var(--on-surface);
+    border-radius: 8px;
+
+    background-color:var(--surface-container-low);
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width:576px){
+
+    .ahm-loginContainer{
+        padding: 30px 20px;
+    }
+
+    .ahm-notification{
+        width: 90%;
+        top: 15%;
+        padding: 15px;
+    }
+    .ahm-loginPage{
+        padding: 0px 10px;
+        margin-bottom: 30px;
+    }
+}

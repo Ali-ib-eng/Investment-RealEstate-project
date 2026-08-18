@@ -1,0 +1,111 @@
+.ahm-formForInverstorData{
+    padding-top: 90px;
+}
+
+.ahm-formForInverstorData-Form{
+    /* background-color: #DDD; */
+    background-color: var(--background);
+    width:500px;
+    margin: 50px auto;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 2px 2px #ccc;
+}
+
+.ahm-formForInverstorData-Form .ahm-formLine{
+    margin: 20px 0px;
+}
+label{
+    /* background-color: var(--on-surface); */
+
+    width: 100%;
+    margin: 10px 5%;
+    font-size: 20px;
+    color: var(--on-surface);;
+    margin: 10px 0%;
+}
+.ahm-formForInverstorData-Form input ,
+.ahm-formForInverstorData-Form .ahm-textArea{
+    padding: 5px;
+    font-size: 18px;
+    /* color:white; */
+    background-color: white;
+    border-radius: 10px;
+    border : none;
+    width: 100%;
+    margin: 10px 0px 20px;
+    border: 0.5px solid var(--on-surface);;
+}
+.ahm-formForInverstorData-Form input{
+    padding:10px 10px 10px 40px;
+    font-size: 16px;
+
+}
+.ahm-formForInverstorData-Form button{
+    all: unset;
+    width:100px;
+    /* background-color: green; */
+    text-align: center;
+    padding: 10px 0px;
+    /* font-size: 20px; */
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 10px ;
+    color: white;
+    cursor: pointer;
+}
+.ahm-formForInverstorData .ahm-postingSuccess{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    padding: 20px 5px ;
+    border-radius: 8px;
+    color:white;
+    margin-top :10px;
+    z-index:20000;
+}
+.ahm-formForInverstorData-Form  
+.ahm-formForInverstorData-Form-btn-cancel{
+    background-color: rgb(170, 0, 0);
+}
+.ahm-formForInverstorData-Form  
+.ahm-formForInverstorData-Form-btn-cancel:hover{
+    background-color: rgb(221, 0, 0);
+}
+
+
+.ahm-formForInverstorData-Form  
+.ahm-formForInverstorData-Form-btn-submit{
+    background-color: rgb(0, 199, 0)
+}
+.ahm-formForInverstorData-Form  
+.ahm-formForInverstorData-Form-btn-submit:hover{
+    background-color: rgb(2, 219, 2)
+}
+
+.ahm-fliedContainer{
+    position: relative;
+}
+.ahm-fliedContainer .ahm-formForInverstorData-Form-icon{
+    position: absolute;
+    top:20px;
+    left:10px;
+    color: rgb(62, 62, 248);
+    font-size: 22px;
+
+    padding-right: 5px;
+    border-right: 1px solid black;
+}
+@media (max-width:992px){
+    .ahm-formForInverstorData-Form{
+        width: 90%;
+    }
+}
+
+@media (max-width:576px){
+    .ahm-formForInverstorData-Form button{
+        width:95%
+    }
+}

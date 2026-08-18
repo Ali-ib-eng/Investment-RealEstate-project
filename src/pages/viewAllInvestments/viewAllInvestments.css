@@ -1,0 +1,186 @@
+.ahm-veiwAllInvestment .ahm-header{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+.ahm-veiwAllInvestment .ahm-header .ahm-headerIcon{
+    font-size: 20px;
+    cursor: pointer;
+}
+.ahm-veiwAllInvestment .ahm-header .ahm-headerIcon:hover{
+    color:#888888;
+}
+.ahm-veiwAllInvestment .ahm-header p{
+    width: 97%;
+}
+
+.ahm-lineInViewAll{
+    color: blue;
+    width: 80%;
+    margin:10px 10% ;
+    font-size: 30px;
+}
+.ahm-selectLocation{
+    background-color: rgba(226, 223, 223, 0.411);
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    color:  var(--on-surface);
+    border: none;
+    width: 395px;
+    /* width: 100%; */
+    /* background-color: green; */
+}
+.ahm-searchContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    width: 400px;
+    /* background-color: blue; */
+    position: relative;
+    margin: auto;
+
+}
+.ahm-input{
+    background-color: rgba(226, 223, 223, 0.411);
+    padding: 10px 10px 10px 40px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+    color: var(--on-surface);
+    border: none;
+    /* background-color: red; */
+}
+.ahm-formContainerVeiwAll{
+    /* display: flex; */
+    /* background-color: red; */
+    width: 100%;
+    align-items: center;
+    gap:5px;
+    justify-content: center;
+    text-align: center;
+}
+.ahm-containerSearchIcon{
+    width: fit-content;
+    padding:5px 5px 5px 15px;
+    color:rgb(190, 190, 0);
+    /* border-right: 1px solid black ; */
+    /* background-color: rgba(226, 223, 223, 0.411); */
+    width: fit-content;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    /* background-color: red; */
+}
+
+.ahm-InvestmentOpportunitesList{
+    margin:20px auto 0;
+    width:80%;
+    height: 78vh;
+    overflow-y: auto;
+    /* background-color: red;  */
+    padding: 5px;
+    display: flex;
+    gap:5px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+@media  (max-width:992px){
+    .ahm-searchContainer{
+        width:100%
+    }
+    .ahm-formContainerVeiwAll{
+        display: block;
+        width: 100%;
+        /* background-color: red; */
+        padding-bottom:5px ;
+        /* margin-left:10%;  */
+    }
+    .ahm-selectLocation{
+        width: 80%;
+        /* margin-left: 10%; */
+        margin-top:3px;
+        margin-bottom:3px;
+    }
+    .ahm-input{
+        width: 80%;
+        margin-left: 10%;
+        margin-top:3px;
+        margin-bottom:3px;
+    }
+    .ahm-containerSearchIcon{
+        /* width: 80%; */
+        margin-left: 10%;
+        margin-top:3px;
+        margin-bottom:3px;
+        text-align: center;
+    }
+    .ahm-searchIcon{
+        width: fit-content;
+        margin: auto;
+
+    }
+    .ahm-InvestmentOpportunitesList{
+        /* display: block; */
+        padding: 5px 5px 10px 5px;
+        width:95%;
+        margin-left:2% ;
+    }
+}
+
+
+@media  (max-width:576px){
+    .ahm-formContainerVeiwAll{
+        display: block;
+        width: 100%;
+        /* background-color: red; */
+        padding-bottom:5px ;
+        /* margin-left:10%;  */
+    }
+    .ahm-selectLocation{
+        width: 80%;
+        /* margin-left: 10%; */
+        margin-top:3px;
+        margin-bottom:3px;
+    }
+    .ahm-input{
+        width: 80%;
+        margin-left: 10%;
+        margin-top:3px;
+        margin-bottom:3px;
+    }
+    .ahm-containerSearchIcon{
+        /* width: 80%; */
+        margin-left: 10%;
+        margin-top:3px;
+        margin-bottom:3px;
+        text-align: center;
+    }
+    .ahm-searchIcon{
+        width: fit-content;
+        margin: auto;
+
+    }
+    .ahm-InvestmentOpportunitesList{
+        display: block;
+        padding: 0px;
+        /* padding: 5px 5px 10px 5px; */
+        width:100%;
+
+        margin:0px ;
+    }
+    .ahm-InvestmentOpportunitesList .ahm-card{
+        width:90%;
+        margin-left: 5%;
+        /* padding:; */
+    }
+}

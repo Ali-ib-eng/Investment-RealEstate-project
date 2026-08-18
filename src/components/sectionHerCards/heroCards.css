@@ -1,0 +1,69 @@
+.ahm-hero-card-container{
+
+    width:100%;
+    height: 500px;
+    padding: 10px 0px 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    overflow-y: auto
+}
+.ahm-hero-card-container .ahm-hero-card{
+    width: 300px;
+    height: 110px;
+
+    margin: 5px;
+    display: flex;
+    padding: 10px;
+    gap: 5px;
+    border-radius: 10px;
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+    box-shadow: 5px 5px 10px #888888;
+    border: 1px solid rgb(92, 90, 90);
+    
+}
+.ahm-hero-card-container .ahm-hero-card:hover{
+    transform: translateY(-5px);
+}
+.ahm-hero-card-img{
+    width:80px;
+    height: 80px;
+}
+.ahm-hero-card-data p{
+    padding:0px 5px;
+}
+.ahm-hero-BTN-container button{
+    all: unset;
+    width :80px;
+    padding: 4px 0px;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+.ahm-hero-btn-buy{
+    background-color: rgb(1, 161, 1);
+}
+.ahm-hero-btn-buy:hover{
+    background-color: rgb(0, 202, 0);
+}
+.ahm-hero-btn-rent{
+    background-color: rgb(1, 1, 136) !important;
+}
+.ahm-hero-BTN-container .ahm-hero-btn-rent:hover{
+    background-color: rgb(0, 0, 253) !important;
+}
+@media (max-width:959px){
+    .ahm-hero-card-container .ahm-hero-card{
+        width: 30%;
+    }
+}
+@media (max-width:715px){
+    .ahm-hero-card-container .ahm-hero-card{
+        width: 90%;
+        margin-left: 5%;
+    }
+}

@@ -1,9 +1,13 @@
+import ShowProperty from "../components/ShowProperty/ShowProperty"
+
 
 const Properties = () => {
   return (
-    <div>
-      <h1>hello from Properties</h1>
-    </div>
+    <>
+      <div className="properties">
+        <ShowProperty/>
+      </div>
+    </>
   )
 }
 
