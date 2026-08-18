@@ -12,12 +12,12 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,isLoggedIn,onLogout,})
 
   const navigate = useNavigate();
 
-  const handleNavClick = (event, link) => {
-    const token = localStorage.getItem("token")?.trim();
+  const handleNavClick = () => {
+    /*const token = localStorage.getItem("token")?.trim();
     if (link.requiresAuth && !token) {
       event.preventDefault();
       navigate("/getStarted");
-    }
+    }*/
     setShow(false);
   };
 
@@ -93,9 +93,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,isLoggedIn,onLogout,})
               <NavLink
                 key={link.path}
                 to={link.path}
-                onClick={(event) =>
-                  handleNavClick(event, link)
-                }
+                onClick={handleNavClick}
                 className={({ isActive, isPending }) => {
                   if (isPending) return "pending";
                   if (isActive) return "active";
@@ -167,9 +165,7 @@ const NavBar = ({navLinks,logo,btnTitle,theme,changeTheme,isLoggedIn,onLogout,})
           <NavLink
             key={link.path}
             to={link.path}
-            onClick={(event) =>
-              handleNavClick(event, link)
-            }
+            onClick={handleNavClick}
           >
             {link.name}
           </NavLink>

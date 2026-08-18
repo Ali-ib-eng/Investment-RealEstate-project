@@ -59,7 +59,7 @@ function SearchForm({
   );
 }
 
-function InvestmentOpportunitesList({ investments, onBuy , setShowDetails, showDetails}) {
+function InvestmentOpportunitesList({ investments, onBuy , setShowDetails, showDetails,isLoggedIn}) {
   
   return (
     <div className="ahm-InvestmentOpportunitesList">
@@ -87,20 +87,22 @@ function InvestmentOpportunitesList({ investments, onBuy , setShowDetails, showD
           <p className="ahm-investmentCost">
             {investment.total_budget} $
           </p>
-          <button
-            type="button"
-            className="ahm-buyBTN"
-            onClick={() => onBuy(investment.id)}
-          >
-            Buy
-          </button>
+          {isLoggedIn&&(
+            <button
+              type="button"
+              className="ahm-buyBTN"
+              onClick={() => onBuy(investment.id)}
+            >
+              Buy
+            </button>
+          )}
         </div>
       ))}
     </div>
   );
 }
 
-export default function ViewAllInvestments() {
+export default function ViewAllInvestments({isLoggedIn}) {
   const [data, setData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isInnerSearching, setIsInnerSearching] =useState(false);
@@ -232,6 +234,7 @@ export default function ViewAllInvestments() {
           onBuy={buyHandler}
           setShowDetails={setShowDetails}
           showDetails={showDetails}
+          isLoggedIn={isLoggedIn}
         />
       )}
       {showDetails.isShow && <ShowDetails 

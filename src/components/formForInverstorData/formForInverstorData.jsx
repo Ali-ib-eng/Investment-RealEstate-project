@@ -34,17 +34,28 @@ export default function FormForInverstorData(){
         note:''
     });
 
-    useEffect(()=>{
-        const id = location.state?.id;
-        setProductID(parseInt(id));
-        console.log(id);
-        const fetchToken = localStorage.getItem('token');
-        setToken(fetchToken);
-    },[])
+    useEffect(() => {
+  const fetchToken=localStorage.getItem("token")?.trim();
+
+  if (!fetchToken) {
+    navigate("/getStarted", {
+      replace: true,
+      state: {
+        message: "Please log in before purchasing.",
+      },
+    });
+    return;
+  }
+  setToken(fetchToken);
+  const id = location.state?.id;
+  if (id){
+    setProductID(parseInt(id));
+  }
+}, [location.state, navigate]);
     
     
 
-    const submitHandler = (e)=>{
+    /*const submitHandler = (e)=>{
         e.preventDefault();
         
         if(data.email=='' || data.name=='' || data.phone=='' || data.offer_amount==0 || data.buyer_national_id==""){
@@ -56,7 +67,45 @@ export default function FormForInverstorData(){
             postData();
         }
     }
+*/
+const submitHandler = (e) => {
+  e.preventDefault();
 
+  if (!token) {
+    navigate("/getStarted", {
+      replace: true,
+      state: {
+        message: "Please log in before purchasing.",
+      },
+    });
+
+    return;
+  }
+
+  if (
+    data.email === "" ||
+    data.name === "" ||
+    data.phone === "" ||
+    data.offer_amount == 0 ||
+    data.buyer_national_id === ""
+  ) {
+    setErrorInput({
+      ...ErrorInput,
+      isErrorInput: true,
+      errorMessage: "Please fill all fields",
+    });
+  } else {
+    setIsSubmiting(true);
+
+    setErrorInput({
+      ...ErrorInput,
+      isErrorInput: false,
+      errorMessage: "",
+    });
+
+    postData();
+  }
+};
     const postData = async()=>{
         try{
             await axios.post(`https://zoological-flow-production-40af.up.railway.app/api/project-purchase-requests`, {
