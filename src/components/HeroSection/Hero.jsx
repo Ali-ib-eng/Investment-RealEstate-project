@@ -22,9 +22,7 @@ const governorates = [
     "Quneitra"
   ];
 
-const Hero = ({title,paragraph,searchBtn}) => {
-
-const Hero = ({title,paragraph,searchBtn,isLoggedIn}) => {
+const Hero = ({title,searchBtn,isLoggedIn}) => {
 
     const navigate = useNavigate();
 
