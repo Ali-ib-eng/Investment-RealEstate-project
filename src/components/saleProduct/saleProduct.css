@@ -3,20 +3,51 @@
     padding-top: 80px;
 }
 .ahm-file-Btn-image {
-    /* background-color: red; */
     cursor: pointer;
-    /* transition: 0.2s; */
     padding: 10px 30px !important;
     background-color: rgb(0, 0, 190);
     color:white;
     border-radius: 10px;
+        text-align: center;
 }
 .ahm-file-Btn-image:hover{
-    /* font-size: 25px; */
-    /* font-weight: bold; */
     background-color: rgb(1, 1, 223);
 }
-.ahm-file-input-container{
-    padding: 10px !important;
-    /* background-color: red; */
+.ahm-sale-container-form{
+    width: 90% !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly !important;
+}
+.ahm-field-container-sale{
+    width:250px;
+}
+.ahm-field-container-sale-image{
+    display: flex;
+    align-items: center;
+}
+.ahm-sale-container-h1{
+    width:100% !important;
+    text-align: center;
+}
+.ahm-sale-BTN-container{
+    width: 100%;
+    text-align: center;
+}
+.ahm-sale-BTN-container button{
+    width: 200px !important;
+}
+
+@media (max-width:900px){
+    .ahm-field-container-sale{
+        width:45%;
+    }
+}
+@media (max-width:576px){
+    .ahm-field-container-sale{
+        width:90%;
+    }
+    .ahm-sale-BTN-container button{
+        width:90% !important;
+    }
 }
